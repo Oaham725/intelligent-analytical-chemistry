@@ -9,3 +9,7 @@ python -m http.server 8000
 ```
 
 访问 `http://localhost:8000`。
+
+## 发布到 GitHub Pages
+
+登录 GitHub CLI 后执行：`./publish_github.sh`。脚本会创建公开仓库、推送 `main` 分支并启用 Pages 工作流。
