@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1237.8" y2="301.8"/>
+<line class="edge" x1="800" y1="520" x2="1346.0" y2="597.9"/>
+<line class="edge" x1="800" y1="520" x2="1043.0" y2="835.3"/>
+<line class="edge" x1="800" y1="520" x2="557.0" y2="835.3"/>
+<line class="edge" x1="800" y1="520" x2="254.0" y2="597.9"/>
+<line class="edge" x1="800" y1="520" x2="362.2" y2="301.8"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="520">科学大模型与分析化学智能体</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="153.0">16.1 语言模型、上下文与化学能</text>
+<text class="t" x="800.0" y="187.0">力边界</text>
+<rect class="node" x="1032.8" y="233.8" width="410" height="136" rx="20"/>
+<text class="t" x="1237.8" y="284.8">16.2 RAG：标准方法、仪器说</text>
+<text class="t" x="1237.8" y="318.8">明和实验记录检索</text>
+<rect class="node" x="1141.0" y="529.9" width="410" height="136" rx="20"/>
+<text class="t" x="1346.0" y="580.9">16.3 工具调用：谱库、RDKi</text>
+<text class="t" x="1346.0" y="614.9">t、统计计算与仪器接口</text>
+<rect class="node" x="838.0" y="767.3" width="410" height="136" rx="20"/>
+<text class="t" x="1043.0" y="818.3">16.4 计划—执行—观察—修正的</text>
+<text class="t" x="1043.0" y="852.3">任务图</text>
+<rect class="node" x="352.0" y="767.3" width="410" height="136" rx="20"/>
+<text class="t" x="557.0" y="818.3">16.5 事实、推断、假设和待测量</text>
+<text class="t" x="557.0" y="852.3">结论的状态区分</text>
+<rect class="node" x="49.0" y="529.9" width="410" height="136" rx="20"/>
+<text class="t" x="254.0" y="580.9">16.6 结构化输出、日志、复算和</text>
+<text class="t" x="254.0" y="614.9">测试</text>
+<rect class="node" x="157.2" y="233.8" width="410" height="136" rx="20"/>
+<text class="t" x="362.2" y="284.8">16.7 分析化学Copilot与</text>
+<text class="t" x="362.2" y="318.8">多智能体协作案例</text>
+</svg>

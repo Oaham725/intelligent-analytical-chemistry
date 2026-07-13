@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1196.0" y2="272.5"/>
+<line class="edge" x1="800" y1="520" x2="1360.0" y2="520.0"/>
+<line class="edge" x1="800" y1="520" x2="1196.0" y2="767.5"/>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="870.0"/>
+<line class="edge" x1="800" y1="520" x2="404.0" y2="767.5"/>
+<line class="edge" x1="800" y1="520" x2="240.0" y2="520.0"/>
+<line class="edge" x1="800" y1="520" x2="404.0" y2="272.5"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="520">化学成像、空间分辨率与多维数据</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="153.0">11.1 成像作为空间分辨的化学测</text>
+<text class="t" x="800.0" y="187.0">量</text>
+<rect class="node" x="991.0" y="204.5" width="410" height="136" rx="20"/>
+<text class="t" x="1196.0" y="255.5">11.2 点扩散函数、采样与Ray</text>
+<text class="t" x="1196.0" y="289.5">leigh分辨率</text>
+<rect class="node" x="1155.0" y="452.0" width="410" height="136" rx="20"/>
+<text class="t" x="1360.0" y="503.0">11.3 对比度、噪声、SNR和动</text>
+<text class="t" x="1360.0" y="537.0">态范围</text>
+<rect class="node" x="991.0" y="699.5" width="410" height="136" rx="20"/>
+<text class="t" x="1196.0" y="750.5">11.4 化学图像与X×Y×λ光谱</text>
+<text class="t" x="1196.0" y="784.5">立方体</text>
+<rect class="node" x="595.0" y="802.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="853.0">11.5 去噪、配准、分割与组分映</text>
+<text class="t" x="800.0" y="887.0">射</text>
+<rect class="node" x="199.0" y="699.5" width="410" height="136" rx="20"/>
+<text class="t" x="404.0" y="750.5">11.6 CNN、U-Net与空间</text>
+<text class="t" x="404.0" y="784.5">交叉验证</text>
+<rect class="node" x="35.0" y="452.0" width="410" height="136" rx="20"/>
+<text class="t" x="240.0" y="520.0">11.7 去卷积、超分辨与信息边界</text>
+<rect class="node" x="199.0" y="204.5" width="410" height="136" rx="20"/>
+<text class="t" x="404.0" y="272.5">11.8 细胞、组织和材料成像案例</text>
+</svg>

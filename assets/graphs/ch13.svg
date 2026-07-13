@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1237.8" y2="301.8"/>
+<line class="edge" x1="800" y1="520" x2="1346.0" y2="597.9"/>
+<line class="edge" x1="800" y1="520" x2="1043.0" y2="835.3"/>
+<line class="edge" x1="800" y1="520" x2="557.0" y2="835.3"/>
+<line class="edge" x1="800" y1="520" x2="254.0" y2="597.9"/>
+<line class="edge" x1="800" y1="520" x2="362.2" y2="301.8"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="520">多模态基础模型与知识增强分析</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="170.0">13.1 单模态上限与互补分析证据</text>
+<rect class="node" x="1032.8" y="233.8" width="410" height="136" rx="20"/>
+<text class="t" x="1237.8" y="301.8">13.2 早期、中间层和后期融合</text>
+<rect class="node" x="1141.0" y="529.9" width="410" height="136" rx="20"/>
+<text class="t" x="1346.0" y="597.9">13.3 对比学习与共享嵌入空间</text>
+<rect class="node" x="838.0" y="767.3" width="410" height="136" rx="20"/>
+<text class="t" x="1043.0" y="818.3">13.4 谱图—结构—性质的双向建</text>
+<text class="t" x="1043.0" y="852.3">模</text>
+<rect class="node" x="352.0" y="767.3" width="410" height="136" rx="20"/>
+<text class="t" x="557.0" y="818.3">13.5 多模态基础模型、适配器与</text>
+<text class="t" x="557.0" y="852.3">小样本迁移</text>
+<rect class="node" x="49.0" y="529.9" width="410" height="136" rx="20"/>
+<text class="t" x="254.0" y="580.9">13.6 知识图谱、规则和仪器响应</text>
+<text class="t" x="254.0" y="614.9">先验</text>
+<rect class="node" x="157.2" y="233.8" width="410" height="136" rx="20"/>
+<text class="t" x="362.2" y="284.8">13.7 缺失模态、错误配对与跨模</text>
+<text class="t" x="362.2" y="318.8">态验证</text>
+</svg>

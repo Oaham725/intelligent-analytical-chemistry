@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1196.0" y2="272.5"/>
+<line class="edge" x1="800" y1="520" x2="1360.0" y2="520.0"/>
+<line class="edge" x1="800" y1="520" x2="1196.0" y2="767.5"/>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="870.0"/>
+<line class="edge" x1="800" y1="520" x2="404.0" y2="767.5"/>
+<line class="edge" x1="800" y1="520" x2="240.0" y2="520.0"/>
+<line class="edge" x1="800" y1="520" x2="404.0" y2="272.5"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="500">生成式模型与扩散模型：从信号恢复</text>
+<text class="ct" x="800" y="540">到化学反演</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="153.0">8.1 判别式学习、生成式学习与分</text>
+<text class="t" x="800.0" y="187.0">析反问题</text>
+<rect class="node" x="991.0" y="204.5" width="410" height="136" rx="20"/>
+<text class="t" x="1196.0" y="255.5">8.2 自编码器、VAE与潜变量空</text>
+<text class="t" x="1196.0" y="289.5">间</text>
+<rect class="node" x="1155.0" y="452.0" width="410" height="136" rx="20"/>
+<text class="t" x="1360.0" y="520.0">8.3 GAN、正规化流与生成分布</text>
+<rect class="node" x="991.0" y="699.5" width="410" height="136" rx="20"/>
+<text class="t" x="1196.0" y="750.5">8.4 扩散模型的加噪、去噪与得分</text>
+<text class="t" x="1196.0" y="784.5">匹配</text>
+<rect class="node" x="595.0" y="802.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="853.0">8.5 条件生成、引导与多解不确定</text>
+<text class="t" x="800.0" y="887.0">性</text>
+<rect class="node" x="199.0" y="699.5" width="410" height="136" rx="20"/>
+<text class="t" x="404.0" y="750.5">8.6 光谱/图像去噪、补全与低剂</text>
+<text class="t" x="404.0" y="784.5">量重建</text>
+<rect class="node" x="35.0" y="452.0" width="410" height="136" rx="20"/>
+<text class="t" x="240.0" y="503.0">8.7 谱图生成、分子生成与结构反</text>
+<text class="t" x="240.0" y="537.0">演</text>
+<rect class="node" x="199.0" y="204.5" width="410" height="136" rx="20"/>
+<text class="t" x="404.0" y="255.5">8.8 守恒、价态、仪器响应和实验</text>
+<text class="t" x="404.0" y="289.5">验证</text>
+</svg>

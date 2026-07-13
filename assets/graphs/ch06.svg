@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1237.8" y2="301.8"/>
+<line class="edge" x1="800" y1="520" x2="1346.0" y2="597.9"/>
+<line class="edge" x1="800" y1="520" x2="1043.0" y2="835.3"/>
+<line class="edge" x1="800" y1="520" x2="557.0" y2="835.3"/>
+<line class="edge" x1="800" y1="520" x2="254.0" y2="597.9"/>
+<line class="edge" x1="800" y1="520" x2="362.2" y2="301.8"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="520">分子表征与结构—性质关系</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="153.0">6.1 从QSAR/QSPR到分子</text>
+<text class="t" x="800.0" y="187.0">机器学习</text>
+<rect class="node" x="1032.8" y="233.8" width="410" height="136" rx="20"/>
+<text class="t" x="1237.8" y="284.8">6.2 Hammett、Taft、</text>
+<text class="t" x="1237.8" y="318.8">Sterimol与Hansch模型</text>
+<rect class="node" x="1141.0" y="529.9" width="410" height="136" rx="20"/>
+<text class="t" x="1346.0" y="580.9">6.3 全局、拓扑、电子与光谱描述</text>
+<text class="t" x="1346.0" y="614.9">符</text>
+<rect class="node" x="838.0" y="767.3" width="410" height="136" rx="20"/>
+<text class="t" x="1043.0" y="818.3">6.4 SMILES、分子指纹与T</text>
+<text class="t" x="1043.0" y="852.3">animoto相似性</text>
+<rect class="node" x="352.0" y="767.3" width="410" height="136" rx="20"/>
+<text class="t" x="557.0" y="818.3">6.5 二维分子图、消息传递与图级</text>
+<text class="t" x="557.0" y="852.3">预测</text>
+<rect class="node" x="49.0" y="529.9" width="410" height="136" rx="20"/>
+<text class="t" x="254.0" y="580.9">6.6 三维构象、对称性、不变性与</text>
+<text class="t" x="254.0" y="614.9">等变性</text>
+<rect class="node" x="157.2" y="233.8" width="410" height="136" rx="20"/>
+<text class="t" x="362.2" y="284.8">6.7 骨架划分、化学空间与表示适</text>
+<text class="t" x="362.2" y="318.8">用域</text>
+</svg>

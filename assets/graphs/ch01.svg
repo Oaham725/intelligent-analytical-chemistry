@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1285.0" y2="345.0"/>
+<line class="edge" x1="800" y1="520" x2="1285.0" y2="695.0"/>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="870.0"/>
+<line class="edge" x1="800" y1="520" x2="315.0" y2="695.0"/>
+<line class="edge" x1="800" y1="520" x2="315.0" y2="345.0"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="500">AI时代的分析化学：从化学测量到</text>
+<text class="ct" x="800" y="540">智能测量</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="153.0">1.1 分析化学的核心任务：是什么</text>
+<text class="t" x="800.0" y="187.0">、多少、在哪里与如何变化</text>
+<rect class="node" x="1080.0" y="277.0" width="410" height="136" rx="20"/>
+<text class="t" x="1285.0" y="328.0">1.2 复杂体系中的信息、干扰与测</text>
+<text class="t" x="1285.0" y="362.0">量不确定性</text>
+<rect class="node" x="1080.0" y="627.0" width="410" height="136" rx="20"/>
+<text class="t" x="1285.0" y="678.0">1.3 Make–Measure–</text>
+<text class="t" x="1285.0" y="712.0">Model：现代化学中的测量枢纽</text>
+<rect class="node" x="595.0" y="802.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="853.0">1.4 人工智能进入分析化学的五种</text>
+<text class="t" x="800.0" y="887.0">方式</text>
+<rect class="node" x="110.0" y="627.0" width="410" height="136" rx="20"/>
+<text class="t" x="315.0" y="678.0">1.5 从离线数据分析到闭环智能测</text>
+<text class="t" x="315.0" y="712.0">量</text>
+<rect class="node" x="110.0" y="277.0" width="410" height="136" rx="20"/>
+<text class="t" x="315.0" y="328.0">1.6 可信化学信息的乘法链与本书</text>
+<text class="t" x="315.0" y="362.0">学习路线</text>
+</svg>

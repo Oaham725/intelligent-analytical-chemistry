@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1160.0" y2="251.9"/>
+<line class="edge" x1="800" y1="520" x2="1351.5" y2="459.2"/>
+<line class="edge" x1="800" y1="520" x2="1285.0" y2="695.0"/>
+<line class="edge" x1="800" y1="520" x2="991.5" y2="848.9"/>
+<line class="edge" x1="800" y1="520" x2="608.5" y2="848.9"/>
+<line class="edge" x1="800" y1="520" x2="315.0" y2="695.0"/>
+<line class="edge" x1="800" y1="520" x2="248.5" y2="459.2"/>
+<line class="edge" x1="800" y1="520" x2="440.0" y2="251.9"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="500">世界模型、化学数字孪生与机器科学</text>
+<text class="ct" x="800" y="540">家</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="153.0">18.1 数字孪生与世界模型：镜像</text>
+<text class="t" x="800.0" y="187.0">、预测与规划</text>
+<rect class="node" x="955.0" y="183.9" width="410" height="136" rx="20"/>
+<text class="t" x="1160.0" y="234.9">18.2 样品状态、仪器状态、动作</text>
+<text class="t" x="1160.0" y="268.9">与观测</text>
+<rect class="node" x="1146.5" y="391.2" width="410" height="136" rx="20"/>
+<text class="t" x="1351.5" y="442.2">18.3 状态空间模型、卡尔曼滤波</text>
+<text class="t" x="1351.5" y="476.2">与粒子滤波</text>
+<rect class="node" x="1080.0" y="627.0" width="410" height="136" rx="20"/>
+<text class="t" x="1285.0" y="678.0">18.4 机理模型、数据模型和混合</text>
+<text class="t" x="1285.0" y="712.0">世界模型</text>
+<rect class="node" x="786.5" y="780.9" width="410" height="136" rx="20"/>
+<text class="t" x="991.5" y="831.9">18.5 潜空间滚动、模型预测控制</text>
+<text class="t" x="991.5" y="865.9">与信息增益</text>
+<rect class="node" x="403.5" y="780.9" width="410" height="136" rx="20"/>
+<text class="t" x="608.5" y="831.9">18.6 虚拟实验、sim-to-</text>
+<text class="t" x="608.5" y="865.9">real与不确定性触发测量</text>
+<rect class="node" x="110.0" y="627.0" width="410" height="136" rx="20"/>
+<text class="t" x="315.0" y="678.0">18.7 守恒、设备边界和长期模型</text>
+<text class="t" x="315.0" y="712.0">更新</text>
+<rect class="node" x="43.5" y="391.2" width="410" height="136" rx="20"/>
+<text class="t" x="248.5" y="442.2">18.8 机器科学家：提出假设、规</text>
+<text class="t" x="248.5" y="476.2">划、执行和修正</text>
+<rect class="node" x="235.0" y="183.9" width="410" height="136" rx="20"/>
+<text class="t" x="440.0" y="234.9">18.9 开放问题与未来分析化学家</text>
+<text class="t" x="440.0" y="268.9">的能力结构</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
+<line class="edge" x1="800" y1="520" x2="1196.0" y2="272.5"/>
+<line class="edge" x1="800" y1="520" x2="1360.0" y2="520.0"/>
+<line class="edge" x1="800" y1="520" x2="1196.0" y2="767.5"/>
+<line class="edge" x1="800" y1="520" x2="800.0" y2="870.0"/>
+<line class="edge" x1="800" y1="520" x2="404.0" y2="767.5"/>
+<line class="edge" x1="800" y1="520" x2="240.0" y2="520.0"/>
+<line class="edge" x1="800" y1="520" x2="404.0" y2="272.5"/>
+<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
+<text class="ct" x="800" y="500">机器学习基础：任务、模型、泛化与</text>
+<text class="ct" x="800" y="540">解释</text>
+<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="153.0">4.1 统计学习的任务、经验、参数</text>
+<text class="t" x="800.0" y="187.0">与泛化</text>
+<rect class="node" x="991.0" y="204.5" width="410" height="136" rx="20"/>
+<text class="t" x="1196.0" y="255.5">4.2 监督、无监督、半监督与自监</text>
+<text class="t" x="1196.0" y="289.5">督学习</text>
+<rect class="node" x="1155.0" y="452.0" width="410" height="136" rx="20"/>
+<text class="t" x="1360.0" y="503.0">4.3 数据划分、同源泄漏与未来应</text>
+<text class="t" x="1360.0" y="537.0">用边界</text>
+<rect class="node" x="991.0" y="699.5" width="410" height="136" rx="20"/>
+<text class="t" x="1196.0" y="767.5">4.4 线性模型、正则化与核方法</text>
+<rect class="node" x="595.0" y="802.0" width="410" height="136" rx="20"/>
+<text class="t" x="800.0" y="870.0">4.5 树模型、集成学习与高斯过程</text>
+<rect class="node" x="199.0" y="699.5" width="410" height="136" rx="20"/>
+<text class="t" x="404.0" y="767.5">4.6 分类、回归和概率校准指标</text>
+<rect class="node" x="35.0" y="452.0" width="410" height="136" rx="20"/>
+<text class="t" x="240.0" y="503.0">4.7 嵌套验证、基线、消融与失败</text>
+<text class="t" x="240.0" y="537.0">样本</text>
+<rect class="node" x="199.0" y="204.5" width="410" height="136" rx="20"/>
+<text class="t" x="404.0" y="255.5">4.8 特征归因、反事实与解释的边</text>
+<text class="t" x="404.0" y="289.5">界</text>
+</svg>
