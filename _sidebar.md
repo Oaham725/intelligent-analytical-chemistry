@@ -6,6 +6,7 @@
   - [提交与评审流程](docs/course/workflow.md)
   - [评分与署名规则](docs/course/rubric.md)
   - [本学年认领表](docs/course/team-register.md)
+  - [年度资料、传承题与引文](resources/annual/README.md)
 
 - **第1篇　分析化学的新范式与测量基础**
   - [第1章 AI时代的分析化学：从化学测量到智能测量](docs/ch01.md)
