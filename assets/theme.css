@@ -1,1 +1,94 @@
-:root{--theme-color:#345a8a;--content-max-width:980px}body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC",sans-serif;color:#243647}.markdown-section{max-width:980px;padding:42px 54px}.markdown-section h1{color:#244c78;font-weight:750}.markdown-section h2{border-bottom:1px solid #dce6ef;padding-bottom:.35rem;color:#345a8a}.markdown-section h3{color:#476c91}.markdown-section blockquote{border-left:4px solid #6f99bf;background:#f3f7fb;color:#3c5369;padding:14px 18px}.sidebar{background:#f7fafc}.sidebar-nav>ul>li>strong{color:#345a8a}.cover-main>p:last-child a{border-radius:999px}.markdown-section img{display:block;margin:1.5rem auto;max-width:100%}.markdown-section code{font-family:"SFMono-Regular",Consolas,monospace}.app-name-link{font-weight:700;color:#345a8a!important}@media(max-width:768px){.markdown-section{padding:32px 24px}}
+:root {
+  --theme-color: #0b6095;
+  --content-max-width: 980px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  color: #1e3344;
+}
+
+.markdown-section {
+  max-width: 980px;
+  padding: 42px 54px;
+}
+
+.markdown-section h1 {
+  color: #123c61;
+  font-weight: 750;
+}
+
+.markdown-section h2 {
+  border-bottom: 1px solid #cfe2eb;
+  padding-bottom: .35rem;
+  color: #0b6095;
+}
+
+.markdown-section h3 {
+  color: #2f718f;
+}
+
+.markdown-section blockquote {
+  border-left: 4px solid #22a06b;
+  background: #f1f8f6;
+  color: #345767;
+  padding: 14px 18px;
+}
+
+.sidebar {
+  background: #f5f9fc;
+}
+
+.sidebar-nav > ul > li > strong,
+.app-name-link {
+  color: #0b6095 !important;
+}
+
+.cover-main > p:last-child a {
+  border-radius: 999px;
+}
+
+.markdown-section img {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+}
+
+.markdown-section code {
+  font-family: "SFMono-Regular", Consolas, monospace;
+}
+
+.markdown-section table {
+  display: table;
+  width: 100%;
+  font-size: .93rem;
+}
+
+.markdown-section th {
+  background: #eaf4f8;
+  color: #124568;
+}
+
+.markdown-section tr:nth-child(2n) {
+  background: #fbfdfe;
+}
+
+.markdown-section .task-card {
+  border: 1px solid #cfe2eb;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(15, 70, 96, .06);
+  margin: 1rem 0;
+  padding: 1rem 1.15rem;
+}
+
+@media (max-width: 768px) {
+  .markdown-section {
+    padding: 32px 24px;
+  }
+
+  .markdown-section table {
+    display: block;
+    overflow-x: auto;
+  }
+}

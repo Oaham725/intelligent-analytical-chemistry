@@ -1,36 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
-<rect width="100%" height="100%" fill="#ffffff"/>
-<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
-<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
-<line class="edge" x1="800" y1="520" x2="1196.0" y2="272.5"/>
-<line class="edge" x1="800" y1="520" x2="1360.0" y2="520.0"/>
-<line class="edge" x1="800" y1="520" x2="1196.0" y2="767.5"/>
-<line class="edge" x1="800" y1="520" x2="800.0" y2="870.0"/>
-<line class="edge" x1="800" y1="520" x2="404.0" y2="767.5"/>
-<line class="edge" x1="800" y1="520" x2="240.0" y2="520.0"/>
-<line class="edge" x1="800" y1="520" x2="404.0" y2="272.5"/>
-<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
-<text class="ct" x="800" y="520">化学计量学：从测量信号到化学信息</text>
-<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
-<text class="t" x="800.0" y="153.0">3.1 化学计量学的起源、定义与分</text>
-<text class="t" x="800.0" y="187.0">析化学地位</text>
-<rect class="node" x="991.0" y="204.5" width="410" height="136" rx="20"/>
-<text class="t" x="1196.0" y="255.5">3.2 采样、样品代表性与校准集合</text>
-<text class="t" x="1196.0" y="289.5">设计</text>
-<rect class="node" x="1155.0" y="452.0" width="410" height="136" rx="20"/>
-<text class="t" x="1360.0" y="503.0">3.3 实验设计、信号处理与信息压</text>
-<text class="t" x="1360.0" y="537.0">缩</text>
-<rect class="node" x="991.0" y="699.5" width="410" height="136" rx="20"/>
-<text class="t" x="1196.0" y="750.5">3.4 矩阵语言、协方差、SVD与</text>
-<text class="t" x="1196.0" y="784.5">PCA</text>
-<rect class="node" x="595.0" y="802.0" width="410" height="136" rx="20"/>
-<text class="t" x="800.0" y="853.0">3.5 多元线性回归、PCR与PL</text>
-<text class="t" x="800.0" y="887.0">S</text>
-<rect class="node" x="199.0" y="699.5" width="410" height="136" rx="20"/>
-<text class="t" x="404.0" y="767.5">3.6 聚类、模式识别与异常诊断</text>
-<rect class="node" x="35.0" y="452.0" width="410" height="136" rx="20"/>
-<text class="t" x="240.0" y="520.0">3.7 交叉验证、外部预测与适用域</text>
-<rect class="node" x="199.0" y="204.5" width="410" height="136" rx="20"/>
-<text class="t" x="404.0" y="255.5">3.8 从经典化学计量学到现代智能</text>
-<text class="t" x="404.0" y="289.5">分析</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760"><defs><style>.t{font-family:'Noto Sans CJK SC','PingFang SC',sans-serif;fill:#172033}.h{font-size:34px;font-weight:700}.n{font-size:23px;font-weight:650}.s{font-size:18px}.b{fill:#f8fbfd;stroke:#275d78;stroke-width:2}.a{stroke:#275d78;stroke-width:3;fill:none;marker-end:url(#m)}</style><marker id="m" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0V6L9 3z" fill="#275d78"/></marker></defs><rect width="1200" height="760" fill="white"/><text x="55" y="62" class="t h">第3章　化学计量学：测量链中的信息提取</text>
+<g class="t"><rect x="50" y="120" width="205" height="120" rx="14" class="b"/><text x="152" y="160" text-anchor="middle" class="n">总体与样品</text><text x="152" y="198" text-anchor="middle" class="s">代表性、分层、批次</text>
+<rect x="310" y="120" width="205" height="120" rx="14" class="b"/><text x="412" y="160" text-anchor="middle" class="n">测量矩阵 X</text><text x="412" y="198" text-anchor="middle" class="s">信号＋误差结构</text>
+<rect x="570" y="120" width="205" height="120" rx="14" class="b"/><text x="672" y="160" text-anchor="middle" class="n">低维结构</text><text x="672" y="195" text-anchor="middle" class="s">SVD / PCA / 秩</text>
+<rect x="830" y="120" width="310" height="120" rx="14" class="b"/><text x="985" y="160" text-anchor="middle" class="n">两类任务</text><text x="985" y="195" text-anchor="middle" class="s">校准：MLR→PCR→PLS</text><text x="985" y="222" text-anchor="middle" class="s">识别：距离→聚类→分类</text>
+<rect x="830" y="350" width="310" height="135" rx="14" class="b"/><text x="985" y="390" text-anchor="middle" class="n">验证</text><text x="985" y="425" text-anchor="middle" class="s">分组/外部/嵌套交叉验证</text><text x="985" y="455" text-anchor="middle" class="s">RMSEP、混淆矩阵、置换</text>
+<rect x="570" y="350" width="205" height="135" rx="14" class="b"/><text x="672" y="390" text-anchor="middle" class="n">适用域</text><text x="672" y="425" text-anchor="middle" class="s">T²、Q、邻域密度</text><text x="672" y="455" text-anchor="middle" class="s">拒绝预测</text>
+<rect x="310" y="350" width="205" height="135" rx="14" class="b"/><text x="412" y="390" text-anchor="middle" class="n">部署与维护</text><text x="412" y="425" text-anchor="middle" class="s">控制样、漂移、转移</text><text x="412" y="455" text-anchor="middle" class="s">模型更新</text>
+<path d="M255 180H310M515 180H570M775 180H830M985 240V350M830 418H775M570 418H515" class="a"/><path d="M412 485V570H152V240" class="a"/>
+<text x="55" y="650" class="n">贯穿判断</text><text x="200" y="650" class="s">矩阵加法是否对应混合？投影是否有化学方向？残差是噪声还是新组分？未知样品是否仍在校准空间内？</text></g></svg>

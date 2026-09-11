@@ -1,36 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
-<rect width="100%" height="100%" fill="#ffffff"/>
-<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
-<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
-<line class="edge" x1="800" y1="520" x2="1196.0" y2="272.5"/>
-<line class="edge" x1="800" y1="520" x2="1360.0" y2="520.0"/>
-<line class="edge" x1="800" y1="520" x2="1196.0" y2="767.5"/>
-<line class="edge" x1="800" y1="520" x2="800.0" y2="870.0"/>
-<line class="edge" x1="800" y1="520" x2="404.0" y2="767.5"/>
-<line class="edge" x1="800" y1="520" x2="240.0" y2="520.0"/>
-<line class="edge" x1="800" y1="520" x2="404.0" y2="272.5"/>
-<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
-<text class="ct" x="800" y="500">机器学习基础：任务、模型、泛化与</text>
-<text class="ct" x="800" y="540">解释</text>
-<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
-<text class="t" x="800.0" y="153.0">4.1 统计学习的任务、经验、参数</text>
-<text class="t" x="800.0" y="187.0">与泛化</text>
-<rect class="node" x="991.0" y="204.5" width="410" height="136" rx="20"/>
-<text class="t" x="1196.0" y="255.5">4.2 监督、无监督、半监督与自监</text>
-<text class="t" x="1196.0" y="289.5">督学习</text>
-<rect class="node" x="1155.0" y="452.0" width="410" height="136" rx="20"/>
-<text class="t" x="1360.0" y="503.0">4.3 数据划分、同源泄漏与未来应</text>
-<text class="t" x="1360.0" y="537.0">用边界</text>
-<rect class="node" x="991.0" y="699.5" width="410" height="136" rx="20"/>
-<text class="t" x="1196.0" y="767.5">4.4 线性模型、正则化与核方法</text>
-<rect class="node" x="595.0" y="802.0" width="410" height="136" rx="20"/>
-<text class="t" x="800.0" y="870.0">4.5 树模型、集成学习与高斯过程</text>
-<rect class="node" x="199.0" y="699.5" width="410" height="136" rx="20"/>
-<text class="t" x="404.0" y="767.5">4.6 分类、回归和概率校准指标</text>
-<rect class="node" x="35.0" y="452.0" width="410" height="136" rx="20"/>
-<text class="t" x="240.0" y="503.0">4.7 嵌套验证、基线、消融与失败</text>
-<text class="t" x="240.0" y="537.0">样本</text>
-<rect class="node" x="199.0" y="204.5" width="410" height="136" rx="20"/>
-<text class="t" x="404.0" y="255.5">4.8 特征归因、反事实与解释的边</text>
-<text class="t" x="404.0" y="289.5">界</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><defs><style>.t{font-family:'Noto Sans CJK SC','PingFang SC',sans-serif;fill:#1b2434}.h{font-size:34px;font-weight:700}.n{font-size:23px;font-weight:650}.s{font-size:18px}.b{fill:#fafbfd;stroke:#495c7a;stroke-width:2}.a{stroke:#495c7a;stroke-width:3;fill:none;marker-end:url(#m)}</style><marker id="m" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0V6L9 3z" fill="#495c7a"/></marker></defs><rect width="1200" height="720" fill="white"/><text x="55" y="62" class="t h">第4章　机器学习：增加表达能力，也增加验证负担</text><g class="t">
+<rect x="55" y="115" width="230" height="135" rx="14" class="b"/><text x="170" y="155" text-anchor="middle" class="n">问题与未来场景</text><text x="170" y="192" text-anchor="middle" class="s">回归/分类/异常</text><text x="170" y="220" text-anchor="middle" class="s">新批次/新仪器/新结构</text>
+<rect x="345" y="115" width="230" height="135" rx="14" class="b"/><text x="460" y="155" text-anchor="middle" class="n">无泄漏划分</text><text x="460" y="192" text-anchor="middle" class="s">按独立样品分组</text><text x="460" y="220" text-anchor="middle" class="s">外层评估、内层选择</text>
+<rect x="635" y="115" width="230" height="135" rx="14" class="b"/><text x="750" y="155" text-anchor="middle" class="n">层级基线</text><text x="750" y="192" text-anchor="middle" class="s">均值→PLS/线性</text><text x="750" y="220" text-anchor="middle" class="s">核→树→深度模型</text>
+<rect x="925" y="115" width="230" height="135" rx="14" class="b"/><text x="1040" y="155" text-anchor="middle" class="n">误差与概率</text><text x="1040" y="192" text-anchor="middle" class="s">RMSE/分层残差</text><text x="1040" y="220" text-anchor="middle" class="s">灵敏度/校准/阈值</text>
+<rect x="635" y="360" width="230" height="145" rx="14" class="b"/><text x="750" y="400" text-anchor="middle" class="n">解释与反事实</text><text x="750" y="437" text-anchor="middle" class="s">稳定性＋化学归属</text><text x="750" y="467" text-anchor="middle" class="s">遮蔽/置换/独立干预</text>
+<rect x="925" y="360" width="230" height="145" rx="14" class="b"/><text x="1040" y="400" text-anchor="middle" class="n">外部部署</text><text x="1040" y="437" text-anchor="middle" class="s">适用域、漂移监测</text><text x="1040" y="467" text-anchor="middle" class="s">拒绝与人工确认</text>
+<path d="M285 182H345M575 182H635M865 182H925M1040 250V360M925 432H865" class="a"/>
+<text x="55" y="620" class="n">选择原则：</text><text x="180" y="620" class="s">复杂模型只有在符合部署场景的外部测试中稳定超过透明基线，才算增加了可用化学信息。</text></g></svg>
