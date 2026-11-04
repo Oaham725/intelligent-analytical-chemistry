@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="183mm" height="122mm" viewBox="0 0 518.740 345.827" data-name="ch07-transformer-a" role="img" aria-labelledby="title desc">
+  <title id="title">Transformer 自注意力与编码器块</title>
+  <desc id="desc">输入投影为Q、K、V，QK得分缩放并加掩码后逐行softmax，以权重汇聚V。下方为含两条残差路径的后归一化编码器示意。</desc>
+  <defs />
+  <rect x="0" y="0" width="518.740157480315" height="345.82677165354335" fill="#fff" data-role="background" />
+  <g id="root">
+    <text x="18" y="17" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="700" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="18">Transformer · 先计算关联权重，再汇聚内容</tspan>
+    </text>
+    <rect x="18" y="44" width="66" height="63" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="51" y="75.5" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 -1.720)">
+      <tspan x="51">输入表示 X</tspan>
+      <tspan x="51" dy="9.44">含位置信息</tspan>
+    </text>
+    <rect x="112" y="40" width="79" height="24" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="151.5" y="52" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 2.255)">
+      <tspan x="151.5">Q = XW</tspan>
+      <tspan dy="2.24" font-size="5.76">Q</tspan>
+      <tspan dy="-2.24">​</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M84,75 L95,75 Q98,75 98,72 L98,55 Q98,52 101,52 L107.6,52" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="110,52 107,53.26 107.54,52 107,50.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="112" y="71" width="79" height="24" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="151.5" y="83" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 2.255)">
+      <tspan x="151.5">K = XW</tspan>
+      <tspan dy="2.24" font-size="5.76">K</tspan>
+      <tspan dy="-2.24">​</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M84,75 L95,75 Q98,75 98,78 L98,80 Q98,83 101,83 L107.6,83" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="110,83 107,84.26 107.54,83 107,81.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="112" y="119" width="79" height="24" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="151.5" y="131" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 2.255)">
+      <tspan x="151.5">V = XW</tspan>
+      <tspan dy="2.24" font-size="5.76">V</tspan>
+      <tspan dy="-2.24">​</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M84,75 L95,75 Q98,75 98,78 L98,128 Q98,131 101,131 L107.6,131" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="110,131 107,132.26 107.54,131 107,129.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="223" y="47" width="104" height="46" rx="3" ry="3" fill="#fff0df" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="275" y="70" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 -1.720)">
+      <tspan x="275">QKᵀ / √d</tspan>
+      <tspan dy="2.24" font-size="5.76">k</tspan>
+      <tspan dy="-2.24">​</tspan>
+      <tspan x="275" dy="9.44">+ 掩码 M</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M193,52 L218.672,58.418" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="221,59 217.784,59.495 218.613,58.403 218.395,57.05" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <g data-part="arrow">
+      <path d="M193,83 L218.606,81.171" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="221,81 218.097,82.471 218.546,81.175 217.918,79.957" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="353" y="47" width="61" height="46" rx="3" ry="3" fill="#fff0df" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="383.5" y="70" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 -1.720)">
+      <tspan x="383.5">逐行</tspan>
+      <tspan x="383.5" dy="9.44">softmax</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M329,70 L348.6,70" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="351,70 348,71.26 348.54,70 348,68.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="441" y="47" width="55" height="46" rx="3" ry="3" fill="#fff0df" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="468.5" y="70" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="468.5">权重 A</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M416,70 L436.6,70" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="439,70 436,71.26 436.54,70 436,68.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="397" y="119" width="99" height="26" rx="3" ry="3" fill="#e9f5ef" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="446.5" y="132" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="446.5">Z = AV</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M469,95 L469,114.6" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="469,117 467.74,114 469,114.54 470.26,114" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <g data-part="arrow">
+      <path d="M193,131 L392.6,131" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="395,131 392,132.26 392.54,131 392,129.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <text x="20" y="166" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="20">一行手算：得分 [0, ln 3] → 权重 [¼, ¾]；值 [2, 6] → 输出 5</tspan>
+    </text>
+    <text x="18" y="207" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="700" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="18">一个完整编码器块（后归一化示例）</tspan>
+    </text>
+    <rect x="20" y="224" width="45" height="32" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="42.5" y="240" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="42.5">X</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M66,240 L76.6,240" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="79,240 76,241.26 76.54,240 76,238.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="81" y="224" width="102" height="32" rx="3" ry="3" fill="#fff0df" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="132" y="240" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 -1.720)">
+      <tspan x="132">多头注意力</tspan>
+      <tspan x="132" dy="9.44">拼接 + 输出投影</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M184,240 L194.6,240" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="197,240 194,241.26 194.54,240 194,238.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="199" y="224" width="74" height="32" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="236" y="240" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="236">相加 + LN</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M274,240 L284.6,240" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="287,240 284,241.26 284.54,240 284,238.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="289" y="224" width="103" height="32" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="340.5" y="240" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="340.5">逐位置前馈层</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M393,240 L403.6,240" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="406,240 403,241.26 403.54,240 403,238.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="408" y="224" width="87" height="32" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="451.5" y="240" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="451.5">相加 + LN</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M42,256 L42,269 Q42,272 45,272 L221,272 Q224,272 224,269 L224,258.4" fill="none" stroke="#19765c" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="224,256 225.26,259 224,258.46 222.74,259" fill="#19765c" stroke="none" data-part="arrowhead" />
+    </g>
+    <g data-part="arrow">
+      <path d="M244,256 L244,283 Q244,286 247,286 L451,286 Q454,286 454,283 L454,258.4" fill="none" stroke="#19765c" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="454,256 455.26,259 454,258.46 452.74,259" fill="#19765c" stroke="none" data-part="arrowhead" />
+    </g>
+    <text x="130" y="284" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#19765c" text-anchor="middle" data-role="label">
+      <tspan x="130">输入残差</tspan>
+    </text>
+    <text x="346" y="298" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#19765c" text-anchor="middle" data-role="label">
+      <tspan x="346">子层残差</tspan>
+    </text>
+    <text x="20" y="315" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#526475" text-anchor="start" data-role="label">
+      <tspan x="20">多头并行学习关联；LN 为层归一化。预归一化变体的 LN 位置不同。</tspan>
+    </text>
+  </g>
+</svg>

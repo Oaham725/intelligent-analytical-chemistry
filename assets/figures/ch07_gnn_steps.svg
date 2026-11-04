@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="183mm" height="100mm" viewBox="0 0 518.740 283.465" data-name="ch07-gnn-a" role="img" aria-labelledby="title desc">
+  <title id="title">GNN 邻居消息汇总与图级预测流程</title>
+  <desc id="desc">三节点链初始特征1、2、4，无自环同步求邻居和后为2、5、2，图级求和为9；9不是性质预测。</desc>
+  <defs />
+  <rect x="0" y="0" width="518.740157480315" height="283.46456692913387" fill="#fff" data-role="background" />
+  <g id="root">
+    <text x="18" y="17" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="700" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="18">GNN · 沿边传消息，再更新节点</tspan>
+    </text>
+    <text x="25" y="42" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="25">输入图与标量特征</tspan>
+    </text>
+    <text x="271" y="42" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="271">所有节点同步更新</tspan>
+    </text>
+    <line x1="64" y1="83" x2="105" y2="83" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+    <line x1="137" y1="83" x2="178" y2="83" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="48" cy="83" r="16" fill="#eaf4fa" stroke="#176c9c" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="48" y="83" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="48">1</tspan>
+    </text>
+    <text x="48" y="114" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label">
+      <tspan x="48">节点 1</tspan>
+    </text>
+    <circle cx="121" cy="83" r="16" fill="#eaf4fa" stroke="#176c9c" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="121" y="83" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="121">2</tspan>
+    </text>
+    <text x="121" y="114" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label">
+      <tspan x="121">节点 2</tspan>
+    </text>
+    <circle cx="194" cy="83" r="16" fill="#eaf4fa" stroke="#176c9c" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="194" y="83" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="194">4</tspan>
+    </text>
+    <text x="194" y="114" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label">
+      <tspan x="194">节点 3</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M51,64 L107.6,64" fill="none" stroke="#b76119" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="110,64 107,65.26 107.54,64 107,62.74" fill="#b76119" stroke="none" data-part="arrowhead" />
+    </g>
+    <g data-part="arrow">
+      <path d="M191,64 L134.4,64" fill="none" stroke="#b76119" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="132,64 135,62.74 134.46,64 135,65.26" fill="#b76119" stroke="none" data-part="arrowhead" />
+    </g>
+    <text x="121" y="55" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#b76119" text-anchor="middle" data-role="label">
+      <tspan x="121">给节点 2 的消息</tspan>
+    </text>
+    <text x="31" y="141" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#526475" text-anchor="start" data-role="label">
+      <tspan x="31">邻居提供旧层特征；本例无自环。</tspan>
+    </text>
+    <rect x="268" y="53" width="224" height="27" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="380" y="66.5" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="380">h′₁ = h₂ = 2</tspan>
+    </text>
+    <rect x="268" y="87" width="224" height="27" rx="3" ry="3" fill="#fff0df" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="380" y="100.5" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="380">h′₂ = h₁ + h₃ = 1 + 4 = 5</tspan>
+    </text>
+    <rect x="268" y="121" width="224" height="27" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="380" y="134.5" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="380">h′₃ = h₂ = 2</tspan>
+    </text>
+    <text x="267" y="174" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="700" fill="#19765c" text-anchor="start" data-role="label">
+      <tspan x="267">图级汇总：2 + 5 + 2 = 9</tspan>
+    </text>
+    <text x="18" y="195" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="700" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="18">一般消息传递网络</tspan>
+    </text>
+    <rect x="20" y="205" width="82" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="61" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="61">节点 / 边特征</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M104,220 L115.6,220" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="118,220 115,221.26 115.54,220 115,218.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="120" y="205" width="78" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="159" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="159">消息函数 M</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M200,220 L211.6,220" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="214,220 211,221.26 211.54,220 211,218.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="216" y="205" width="66" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="249" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="249">邻居求和</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M284,220 L295.6,220" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="298,220 295,221.26 295.54,220 295,218.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="300" y="205" width="78" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="339" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="339">更新函数 U</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M380,220 L391.6,220" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="394,220 391,221.26 391.54,220 391,218.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="396" y="205" width="103" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="447.5" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 -1.720)">
+      <tspan x="447.5">图级汇总</tspan>
+      <tspan x="447.5" dy="9.44">→ 预测头</tspan>
+    </text>
+    <text x="20" y="254" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#526475" text-anchor="start" data-role="label">
+      <tspan x="20">M、U 通常含可学习参数；可堆叠多层。9 是本例图表示，不是性质预测。</tspan>
+    </text>
+  </g>
+</svg>
