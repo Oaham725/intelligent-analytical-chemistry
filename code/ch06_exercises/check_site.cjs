@@ -5,13 +5,21 @@ const markdown=read('docs/ch06.md'),headings=[...markdown.matchAll(/^## (.+)$/gm
 assert.deepEqual(headings.slice(0,3),['章首导引','学习目标','本章知识图谱']);
 assert.deepEqual(headings.slice(-6),['代码实践','本章小结','思考题与计算题','下载本章资源','年度课程资源、传承题与更新引文','本章共建记录与致谢']);
 let checked=0;
-for(const file of ['docs/ch06.md','resources/annual/2026-2027/questions/ch06.md','resources/annual/2026-2027/references/ch06.md']){
+for(const file of ['docs/ch06.md','resources/annual/2026-2027/questions/ch06.md','resources/annual/2026-2027/references/ch06.md','resources/annual/2026-2027/presentations/README.md','resources/annual/2026-2027/presentations/ch06/README.md']){
  for(const [,target]of read(file).matchAll(/(?:href|src)="\.\/([^"]+)"/g)){assert.ok(fs.existsSync(path.join(root,decodeURIComponent(target))),target);checked++;}
 }
 const index=read('index.html');for(const file of ['assets/ch06/learning.css','assets/js/ch06-section-labs.js','assets/js/ch06-advanced-labs.js'])assert.equal(index.split(file).length-1,1);
 assert.ok(!index.includes('<script src="assets/js/ch06-explorer-data.js"'),'prediction data must load only when ch06 mounts');
 const context={URL,document:{currentScript:{src:'https://example.invalid/assets/js/ch06-advanced-labs.js'},addEventListener(){}}};context.window=context;vm.createContext(context);
-for(const file of ['assets/js/ch06-explorer-data.js','assets/js/ch06-advanced-labs.js'])vm.runInContext(read(file),context,{filename:file});
+for(const file of ['assets/js/ch06-explorer-data.js','assets/js/ch06-advanced-labs.js','assets/js/ch06-section-labs.js'])vm.runInContext(read(file),context,{filename:file});
+const siteMarkdown=context.Ch06Learning.siteResourceMarkup(markdown);
+assert.ok(!/\bhref="#\/resources\/annual\/2026-2027\/ppt\/ch06-index"/.test(siteMarkdown));
+assert.ok(siteMarkdown.includes('href="./code/ch06_exercises/case_study.py"'));
+assert.ok(markdown.includes('href="https://github.com/yoimiya-610/intelligent-analytical-chemistry/blob/ch06/information-preservation-issue-4/code/ch06_exercises/case_study.py"'));
+assert.ok(siteMarkdown.includes('src="./assets/graphs/ch06.svg"'));
+assert.ok(markdown.includes('src="https://raw.githubusercontent.com/yoimiya-610/'));
+assert.equal(new URL('./code/ch06_exercises/case_study.py','https://example.invalid/book/').pathname,'/book/code/ch06_exercises/case_study.py');
+assert.equal(context.Ch06Learning.siteResourceMarkup('<a href="./unrelated">Other chapter</a>'),'<a href="./unrelated">Other chapter</a>');
 const data=JSON.parse(read('resources/annual/2026-2027/results/ch06/esol/summary.json'));
 for(const metric of data.metrics){const rows=context.Ch06Advanced.subset(context.CH06_EXPLORER_DATA,{split:metric.split,seed:metric.seed,model:metric.model,minT:0,maxT:1,minHeavy:1,maxHeavy:100,charge:'all',term:''});const m=context.Ch06Advanced.stats(rows);assert.equal(m.n,metric.n_test);assert.ok(Math.abs(m.mae-metric.MAE_logS)<1e-10);assert.ok(Math.abs(m.rmse-metric.RMSE_logS)<1e-10);}
 assert.equal(context.Ch06Advanced.stats([]).mae,null);

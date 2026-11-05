@@ -9,7 +9,7 @@
 | G03 | 第3章 | 待认领 | — | 未开始 |
 | G04 | 第4章 | 待认领 | — | 未开始 |
 | G05 | 第5章 | 待认领 | — | 未开始 |
-| G06 | 第6章 | 孙远征、赵政泓博、方思琰 | [#4](https://github.com/Oaham725/intelligent-analytical-chemistry/issues/4) | PR评审中（[草稿 #5](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/5)） |
+| G06 | 第6章 | 孙远征、赵政泓博、方思琰 | [#4](https://github.com/Oaham725/intelligent-analytical-chemistry/issues/4) | PR评审中（[PR #5](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/5)） |
 | G07 | 第7章 | 待认领 | — | 未开始 |
 | G08 | 第8章 | 待认领 | — | 未开始 |
 | G09 | 第9章 | 待认领 | — | 未开始 |

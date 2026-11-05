@@ -31,7 +31,9 @@ function download(name,text){const url=URL.createObjectURL(new Blob([text],{type
 const renderers={information:info,hammett,descriptors,fingerprint,message,geometry,scenario,selection,evidence,split};
 function mount(root,name,reset=false){root.dataset.ch06Module=name;root.setAttribute('data-ch06-mounted','true');if(renderers[name])renderers[name](root,reset);}
 function autoMount(scope=document){const article=scope.querySelector('.markdown-section');if(article)article.classList.toggle('ch06-chapter',!!article.querySelector('[data-ch06-module],[data-ch06-advanced]'));scope.querySelectorAll('[data-ch06-module]').forEach(root=>{if(root.getAttribute('data-ch06-mounted')!=='true')mount(root,root.dataset.ch06Module);});}
-window.Ch06Learning={mount,autoMount,modules:Object.keys(renderers)};
-if(window.$docsify){window.$docsify.plugins=(window.$docsify.plugins||[]).concat(function(hook){hook.doneEach(()=>requestAnimationFrame(()=>autoMount()));});}
+// GitHub文件预览保留仓库地址；Docsify在解析前恢复站内路径。
+function siteResourceMarkup(markdown){return markdown.replace(/<(?:a|img)\b[^>]*>/gi,tag=>tag.replace(/(\s)(href|src)="[^"]*"/g,(attribute,space,name)=>{const local=tag.match(new RegExp('\\bdata-ch06-site-'+name+'="([^"]+)"'));return local?space+name+'="'+local[1]+'"':attribute;}));}
+window.Ch06Learning={mount,autoMount,siteResourceMarkup,modules:Object.keys(renderers)};
+if(window.$docsify){window.$docsify.plugins=(window.$docsify.plugins||[]).concat(function(hook){hook.beforeEach(siteResourceMarkup);hook.doneEach(()=>requestAnimationFrame(()=>autoMount()));});}
 document.addEventListener('DOMContentLoaded',()=>autoMount());
 })();
