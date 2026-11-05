@@ -3,6 +3,7 @@
 import argparse
 import csv
 import json
+from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -95,13 +96,74 @@ def metrics(y, predicted):
     }
 
 
+def validate_samples(data, name="data", expected_scans=None):
+    """Check scan metadata before any averaging; return the sample grouping."""
+    x, y, batch, ids = data
+    if not isinstance(x, torch.Tensor) or not isinstance(y, torch.Tensor):
+        raise ValueError(f"{name}: spectra and labels must be torch tensors.")
+    if x.ndim != 2 or x.shape[1] != LENGTH or len(x) == 0:
+        raise ValueError(f"{name}: spectra must have nonempty shape (scans, {LENGTH}).")
+    if x.device.type != "cpu" or y.device.type != "cpu":
+        raise ValueError(f"{name}: this teaching example expects CPU tensors.")
+    batch, ids = np.asarray(batch), np.asarray(ids)
+    if y.ndim != 1 or batch.ndim != 1 or ids.ndim != 1:
+        raise ValueError(f"{name}: labels, batch IDs and sample IDs must be one-dimensional.")
+    if not (len(y) == len(batch) == len(ids) == len(x)):
+        raise ValueError(f"{name}: spectra, labels, batch IDs and sample IDs have different lengths.")
+    labels = y.detach().numpy()
+    if not np.issubdtype(labels.dtype, np.integer) or np.any((labels < 0) | (labels >= CLASSES)):
+        raise ValueError(f"{name}: labels must be integers from 0 to {CLASSES - 1}.")
+    if not np.issubdtype(batch.dtype, np.integer) or not np.issubdtype(ids.dtype, np.integer):
+        raise ValueError(f"{name}: batch IDs and sample IDs must be integers.")
+    if not bool(torch.isfinite(x).all()):
+        raise ValueError(f"{name}: spectra contain non-finite values.")
+    samples, first, inverse, counts = np.unique(
+        ids, return_index=True, return_inverse=True, return_counts=True
+    )
+    for field, values in (("labels", labels), ("batch IDs", batch)):
+        bad = values != values[first][inverse]
+        if np.any(bad):
+            sample = int(ids[np.flatnonzero(bad)[0]])
+            raise ValueError(f"{name}: sample {sample} has conflicting {field}.")
+    if expected_scans is not None and np.any(counts != expected_scans):
+        bad = np.flatnonzero(counts != expected_scans)[0]
+        raise ValueError(
+            f"{name}: sample {int(samples[bad])} has {int(counts[bad])} scans; "
+            f"expected {expected_scans}."
+        )
+    return first, inverse, counts
+
+
+def validate_splits(data, expected_scans=2):
+    """Validate the simulation protocol and disjoint sample/batch split units."""
+    if set(data) != set(BATCHES):
+        raise ValueError("Expected train, validation and test partitions.")
+    summary, sample_sets, batch_sets = {}, {}, {}
+    for part, values in data.items():
+        first, _, _ = validate_samples(values, part, expected_scans)
+        batch, ids = np.asarray(values[2]), np.asarray(values[3])
+        sample_sets[part], batch_sets[part] = set(ids), set(batch)
+        summary[part] = {
+            "samples": len(first), "scans": len(ids),
+            "batches": [int(group) for group in sorted(batch_sets[part])],
+            "scans_per_sample": expected_scans,
+        }
+    for left, right in combinations(data, 2):
+        for field, groups in (("sample IDs", sample_sets), ("batch IDs", batch_sets)):
+            shared = sorted(groups[left] & groups[right])
+            if shared:
+                raise ValueError(f"{left}/{right}: overlapping {field}: {shared}.")
+    return summary
+
+
 def evaluate(model, data):
-    """Average scan probabilities, then score one prediction per sample."""
+    """Validate each sample, average its scan probabilities, then score it."""
+    first, inverse, counts = validate_samples(data)
     model.eval()
     x, y, batch, ids = data
+    batch, ids = np.asarray(batch), np.asarray(ids)
     with torch.no_grad():
         probability = model(x).softmax(dim=1).numpy()
-    _, first, inverse, counts = np.unique(ids, return_index=True, return_inverse=True, return_counts=True)
     averaged = np.zeros((len(first), CLASSES))
     np.add.at(averaged, inverse, probability)
     averaged /= counts[:, None]
@@ -145,10 +207,12 @@ def main():
 
     data_seed = 2026
     data = {part: simulate(batches, data_seed) for part, batches in BATCHES.items()}
+    dataset_summary = validate_splits(data, expected_scans=2)
+    for part, summary in dataset_summary.items():
+        print(f"{part:12s} samples={summary['samples']} scans={summary['scans']}")
     train_x = data["train"][0]
     mean, std = train_x.mean(), train_x.std(unbiased=False).clamp_min(1e-8)
     data = {part: ((x - mean) / std, y, batch, ids) for part, (x, y, batch, ids) in data.items()}
-    assert sum(map(len, BATCHES.values())) == len(set().union(*BATCHES.values()))
 
     args.out.mkdir(parents=True, exist_ok=True)
     records, learning, predictions = [], [], []
@@ -173,7 +237,10 @@ def main():
             print(f"{name:12s} seed={seed:2d} epoch={best_epoch:2d} "
                   f"F1={report['all']['macro_f1']:.3f} shifted={report['shifted']['macro_f1']:.3f}")
     (args.out / "metrics.json").write_text(
-        json.dumps({"data_seed": data_seed, "batches": BATCHES, "runs": records}, indent=2),
+        json.dumps({
+            "data_seed": data_seed, "batches": BATCHES,
+            "dataset_summary": dataset_summary, "runs": records,
+        }, indent=2),
         encoding="utf-8",
     )
     for filename, header, rows in (

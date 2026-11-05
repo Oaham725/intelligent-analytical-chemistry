@@ -1,0 +1,93 @@
+{
+  "spectra": {
+    "logistic": {
+      "all": {
+        "accuracy": 0.9548611111111112,
+        "macro_f1": 0.9548520442008942
+      },
+      "nominal": {
+        "accuracy": 0.9791666666666666,
+        "macro_f1": 0.9791463017269469
+      },
+      "shifted": {
+        "accuracy": 0.9305555555555556,
+        "macro_f1": 0.9297814308174404
+      }
+    },
+    "mlp": {
+      "all": {
+        "accuracy": 0.9479166666666666,
+        "macro_f1": 0.9483142688198353
+      },
+      "nominal": {
+        "accuracy": 0.9791666666666666,
+        "macro_f1": 0.9791463017269469
+      },
+      "shifted": {
+        "accuracy": 0.9166666666666666,
+        "macro_f1": 0.9177275161702303
+      }
+    },
+    "cnn": {
+      "all": {
+        "accuracy": 0.9548611111111112,
+        "macro_f1": 0.9552432289058044
+      },
+      "nominal": {
+        "accuracy": 0.9930555555555556,
+        "macro_f1": 0.9930487672423156
+      },
+      "shifted": {
+        "accuracy": 0.9166666666666666,
+        "macro_f1": 0.9177275161702303
+      }
+    },
+    "transformer": {
+      "all": {
+        "accuracy": 0.9618055555555556,
+        "macro_f1": 0.961774597251858
+      },
+      "nominal": {
+        "accuracy": 0.9930555555555556,
+        "macro_f1": 0.9930487672423156
+      },
+      "shifted": {
+        "accuracy": 0.9305555555555556,
+        "macro_f1": 0.9303160065837551
+      }
+    }
+  },
+  "lptem": {
+    "in_distribution/Local mean": {
+      "iou": 0.6356314461649688,
+      "dice": 0.7724321620343236,
+      "foreground_area_mae_px2": 26.625
+    },
+    "in_distribution/CNN": {
+      "iou": 0.672636645948035,
+      "dice": 0.8008124070775952,
+      "foreground_area_mae_px2": 25.65625
+    },
+    "shifted/Local mean": {
+      "iou": 0.26522719800232014,
+      "dice": 0.3996645459694305,
+      "foreground_area_mae_px2": 69.21875
+    },
+    "shifted/CNN": {
+      "iou": 0.25514679758526,
+      "dice": 0.38872077668035243,
+      "foreground_area_mae_px2": 68.59375
+    }
+  },
+  "lptem_training": {
+    "first_weighted_bce": 0.5754014253616333,
+    "last_weighted_bce": 0.19139601290225983
+  },
+  "record_counts": {
+    "spectra_runs": 12,
+    "spectra_predictions": 1152,
+    "spectra_history": 360,
+    "lptem_metrics": 32,
+    "lptem_training": 20
+  }
+}

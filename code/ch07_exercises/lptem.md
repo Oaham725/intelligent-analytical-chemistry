@@ -36,3 +36,13 @@ python code/ch07_exercises/lptem.py --seed 2026 --out lptem_results --plot
 ![模拟同分布测试第 1 段第 5 帧的输入、真值、局部均值分割与 CNN 分割](../../assets/figures/ch07_lptem_example.svg)
 
 示例图预先固定为同分布测试第 1 段第 5 帧。白色为前景。原图采用固定灰阶显示范围，掩膜使用相同黑白映射，均采用最近邻显示。该帧展示分割误差的空间分布，整体表现应以逐段指标表为依据。使用真实序列时，可先按独立实验或芯片划分数据，再估计标注差异、粒子重叠和分布偏移对性能的影响。
+
+## 已归档的数值记录
+
+默认运行的32条逐视频指标与20轮训练损失见[年度第7章结果归档](https://github.com/Yuxinsitu/intelligent-analytical-chemistry/tree/g07-ch07-lptem/resources/annual/2026-2027/results/ch07)，附运行命令、依赖版本与校验和。在仓库根目录运行：
+
+```bash
+python code/ch07_exercises/verify_results.py
+```
+
+该入口从逐视频记录重新计算两种条件、两种方法的平均 IoU、Dice 和面积 MAE，并与归档汇总及本文舍入值核对；缺失视频、重复记录或汇总冲突会报错。它核验已有数值记录的完整性与汇总计算，不从原始帧重新执行分割，也不替代真实 LPTEM 数据验证。
