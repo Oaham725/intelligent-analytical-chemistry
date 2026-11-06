@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "archived_at": "2026-11-05",
+  "data_type": "synthetic teaching examples",
+  "sha256": {
+    "spectra/metrics.json": "8f7124b8baae911a8d5e42e5b3ca4093b5c57c25e27c229d6e363388f389bec5",
+    "spectra/history.csv": "58caa2a3eafc17c335568aeb734414da92e7d48c96a1f7b4760ef9e7155bbf92",
+    "spectra/predictions.csv": "3590a78fead9a523da3be5f5e2a4ba8940b22ed0d3872115712973986c72cc4c",
+    "lptem/metrics.csv": "f44096d1a938d46077d5928f432966570048299c548f133d3e455cb386cd795d",
+    "lptem/training.csv": "e6390fd509b6dc1c0db4c6440631c48ddc6add0ab1588b55be9782e8e4916549",
+    "summary.json": "0a35977b3f6f352eb21df92d007247b196b78bc3ac2ddab215c6419d97fb2068"
+  },
+  "runs": {
+    "spectra": {
+      "run_date": "2026-11-05",
+      "command": "python code/ch07.py --out runs/ch07-spectra",
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "torch": "2.15.0+cpu",
+      "platform": "Windows 11",
+      "data_seed": 2026,
+      "model_seeds": [
+        7,
+        19,
+        42
+      ],
+      "epochs": 30,
+      "source_sha256": "2e2360c33c836b8e8da45e373f3822fbbe2884af551fe79d7a9bc3d36f0d43ab"
+    },
+    "lptem": {
+      "run_date": "2026-11-03",
+      "command": "python code/ch07_exercises/lptem.py --seed 2026 --out runs/ch07-lptem --plot",
+      "python": "3.12.14",
+      "numpy": "2.5.4",
+      "matplotlib": "3.11.2",
+      "platform": "Windows 11",
+      "seed": 2026,
+      "epochs": 20,
+      "source_sha256": "a80a9360aefd82807c7deef7e31fe099556becf41776b15760188cb8b2ad3118"
+    }
+  },
+  "source_note": "Spectra copied byte-for-byte from the default 2026-11-05 rerun after adding data validation. History and predictions match the verified 2026-11-03 outputs byte-for-byte; metrics.runs are unchanged, with new dataset_summary metadata. LPTEM copied byte-for-byte from the verified 2026-11-03 default run, not retrained for this archive."
+}

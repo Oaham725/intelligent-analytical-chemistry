@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="183mm" height="100mm" viewBox="0 0 518.740 283.465" data-name="ch07-cnn-a" role="img" aria-labelledby="title desc">
+  <title id="title">CNN 滑动窗口与共享卷积核</title>
+  <desc id="desc">两个局部窗口与相同核逐项相乘求和，得到3和1；下方展示可训练卷积层、激活及分类头。</desc>
+  <defs />
+  <rect x="0" y="0" width="518.740157480315" height="283.46456692913387" fill="#fff" data-role="background" />
+  <g id="root">
+    <text x="18" y="17" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="700" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="18">CNN · 同一卷积核在不同窗口复用</tspan>
+    </text>
+    <text x="24" y="40" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="24">输入窗口</tspan>
+    </text>
+    <text x="166" y="40" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="166">共享核</tspan>
+    </text>
+    <text x="288" y="40" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="288">逐项相乘，再求和</tspan>
+    </text>
+    <text x="455" y="40" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="455">响应</tspan>
+    </text>
+    <rect x="22" y="50" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="36" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="36">1</tspan>
+    </text>
+    <rect x="52" y="50" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="66" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="66">2</tspan>
+    </text>
+    <rect x="82" y="50" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="96" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="96">4</tspan>
+    </text>
+    <rect x="112" y="50" width="28" height="22" rx="3" ry="3" fill="#f3f4f6" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="126" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="126">3</tspan>
+    </text>
+    <rect x="164" y="50" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="178" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="178">-1</tspan>
+    </text>
+    <rect x="194" y="50" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="208" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="208">0</tspan>
+    </text>
+    <rect x="224" y="50" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="238" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="238">1</tspan>
+    </text>
+    <rect x="20" y="48" width="92" height="26" rx="3" ry="3" fill="none" stroke="#176c9c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="146" y="64" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#b76119" text-anchor="start" data-role="label">
+      <tspan x="146">×</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M258,61 L277.6,61" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="280,61 277,62.26 277.54,61 277,59.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <text x="289" y="64" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="289">1×(−1) + 2×0 + 4×1</tspan>
+    </text>
+    <text x="435" y="64" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="435">=</tspan>
+    </text>
+    <rect x="451" y="50" width="35" height="22" rx="3" ry="3" fill="#e9f5ef" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="468.5" y="61" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="468.5">3</tspan>
+    </text>
+    <text x="24" y="88" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#526475" text-anchor="start" data-role="label">
+      <tspan x="24">窗口 1：位置 1–3</tspan>
+    </text>
+    <rect x="22" y="116" width="28" height="22" rx="3" ry="3" fill="#f3f4f6" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="36" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="36">1</tspan>
+    </text>
+    <rect x="52" y="116" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="66" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="66">2</tspan>
+    </text>
+    <rect x="82" y="116" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="96" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="96">4</tspan>
+    </text>
+    <rect x="112" y="116" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="126" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="126">3</tspan>
+    </text>
+    <rect x="164" y="116" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="178" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="178">-1</tspan>
+    </text>
+    <rect x="194" y="116" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="208" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="208">0</tspan>
+    </text>
+    <rect x="224" y="116" width="28" height="22" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="238" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="238">1</tspan>
+    </text>
+    <rect x="50" y="114" width="92" height="26" rx="3" ry="3" fill="none" stroke="#176c9c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="146" y="130" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#b76119" text-anchor="start" data-role="label">
+      <tspan x="146">×</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M258,127 L277.6,127" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="280,127 277,128.26 277.54,127 277,125.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <text x="289" y="130" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="289">2×(−1) + 4×0 + 3×1</tspan>
+    </text>
+    <text x="435" y="130" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="435">=</tspan>
+    </text>
+    <rect x="451" y="116" width="35" height="22" rx="3" ry="3" fill="#e9f5ef" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="468.5" y="127" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="468.5">1</tspan>
+    </text>
+    <text x="24" y="154" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#526475" text-anchor="start" data-role="label">
+      <tspan x="24">窗口 2：位置 2–4</tspan>
+    </text>
+    <text x="24" y="174" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#526475" text-anchor="start" data-role="label">
+      <tspan x="24">蓝框：本次读取的三点窗口；同一组核权重不翻转。</tspan>
+    </text>
+    <text x="18" y="195" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="700" fill="#17324d" text-anchor="start" data-role="label">
+      <tspan x="18">从单次运算到可训练网络</tspan>
+    </text>
+    <rect x="20" y="205" width="78" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="59" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="59">输入光谱</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M100,220 L111.6,220" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="114,220 111,221.26 111.54,220 111,218.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="116" y="205" width="115" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="173.5" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 -1.720)">
+      <tspan x="173.5">Conv1d</tspan>
+      <tspan x="173.5" dy="9.44">多个可学习核</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M233,220 L244.6,220" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="247,220 244,221.26 244.54,220 244,218.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="249" y="205" width="72" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="285" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 3.000)">
+      <tspan x="285">ReLU</tspan>
+    </text>
+    <g data-part="arrow">
+      <path d="M323,220 L334.6,220" fill="none" stroke="#718296" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" data-part="arrow-shaft" />
+      <polygon points="337,220 334,221.26 334.54,220 334,218.74" fill="#718296" stroke="none" data-part="arrowhead" />
+    </g>
+    <rect x="339" y="205" width="154" height="30" rx="3" ry="3" fill="#eaf4fa" stroke="#718296" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="416" y="220" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="8" font-weight="normal" fill="#17324d" text-anchor="middle" data-role="label" transform="translate(0 -1.720)">
+      <tspan x="416">保留位置的汇总</tspan>
+      <tspan x="416" dy="9.44">与分类头</tspan>
+    </text>
+    <text x="20" y="254" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="7" font-weight="normal" fill="#526475" text-anchor="start" data-role="label">
+      <tspan x="20">本例：单通道、核宽 3、步长 1、无填充、偏置 0。</tspan>
+    </text>
+  </g>
+</svg>

@@ -48,6 +48,11 @@
 1. Vaswani, A. *et al.* [Attention Is All You Need](https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html). *Advances in Neural Information Processing Systems* **30** (2017).
    - 用途：自注意力与 Transformer 的原始论文；用于建立后续分子语言模型、谱图 Transformer 和多模态基础模型的共同技术语言。
 
+2. Shabeeb, Z.; Sreeram, S.; Panicker, I.; Wang, A.; Xu, M.; Goel, R.; Jamali, V. [SAM-EM: segment anything for liquid-phase electron microscopy video segmentation](https://doi.org/10.1039/D6DD00211K). *Digital Discovery* **5**, 3625–3635 (2026).
+   - 用途：以 SAM 2 领域适配比较合成视频上的分割表现与实验视频中的人工标注一致性，连接模型迁移、轨迹提取和适用域验证。
+
+[第7章 G07 文献证据库](ch07-g07.md)
+
 <a id="ch08"></a>
 ## 第8章 生成式模型与扩散模型：从信号恢复到化学反演
 

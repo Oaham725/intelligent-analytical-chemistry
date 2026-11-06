@@ -1,0 +1,4 @@
+# Preserve the archived experiment bytes used by manifest.json checksums.
+# Treat CRLF as line endings while retaining other whitespace checks.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

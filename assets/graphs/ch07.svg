@@ -1,39 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
-<rect width="100%" height="100%" fill="#ffffff"/>
-<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
-<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
-<line class="edge" x1="800" y1="520" x2="1196.0" y2="272.5"/>
-<line class="edge" x1="800" y1="520" x2="1360.0" y2="520.0"/>
-<line class="edge" x1="800" y1="520" x2="1196.0" y2="767.5"/>
-<line class="edge" x1="800" y1="520" x2="800.0" y2="870.0"/>
-<line class="edge" x1="800" y1="520" x2="404.0" y2="767.5"/>
-<line class="edge" x1="800" y1="520" x2="240.0" y2="520.0"/>
-<line class="edge" x1="800" y1="520" x2="404.0" y2="272.5"/>
-<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
-<text class="ct" x="800" y="500">神经网络、Transformer</text>
-<text class="ct" x="800" y="540">、GNN与基础模型</text>
-<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
-<text class="t" x="800.0" y="153.0">7.1 感知机、非线性表示与多层网</text>
-<text class="t" x="800.0" y="187.0">络</text>
-<rect class="node" x="991.0" y="204.5" width="410" height="136" rx="20"/>
-<text class="t" x="1196.0" y="255.5">7.2 损失函数、反向传播与优化稳</text>
-<text class="t" x="1196.0" y="289.5">定性</text>
-<rect class="node" x="1155.0" y="452.0" width="410" height="136" rx="20"/>
-<text class="t" x="1360.0" y="503.0">7.3 CNN：局部结构、峰形与空</text>
-<text class="t" x="1360.0" y="537.0">间图像</text>
-<rect class="node" x="991.0" y="699.5" width="410" height="136" rx="20"/>
-<text class="t" x="1196.0" y="750.5">7.4 RNN：序列、时间与分子字</text>
-<text class="t" x="1196.0" y="784.5">符串</text>
-<rect class="node" x="595.0" y="802.0" width="410" height="136" rx="20"/>
-<text class="t" x="800.0" y="853.0">7.5 GNN：节点、边、消息传递</text>
-<text class="t" x="800.0" y="887.0">与几何</text>
-<rect class="node" x="199.0" y="699.5" width="410" height="136" rx="20"/>
-<text class="t" x="404.0" y="750.5">7.6 Transformer：注</text>
-<text class="t" x="404.0" y="784.5">意力、位置与长程关系</text>
-<rect class="node" x="35.0" y="452.0" width="410" height="136" rx="20"/>
-<text class="t" x="240.0" y="503.0">7.7 自监督、迁移学习与小样本适</text>
-<text class="t" x="240.0" y="537.0">配</text>
-<rect class="node" x="199.0" y="204.5" width="410" height="136" rx="20"/>
-<text class="t" x="404.0" y="255.5">7.8 化学基础模型的能力、成本和</text>
-<text class="t" x="404.0" y="289.5">边界</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 818" role="img" aria-labelledby="title desc">
+  <title id="title">第7章知识图谱</title>
+  <desc id="desc">测量数据按独立单位划分，再依输入结构选择模型。前向传播产生预测和损失，反向传播给出梯度。冻结模型后按留出批次或视频评价。预训练为可选初始化。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#345a8a"/>
+    </marker>
+    <style>
+      text{font-family:"Microsoft YaHei","Noto Sans CJK SC","PingFang SC",sans-serif;fill:#18324b}
+      .title{font-size:30px;font-weight:700}
+      .head{font-size:21px;font-weight:700}
+      .label{font-size:18px}
+      .small{font-size:16px}
+      .line{fill:none;stroke:#345a8a;stroke-width:2.2;marker-end:url(#arrow)}
+      .branch{fill:none;stroke:#345a8a;stroke-width:2.2}
+      .card{fill:#eef4fa;stroke:#7c9ab5;stroke-width:1.5}
+      .accent{fill:#e8f5f1;stroke:#3f806d;stroke-width:1.5}
+      .warning{fill:#fff6e8;stroke:#ac783c;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1080" height="818" fill="#fff"/>
+  <text class="title" x="36" y="50">第7章　从测量对象到可验证的深度学习模型</text>
+  <rect class="card" x="36" y="76" width="1008" height="104" rx="12"/>
+  <text class="head" x="56" y="107">7.0　定义任务与独立实验单位</text>
+  <text class="label" x="56" y="137">原始信号 → 表示为 x；有标签时记录 y；按样品、批次或视频划分。</text>
+  <text class="label" x="56" y="162">只在训练集估计预处理参数；验证集选模型；测试集估计冻结后的性能。</text>
+
+  <path class="branch" d="M540 180 V221 M150 221 H930"/>
+  <text class="small" x="552" y="211">按输入结构选择归纳偏置</text>
+  <path class="line" d="M150 221 V241"/>
+  <path class="line" d="M410 221 V241"/>
+  <path class="line" d="M670 221 V241"/>
+  <path class="line" d="M930 221 V241"/>
+
+  <g transform="translate(36 243)">
+    <rect class="card" width="228" height="118" rx="12"/>
+    <text class="head" x="16" y="30">7.1　MLP</text>
+    <text class="label" x="16" y="61">固定长度的向量</text>
+    <text class="label" x="16" y="88">全连接与非线性映射</text>
+  </g>
+  <g transform="translate(296 243)">
+    <rect class="card" width="228" height="118" rx="12"/>
+    <text class="head" x="16" y="30">7.3　CNN</text>
+    <text class="label" x="16" y="61">规则网格的谱或图像</text>
+    <text class="label" x="16" y="88">局部连接与权重共享</text>
+  </g>
+  <g transform="translate(556 243)">
+    <rect class="card" width="228" height="118" rx="12"/>
+    <text class="head" x="16" y="30">7.5　GNN</text>
+    <text class="label" x="16" y="61">节点、边与图结构</text>
+    <text class="label" x="16" y="88">消息传递与图级汇聚</text>
+  </g>
+  <g transform="translate(816 243)">
+    <rect class="card" width="228" height="118" rx="12"/>
+    <text class="head" x="16" y="30">7.4／7.6　序列模型</text>
+    <text class="label" x="16" y="61">RNN 递推隐状态</text>
+    <text class="label" x="16" y="88">Transformer 注意力/位置</text>
+  </g>
+  <path class="branch" d="M150 361 V389 H930 V361 M410 361 V389 M670 361 V389"/>
+  <path class="line" d="M540 389 V412"/>
+
+  <rect class="accent" x="36" y="415" width="668" height="186" rx="12"/>
+  <text class="head" x="56" y="449">7.2　训练闭环</text>
+  <rect class="card" x="57" y="473" width="162" height="53" rx="8"/>
+  <rect class="card" x="292" y="473" width="147" height="53" rx="8"/>
+  <rect class="card" x="512" y="473" width="170" height="53" rx="8"/>
+  <text class="label" x="74" y="505">参数 θ、输入 x</text>
+  <text class="label" x="309" y="505">预测 ŷ</text>
+  <text class="label" x="529" y="505">损失 L(ŷ, y)</text>
+  <path class="line" d="M219 500 H287"/>
+  <path class="line" d="M439 500 H507"/>
+  <path class="line" d="M597 526 V566 H138 V531"/>
+  <text class="small" x="249" y="556">链式法则求梯度 ∇θL，优化器更新 θ</text>
+
+  <rect class="card" x="756" y="415" width="288" height="186" rx="12"/>
+  <text class="head" x="774" y="449">7.7–7.8　可选预训练</text>
+  <text class="label" x="774" y="483">自监督学习通用表示</text>
+  <text class="label" x="774" y="512">冻结表示或微调参数</text>
+  <text class="label" x="774" y="541">核查数据重叠和域偏移</text>
+  <path class="line" d="M754 500 H707" stroke-dasharray="6 4"/>
+
+  <path class="line" d="M370 601 V632"/>
+  <text class="small" x="384" y="625">冻结后评价</text>
+  <rect class="warning" x="36" y="635" width="1008" height="130" rx="12"/>
+  <text class="head" x="56" y="668">在目标使用条件下验证</text>
+  <text class="label" x="56" y="698">光谱：留出批次，比较基线和深度模型，分解类别与批次误差。</text>
+  <text class="label" x="56" y="728">模拟 LPTEM：留出视频，比较分割重叠和面积误差，排查对比度及噪声变化。</text>
+  <text class="small" x="36" y="792">实线表示数据或计算关系。虚线表示可选的参数初始化或表示迁移。</text>
 </svg>
