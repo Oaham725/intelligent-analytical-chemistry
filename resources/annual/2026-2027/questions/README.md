@@ -61,7 +61,7 @@
 
 ### ch13
 
-待本届维护组补充。
+- <a href="#/resources/annual/2026-2027/questions/ch13-ir-raman">分析设计题：有些拉曼测不出来，掺假定量还能上线吗？</a>
 
 ### ch14
 
