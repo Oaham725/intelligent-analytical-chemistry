@@ -84,6 +84,8 @@
 1. Radford, A. *et al.* [Learning Transferable Visual Models From Natural Language Supervision](https://proceedings.mlr.press/v139/radford21a.html). *Proceedings of the 38th International Conference on Machine Learning*, 8748–8763 (2021).
    - 用途：以图像—文本对比学习为共同表示的范例，帮助理解谱图—结构—图像—文本之间建立对齐空间的基本思想。
 
+2. <a href="#/resources/annual/2026-2027/references/ch13-ir-raman">G13 年度更新卡：按真实缺失模式评价融合系统</a>
+
 <a id="ch14"></a>
 ## 第14章 仪器标准化、校准迁移与FAIR数据
 
