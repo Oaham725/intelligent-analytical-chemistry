@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#356782"/>
+    </marker>
+    <marker id="arrowWarn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c65f3c"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-family:"Microsoft YaHei",sans-serif;font-size:31px;font-weight:700;fill:#18344c;text-anchor:middle}
+    .subtitle{font-family:"Microsoft YaHei",sans-serif;font-size:16px;fill:#5d7182;text-anchor:middle}
+    .step{font-family:"Microsoft YaHei",sans-serif;font-size:19px;font-weight:700;fill:#ffffff;text-anchor:middle}
+    .body{font-family:"Microsoft YaHei",sans-serif;font-size:15px;fill:#1f3850;text-anchor:middle}
+    .note{font-family:"Microsoft YaHei",sans-serif;font-size:13px;fill:#526a7c;text-anchor:middle}
+    .warn{font-family:"Microsoft YaHei",sans-serif;font-size:13px;fill:#b5492e;text-anchor:middle}
+    .label{font-family:"Microsoft YaHei",sans-serif;font-size:17px;font-weight:700;fill:#18344c}
+    .direct{font-family:"Microsoft YaHei",sans-serif;font-size:14px;fill:#21384d;text-anchor:middle}
+    .box{fill:#edf4f7;stroke:#6a95aa;stroke-width:2.5}
+    .head{fill:#3d7188}
+    .edge{stroke:#356782;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    .warnedge{stroke:#c65f3c;stroke-width:2.5;fill:none;stroke-dasharray:8 6;marker-end:url(#arrowWarn)}
+  </style>
+
+  <text class="title" x="800" y="52">校准迁移的判断链：先修量值与硬件，再选数学方法，最后做独立目标域验证</text>
+  <text class="subtitle" x="800" y="84">核心不是“用了 DS/PDS”，而是证明仪器差异被减少、未来样品仍能预测、过程能够追溯</text>
+
+  <rect class="head" x="38" y="125" width="228" height="45" rx="12"/>
+  <text class="step" x="152" y="155">1 量值与硬件</text>
+  <rect class="box" x="38" y="170" width="228" height="105" rx="12"/>
+  <text class="body" x="152" y="203">标准样品 · 波长/强度校准</text>
+  <text class="body" x="152" y="231">分辨率 · 检测器响应 · 漂移</text>
+  <text class="note" x="152" y="259">前提：同一物理量，不是同一文件格式</text>
+
+  <rect class="head" x="306" y="125" width="228" height="45" rx="12"/>
+  <text class="step" x="420" y="155">2 主从差异诊断</text>
+  <rect class="box" x="306" y="170" width="228" height="105" rx="12"/>
+  <text class="body" x="420" y="203">峰位 · 峰强 · 峰宽</text>
+  <text class="body" x="420" y="231">全局平滑 vs 局部波长依赖</text>
+  <text class="note" x="420" y="259">诊断决定方法，不是先选模型</text>
+
+  <rect class="head" x="574" y="125" width="228" height="45" rx="12"/>
+  <text class="step" x="688" y="155">3 传递样品</text>
+  <rect class="box" x="574" y="170" width="228" height="105" rx="12"/>
+  <text class="body" x="688" y="203">同一批样品在主/从测量</text>
+  <text class="body" x="688" y="231">覆盖未来浓度与基质空间</text>
+  <text class="note" x="688" y="259">不能只选容易样品或重复扫描</text>
+
+  <rect class="head" x="842" y="125" width="228" height="45" rx="12"/>
+  <text class="step" x="956" y="155">4 映射方法</text>
+  <rect class="box" x="842" y="170" width="228" height="105" rx="12"/>
+  <text class="body" x="956" y="203">斜率—偏差 · DS · PDS</text>
+  <text class="body" x="956" y="231">输出偏差 vs 光谱映射</text>
+  <text class="note" x="956" y="259">复杂方法必须胜过可诊断基线</text>
+
+  <rect class="head" x="1110" y="125" width="228" height="45" rx="12"/>
+  <text class="step" x="1224" y="155">5 独立验证</text>
+  <rect class="box" x="1110" y="170" width="228" height="105" rx="12"/>
+  <text class="body" x="1224" y="203">未参与训练/迁移的目标域样品</text>
+  <text class="body" x="1224" y="231">RMSEP · MAE · R² · 残差结构</text>
+  <text class="note" x="1224" y="259">不能拿传递样品回报自己</text>
+
+  <rect class="head" x="1378" y="125" width="184" height="45" rx="12"/>
+  <text class="step" x="1470" y="155">6 监测回退</text>
+  <rect class="box" x="1378" y="170" width="184" height="105" rx="12"/>
+  <text class="body" x="1470" y="203">漂移监测</text>
+  <text class="body" x="1470" y="231">模型版本</text>
+  <text class="note" x="1470" y="259">触发更新 / 回退</text>
+
+  <line class="edge" x1="266" y1="221" x2="298" y2="221"/>
+  <line class="edge" x1="534" y1="221" x2="566" y2="221"/>
+  <line class="edge" x1="802" y1="221" x2="834" y2="221"/>
+  <line class="edge" x1="1070" y1="221" x2="1102" y2="221"/>
+  <line class="edge" x1="1338" y1="221" x2="1370" y2="221"/>
+
+  <rect x="38" y="320" width="1524" height="205" rx="16" fill="#f7fafc" stroke="#bccbd6" stroke-width="2"/>
+  <text class="label" x="65" y="355">方法选择：判断差异落在哪里</text>
+
+  <rect x="70" y="380" width="450" height="112" rx="12" fill="#ffffff" stroke="#9eb7c7" stroke-width="2"/>
+  <text class="label" x="95" y="412" fill="#47758a">加性/乘性输出偏差</text>
+  <text class="direct" x="295" y="444">先试斜率—偏差校正</text>
+  <text class="note" x="295" y="472">传递样品少、只改变预测尺度时最简洁</text>
+
+  <rect x="550" y="380" width="470" height="112" rx="12" fill="#ffffff" stroke="#9eb7c7" stroke-width="2"/>
+  <text class="label" x="575" y="412" fill="#47758a">全局平滑响应差异</text>
+  <text class="direct" x="785" y="444">全局 DS 可作为基线</text>
+  <text class="note" x="785" y="472">本例合成数据中 DS 明显优于 PDS</text>
+
+  <rect x="1050" y="380" width="480" height="112" rx="12" fill="#fff5ef" stroke="#d58d70" stroke-width="2"/>
+  <text class="label" x="1075" y="412" fill="#b5492e">局部峰形/波长依赖差异</text>
+  <text class="direct" x="1290" y="444">优先考虑 PDS 等局部映射</text>
+  <text class="note" x="1290" y="472">必须有独立目标域样品证明改进</text>
+
+  <rect x="38" y="555" width="730" height="168" rx="14" fill="#eef7f6" stroke="#5f9b99" stroke-width="2.5"/>
+  <text class="label" x="65" y="590">可接受的改进</text>
+  <text class="direct" x="402" y="626">独立目标域 RMSEP 下降</text>
+  <text class="direct" x="402" y="657">高浓度端与低浓度端残差都改善</text>
+  <text class="direct" x="402" y="688">硬件前提、传递集、参数与版本可追溯</text>
+
+  <rect x="800" y="555" width="730" height="168" rx="14" fill="#fff4ef" stroke="#d58d70" stroke-width="2.5"/>
+  <text class="label" x="827" y="590" fill="#b5492e">无效或不可辩护的结果</text>
+  <text class="direct" x="1165" y="626">平均误差下降但某一浓度段恶化</text>
+  <text class="direct" x="1165" y="657">用参与迁移的样品充当“独立测试”</text>
+  <text class="direct" x="1165" y="688">只换数学算法，却没有完成硬件量值校准</text>
+
+  <line class="warnedge" x1="402" y1="523" x2="402" y2="547"/>
+  <line class="warnedge" x1="1165" y1="523" x2="1165" y2="547"/>
+
+  <rect x="38" y="760" width="1492" height="164" rx="16" fill="#fbf7ed" stroke="#d8b26f" stroke-width="2.5"/>
+  <text class="label" x="65" y="798">FAIR 谱系是迁移结论的一部分</text>
+  <text class="body" x="800" y="833">sample_id · batch_id · instrument_id · acquired_at · wavelength range · unit · preprocess</text>
+  <text class="body" x="800" y="865">calibration_id · model_version · sha256 · split_role · independent validation set</text>
+  <text class="warn" x="800" y="899">缺少这些字段时，无法判断误差来自样品、仪器、算法还是数据处理。</text>
+</svg>

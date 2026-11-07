@@ -90,6 +90,15 @@
 1. Wilkinson, M. D. *et al.* [The FAIR Guiding Principles for scientific data management and stewardship](https://doi.org/10.1038/sdata.2016.18). *Scientific Data* **3**, 160018 (2016).
    - 用途：将标准样品、仪器元数据、校准迁移和跨实验室复用放入 FAIR 数据治理框架；与第2章的数据对象观相互呼应。
 
+2. Mishra, P.; Passos, D. [Deep calibration transfer: Transferring deep learning models between infrared spectroscopy instruments](https://doi.org/10.1016/j.infrared.2021.103863). *Infrared Physics & Technology* **117**, 103863 (2021).
+   - 用途：说明深度神经网络模型如何在主仪器与从仪器之间迁移，以及免共同标准样品方法的可行性；用于更新第14章“校准迁移”和“深度模型维护”的讨论。更新 PR：#20。
+
+3. Mishra, P.; Nikzad-Langerodi, R.; Marini, F.; Roger, J.-M.; Biancolillo, A.; Rutledge, D. N.; Lohumi, S. [Are standard sample measurements still needed to transfer multivariate calibration models between near-infrared spectrometers? The answer is not always](https://doi.org/10.1016/j.trac.2021.116331). *TrAC Trends in Analytical Chemistry* **143**, 116331 (2021).
+   - 用途：提供免标准样品校准迁移的批判性综述，帮助区分“不需要共同标准样品”与“不需要硬件校准”。更新 PR：#20。
+
+4. Roger, J.-M.; Fonseca Diaz, V.; Nikzad-Langerodi, R. [Cloning instruments, model maintenance and calibration transfer](https://doi.org/10.1016/j.trac.2025.118319). *TrAC Trends in Analytical Chemistry* **191**, 118319 (2025).
+   - 用途：把校准迁移放入仪器克隆、模型维护和长期版本管理的框架，支撑本章对在线监测、触发更新和版本回退的讨论。更新 PR：#20。
+
 <a id="ch15"></a>
 ## 第15章 可信智能分析：不确定度、适用域与因果机制
 
