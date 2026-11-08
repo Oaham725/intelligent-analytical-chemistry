@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "path": "data/raw/fov1.tif",
+      "raw_shape": [
+        909,
+        256,
+        256
+      ],
+      "prepared_shape": [
+        64,
+        64,
+        303
+      ],
+      "dtype": "uint16",
+      "min": 30720.0,
+      "max": 34815.0,
+      "max_value_pixel_fraction": 0.006430966888192726,
+      "sha256": "981f21424e78425b4670efe239db7047594e66f9dc7012f4b484e8ece93c2341"
+    },
+    {
+      "path": "data/raw/fov2.tif",
+      "raw_shape": [
+        909,
+        256,
+        256
+      ],
+      "prepared_shape": [
+        64,
+        64,
+        303
+      ],
+      "dtype": "uint16",
+      "min": 30720.0,
+      "max": 34815.0,
+      "max_value_pixel_fraction": 0.006344953648196851,
+      "sha256": "89523deb17fb647f95055f7f6694d11ae10be56a47bbc4436c53e14d6726cf64"
+    }
+  ],
+  "spatial_step": 4,
+  "spectral_step": 3,
+  "axis": "Original hyperspectral channel indices; Raman calibration not supplied",
+  "saturation": "No manual saturation replacement; inspect extreme-response clusters"
+}

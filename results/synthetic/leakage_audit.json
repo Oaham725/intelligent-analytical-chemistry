@@ -1,0 +1,68 @@
+[
+  {
+    "scheme": "random",
+    "noise": 0.08,
+    "train_n": 1497,
+    "val_n": 346,
+    "test_n": 461,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.9804772234273319,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  },
+  {
+    "scheme": "spatial",
+    "noise": 0.08,
+    "train_n": 1248,
+    "val_n": 432,
+    "test_n": 432,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.0,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  },
+  {
+    "scheme": "random",
+    "noise": 0.2,
+    "train_n": 1497,
+    "val_n": 346,
+    "test_n": 461,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.982646420824295,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  },
+  {
+    "scheme": "spatial",
+    "noise": 0.2,
+    "train_n": 1248,
+    "val_n": 432,
+    "test_n": 432,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.0,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  },
+  {
+    "scheme": "random",
+    "noise": 0.4,
+    "train_n": 1497,
+    "val_n": 346,
+    "test_n": 461,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.9869848156182213,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  },
+  {
+    "scheme": "spatial",
+    "noise": 0.4,
+    "train_n": 1248,
+    "val_n": 432,
+    "test_n": 432,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.0,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  }
+]

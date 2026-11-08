@@ -1,0 +1,19 @@
+{
+  "args": {
+    "data": "data/mineral_small.npz",
+    "output": "results/real",
+    "epochs": 80,
+    "seed": 725,
+    "clusters": 3
+  },
+  "source": "REAL HYPERSPECTRAL DATA - NO PIXEL GROUND TRUTH",
+  "versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "torch": "2.15.0+cpu"
+  },
+  "python": "3.12.14",
+  "seconds": 77.69598484039307
+}

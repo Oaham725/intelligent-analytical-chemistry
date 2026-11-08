@@ -1,0 +1,19 @@
+{
+  "args": {
+    "data": null,
+    "output": "results/synthetic",
+    "epochs": 80,
+    "seed": 725,
+    "clusters": 3
+  },
+  "source": "SYNTHETIC TEACHING DATA - NOT PAPER REPRODUCTION",
+  "versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "torch": "2.15.0+cpu"
+  },
+  "python": "3.12.14",
+  "seconds": 64.54893279075623
+}

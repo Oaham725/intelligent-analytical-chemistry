@@ -72,6 +72,9 @@
 1. Weigert, M. *et al.* [Content-aware image restoration: pushing the limits of fluorescence microscopy](https://doi.org/10.1038/s41592-018-0216-7). *Nature Methods* **15**, 1090–1097 (2018).
    - 用途：讨论低信噪比图像恢复、空间分辨率提升与深度学习；配合本章强调恢复结果仍须受成像物理和验证样本约束。
 
+2. Abdolghader, P. *et al.* [Unsupervised hyperspectral stimulated Raman microscopy image enhancement: denoising and segmentation via one-shot deep learning](https://doi.org/10.1364/OE.439662). *Optics Express* **29**, 34205–34219 (2021).
+   - 用途：本章无监督光谱去噪及潜在空间聚类的可运行教学案例；[方法与复现边界](ch11_UHRED.md)。该条为案例来源，不替代近三年年度前沿更新。
+
 <a id="ch12"></a>
 ## 第12章 生物分析、单细胞与多组学测量
 

@@ -1,0 +1,24 @@
+[
+  {
+    "scheme": "random",
+    "noise": null,
+    "train_n": 2662,
+    "val_n": 614,
+    "test_n": 820,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.9817073170731707,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  },
+  {
+    "scheme": "spatial",
+    "noise": null,
+    "train_n": 2240,
+    "val_n": 768,
+    "test_n": 832,
+    "train_test_index_overlap": 0,
+    "test_adjacent_to_train_fraction": 0.0,
+    "external_field_used_for_fit": false,
+    "same_sample_external_independence": "Different fields do not establish independent sample/batch/instrument generalization"
+  }
+]

@@ -1,0 +1,9 @@
+
+.venv/
+.packages/
+.mplconfig/
+__pycache__/
+data/raw/
+data/mineral_small.npz
+results/real/**/*.npz
+开始阅读.html

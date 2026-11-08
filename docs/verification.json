@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checks": [
+    "results\\real\\real\\random",
+    "results\\real\\real\\spatial",
+    "results\\synthetic\\0.08\\random",
+    "results\\synthetic\\0.08\\spatial",
+    "results\\synthetic\\0.2\\random",
+    "results\\synthetic\\0.2\\spatial",
+    "results\\synthetic\\0.4\\random",
+    "results\\synthetic\\0.4\\spatial"
+  ],
+  "verified": [
+    "disjoint train/val/test",
+    "no immediate train/test neighbors in spatial split",
+    "finite saved predictions",
+    "reload model weights and reproduce saved reconstruction and cluster labels",
+    "recompute synthetic spectral metrics from saved predictions",
+    "no fabricated real ground-truth metrics"
+  ],
+  "limitations": "Same machine; independent student/environment cross-review remains pending"
+}
