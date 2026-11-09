@@ -10,6 +10,10 @@
 
 原件SHA256：`f46983b1835623bd2aac447afb804aafc6148aa82e950630d868bd00b9a50719`。归档副本与提交者提供文件逐字节一致，文件内的图、表、公式及备注原样保留。建议使用PowerPoint或WPS打开，并在演讲设备上核对公式与换行。
 
+## 评审后数据勘误
+
+2026-11-09 复核了ESOL骨架划分的重复配置和5-NN并列邻居的排序。第9至10页涉及的结果应以整改后归档为准。Morgan 5-NN随机与骨架MAE由1.051、1.852更新为1.018、1.721，Ridge由0.786、0.830更新为0.786、0.841，单位为log10(mol/L)。骨架种子42与44为同一划分，均只测试316条无环分子。PPTX保留2026-11-05提交原件。[更新后的汇总表](../../results/ch06/esol/summary.csv) · [评审整改记录](../../results/ch06/review-response.md)
+
 ## 交互与资料入口
 
 - <a href="https://github.com/yoimiya-610/intelligent-analytical-chemistry/blob/ch06/information-preservation-issue-4/docs/ch06.md" data-ch06-site-href="#/docs/ch06">第六章正文</a>

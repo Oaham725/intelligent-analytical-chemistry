@@ -6,6 +6,7 @@ import json
 import math
 import statistics
 from collections import defaultdict
+from itertools import combinations
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -51,6 +52,7 @@ def verify(results, data):
     test_ids = {}
     train_ids = {}
     for key, rows in groups.items():
+        assert all(r['scaffold'] == identities[r['id']]['scaffold'] for r in rows)
         train = {r['id'] for r in rows if r['subset'] == 'train'}
         test = {r['id'] for r in rows if r['subset'] == 'test'}
         assert len(rows) == len(clean) and train | test == set(identities) and not train & test
@@ -61,6 +63,25 @@ def verify(results, data):
             assert not {identities[i]['scaffold'] for i in train} & {identities[i]['scaffold'] for i in test}
             assert len({r['subset'] for r in rows if r['scaffold'] == '__ACYCLIC__'}) == 1
         train_ids[key], test_ids[key] = train, test
+
+    composition = read_csv(base / 'split_composition.csv')
+    assert len(composition) == len(groups)
+    representative_seeds = {}
+    for row in composition:
+        method, seed = row['split'], row['seed']
+        test = test_ids[(method, seed)]
+        representative = min(s for m, s in test_ids if m == method and test_ids[(m, s)] == test)
+        assert row['representative_seed'] == representative
+        n_acyclic = sum(identities[i]['scaffold'] == '__ACYCLIC__' for i in test)
+        assert int(row['n_test']) == len(test)
+        assert int(row['n_acyclic']) == n_acyclic
+        assert int(row['n_cyclic']) == len(test) - n_acyclic
+        representative_seeds[(method, seed)] = representative
+    assert set(representative_seeds) == set(groups)
+    distinct_counts = {method: len({frozenset(ids) for (m, _), ids in test_ids.items() if m == method})
+                       for method in ('random', 'scaffold')}
+    assert distinct_counts == {'random': 3, 'scaffold': 2}
+    assert test_ids[('scaffold', '42')] == test_ids[('scaffold', '44')]
 
     fitted = json.loads((base / 'ridge_parameters.json').read_text(encoding='utf-8'))
     parameters = {}
@@ -102,16 +123,44 @@ def verify(results, data):
         assert len(train_ids[key]) == int(metric['n_train'])
         close(statistics.mean(float(r['absolute_error']) for r in rows), metric['MAE_logS'])
         close(math.sqrt(statistics.mean(float(r['absolute_error']) ** 2 for r in rows)), metric['RMSE_logS'])
+
+    knn = {key: {r['id']: float(r['predicted_logS']) for r in predicted[(*key, 'morgan_5nn')]}
+           for key in groups}
+    for left, right in combinations(groups, 2):
+        if train_ids[left] == train_ids[right]:
+            for identity in knn[left].keys() & knn[right].keys():
+                assert knn[left][identity] == knn[right][identity], (left, right, identity)
+
+    similarity_strata = {(r['split'], r['seed'], r['model'], r['stratum']): r
+                         for r in read_csv(base / 'stratified_metrics.csv')
+                         if r['stratum'].startswith('nearest_T_')}
+    for key, rows in predicted.items():
+        for name, members in (
+            ('nearest_T_le_0.4', [r for r in rows if float(r['nearest_train_tanimoto']) <= .40]),
+            ('nearest_T_gt_0.4', [r for r in rows if float(r['nearest_train_tanimoto']) > .40]),
+        ):
+            if members:
+                stratum = similarity_strata.pop((*key, name))
+                errors = [float(r['absolute_error']) for r in members]
+                assert int(stratum['n']) == len(errors)
+                close(statistics.mean(errors), stratum['MAE_logS'])
+                close(math.sqrt(statistics.mean(e * e for e in errors)), stratum['RMSE_logS'])
+    assert not similarity_strata
+
     for summary in read_csv(base / 'summary.csv'):
         rows = [m for m in metrics if m['split'] == summary['split'] and m['model'] == summary['model']]
-        assert len(rows) == 3
+        assert len(rows) == int(summary['n_seeds']) == 3
+        rows = [m for m in rows if m['seed'] == representative_seeds[(m['split'], m['seed'])]]
+        assert len(rows) == int(summary['n_distinct_splits']) == distinct_counts[summary['split']]
         for quantity in ['MAE', 'RMSE']:
             values = [float(r[quantity + '_logS']) for r in rows]
             close(statistics.mean(values), summary[quantity + '_mean'])
             close(statistics.stdev(values), summary[quantity + '_sd'])
     print(json.dumps({'molecules': len(mols), 'raw_rows': len(raw), 'clean_rows': len(clean),
-                      'splits': len(groups), 'metric_groups': len(metrics), 'predictions': len(predictions),
-                      'checks': 'source hash; identity/scaffold isolation; train-only scaling; predictions; metrics: passed'}, indent=2))
+                      'split_configurations': len(groups), 'distinct_splits': sum(distinct_counts.values()),
+                      'distinct_splits_by_method': distinct_counts,
+                      'metric_groups': len(metrics), 'predictions': len(predictions),
+                      'checks': 'source hash; split composition and isolation; train-only scaling; tied kNN predictions; similarity strata; metrics: passed'}, indent=2))
 
 
 if __name__ == '__main__':

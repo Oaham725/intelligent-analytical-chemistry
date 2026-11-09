@@ -1,5 +1,5 @@
 {
-  "run_utc": "2026-10-23T09:42:48.792642+00:00",
+  "run_utc": "2026-11-09T03:12:23.741102+00:00",
   "source_url": "https://github.com/deepchem/deepchem/blob/master/datasets/delaney-processed.csv",
   "source_git_blob_sha": "970b0d32771f1d67175d4f4a630e13f446ba97a8",
   "sha256": "1f6deae4fbac9e584a941e0187cc413cf1c3edc70628ab3983ed9d1cfb92d30c",
@@ -35,6 +35,7 @@
     "knn_k": 5,
     "radius": 2,
     "fpSize": 2048,
+    "knn_tie_break": "canonical_isomeric_smiles_ascending",
     "includeChirality": true,
     "seeds": [
       42,
@@ -42,8 +43,10 @@
       44
     ],
     "nominal_train_fraction": 0.8,
+    "summary_weighting": "one row per distinct test ID set within each split method",
     "descriptive_strata": {
       "nearest_T": 0.4,
+      "low_T_inclusive": true,
       "heavy_atoms": 15,
       "formal_charge": 0
     }
@@ -55,7 +58,7 @@
     "Methods differ as well as representations; no causal attribution to representation alone.",
     "No temperature/pH/crystal metadata in this processed table.",
     "Acyclic compounds are held as one group; scaffold proportions can differ from 80/20.",
-    "Three seeds estimate split variation, not calibrated prediction uncertainty.",
+    "Distinct partitions can differ in test composition. Their SD is descriptive, not prediction uncertainty.",
     "Duplicates keep first; inconsistent labels are audited, not assumed equivalent."
   ]
 }

@@ -13,6 +13,7 @@ import json
 import platform
 from collections import defaultdict
 from datetime import datetime, timezone
+from io import StringIO
 from pathlib import Path
 
 import numpy as np
@@ -24,6 +25,9 @@ TARGET = 'measured log solubility in mols per litre'
 FEATURES = ['MW_g_mol', 'HBD', 'HBA', 'TPSA_A2', 'MolLogP', 'RotatableBonds', 'AromaticAtomFraction']
 SOURCE = 'https://github.com/deepchem/deepchem/blob/master/datasets/delaney-processed.csv'
 SOURCE_BLOB = '970b0d32771f1d67175d4f4a630e13f446ba97a8'
+SEEDS = (42, 43, 44)
+MODELS = ('training_mean', 'descriptors_ridge', 'morgan_5nn')
+LOW_SIMILARITY_MAX = 0.40
 
 
 def write_csv(path, rows):
@@ -127,13 +131,19 @@ def run(args):
     assert len({r['canonical_smiles'] for r in rows}) == len(rows)
     generator = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=2048, includeChirality=True)
     fps = [generator.GetFingerprint(r['mol']) for r in rows]
-    metric_rows, predictions, assignments, fitted = [], [], [], []
+    metric_rows, predictions, assignments, fitted, compositions = [], [], [], [], []
     for method in ['random', 'scaffold']:
-        for seed in [42, 43, 44]:
+        representative_seeds = {}
+        for seed in SEEDS:
             train, test = split_indices(rows, method, seed)
             train_ids = {rows[i]['canonical_smiles'] for i in train}
             test_ids = {rows[i]['canonical_smiles'] for i in test}
             assert not train_ids & test_ids, 'identity leakage'
+            representative = representative_seeds.setdefault(frozenset(test_ids), seed)
+            n_acyclic = sum(rows[i]['scaffold'] == '__ACYCLIC__' for i in test)
+            compositions.append({'split': method, 'seed': seed, 'n_test': len(test),
+                                 'n_cyclic': len(test) - n_acyclic, 'n_acyclic': n_acyclic,
+                                 'representative_seed': representative})
             train_cores = {rows[i]['scaffold'] for i in train}
             test_cores = {rows[i]['scaffold'] for i in test}
             overlap = len(train_cores & test_cores)
@@ -142,11 +152,15 @@ def run(args):
             for subset, indices in [('train', train), ('test', test)]:
                 assignments.extend({'split': method, 'seed': seed, 'id': rows[i]['id'],
                                     'subset': subset, 'scaffold': rows[i]['scaffold']} for i in indices)
-            sims = np.array([DataStructs.BulkTanimotoSimilarity(fps[i], [fps[j] for j in train]) for i in test])
+            # Stable sorting of equal similarities now uses canonical SMILES
+            # order, independent of the permutation returned by the split.
+            neighbor_train = np.array(sorted(train, key=lambda i: rows[i]['canonical_smiles']))
+            train_fps = [fps[j] for j in neighbor_train]
+            sims = np.array([DataStructs.BulkTanimotoSimilarity(fps[i], train_fps) for i in test])
             assert sims.min() >= 0 and sims.max() <= 1
             nearest = sims.max(axis=1)
             knn_order = np.argsort(-sims, axis=1, kind='stable')[:, :5]
-            knn_pred = y[train][knn_order].mean(axis=1)
+            knn_pred = y[neighbor_train][knn_order].mean(axis=1)
             ridge_pred, params = ridge_fit_predict(x[train], y[train], x[test])
             fitted.append({'split': method, 'seed': seed, 'train_ids': [rows[i]['id'] for i in train], **params})
             model_predictions = {'training_mean': np.full(len(test), y[train].mean()),
@@ -166,13 +180,16 @@ def run(args):
                                         'n_heavy_atoms': rows[index]['n_heavy_atoms'], 'formal_charge': rows[index]['formal_charge']})
     summary = []
     for method in ['random', 'scaffold']:
-        for model in ['training_mean', 'descriptors_ridge', 'morgan_5nn']:
-            group = [m for m in metric_rows if m['split'] == method and m['model'] == model]
+        representatives = {c['representative_seed'] for c in compositions if c['split'] == method}
+        for model in MODELS:
+            group = [m for m in metric_rows if m['split'] == method and m['model'] == model
+                     and m['seed'] in representatives]
             summary.append({'split': method, 'model': model,
+                            'n_seeds': len(SEEDS), 'n_distinct_splits': len(group),
                             'MAE_mean': float(np.mean([m['MAE_logS'] for m in group])),
-                            'MAE_sd': float(np.std([m['MAE_logS'] for m in group], ddof=1)),
+                            'MAE_sd': float(np.std([m['MAE_logS'] for m in group], ddof=1)) if len(group) > 1 else None,
                             'RMSE_mean': float(np.mean([m['RMSE_logS'] for m in group])),
-                            'RMSE_sd': float(np.std([m['RMSE_logS'] for m in group], ddof=1))})
+                            'RMSE_sd': float(np.std([m['RMSE_logS'] for m in group], ddof=1)) if len(group) > 1 else None})
     failures = []
     for method in ['random', 'scaffold']:
         for model in ['descriptors_ridge', 'morgan_5nn']:
@@ -182,14 +199,15 @@ def run(args):
     write_csv(out / 'summary.csv', summary)
     write_csv(out / 'predictions.csv', predictions)
     write_csv(out / 'split_assignments.csv', assignments)
+    write_csv(out / 'split_composition.csv', compositions)
     write_csv(out / 'failure_samples.csv', failures)
     strata = []
     for method in ['random', 'scaffold']:
-        for seed in [42, 43, 44]:
-            for model in ['training_mean', 'descriptors_ridge', 'morgan_5nn']:
+        for seed in SEEDS:
+            for model in MODELS:
                 group = [p for p in predictions if p['split'] == method and p['seed'] == seed and p['model'] == model]
-                definitions = [('nearest_T_lt_0.4', lambda p: p['nearest_train_tanimoto'] < .4),
-                               ('nearest_T_ge_0.4', lambda p: p['nearest_train_tanimoto'] >= .4),
+                definitions = [('nearest_T_le_0.4', lambda p: p['nearest_train_tanimoto'] <= LOW_SIMILARITY_MAX),
+                               ('nearest_T_gt_0.4', lambda p: p['nearest_train_tanimoto'] > LOW_SIMILARITY_MAX),
                                ('heavy_atoms_le_15', lambda p: p['n_heavy_atoms'] <= 15),
                                ('heavy_atoms_gt_15', lambda p: p['n_heavy_atoms'] > 15),
                                ('formal_charge_zero', lambda p: p['formal_charge'] == 0),
@@ -212,31 +230,36 @@ def run(args):
                 'target': TARGET, 'target_unit': 'log10(mol/L)', 'features': FEATURES,
                 'ignored_columns': [k for k in raw[0] if k not in ['Compound ID', 'smiles', TARGET]],
                 'parameters': {'ridge_alpha': 1.0, 'knn_k': 5, 'radius': 2, 'fpSize': 2048,
-                               'includeChirality': True, 'seeds': [42, 43, 44], 'nominal_train_fraction': .8,
-                               'descriptive_strata': {'nearest_T': .4, 'heavy_atoms': 15, 'formal_charge': 0}},
+                               'knn_tie_break': 'canonical_isomeric_smiles_ascending',
+                               'includeChirality': True, 'seeds': SEEDS, 'nominal_train_fraction': .8,
+                               'summary_weighting': 'one row per distinct test ID set within each split method',
+                               'descriptive_strata': {'nearest_T': LOW_SIMILARITY_MAX, 'low_T_inclusive': True,
+                                                      'heavy_atoms': 15, 'formal_charge': 0}},
                 'checks': 'identity disjoint; scaffold disjoint for grouped split; finite values; training-only scaling: passed',
                 'limitations': ['Educational benchmark, not a state-of-the-art comparison.',
                                 'No hyperparameter tuning. Fixed settings may favor one baseline.',
                                 'Methods differ as well as representations; no causal attribution to representation alone.',
                                 'No temperature/pH/crystal metadata in this processed table.',
                                 'Acyclic compounds are held as one group; scaffold proportions can differ from 80/20.',
-                                'Three seeds estimate split variation, not calibrated prediction uncertainty.',
+                                'Distinct partitions can differ in test composition. Their SD is descriptive, not prediction uncertainty.',
                                 'Duplicates keep first; inconsistent labels are audited, not assumed equivalent.']}
     (out / 'run_manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
     (out / 'summary.json').write_text(json.dumps({'manifest': manifest, 'metrics': metric_rows, 'summary': summary,
+                                               'split_composition': compositions,
                                                'failures': failures}, ensure_ascii=False, indent=2), encoding='utf-8')
-    make_plots(out, predictions, summary)
+    make_plots(out, predictions)
     print(json.dumps({'raw': len(raw), 'kept': len(rows), 'duplicates': len(duplicates), 'summary': summary,
                       'checks': manifest['checks']}, indent=2))
 
 
-def make_plots(out, predictions, summary):
+def make_plots(out, predictions):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    plt.rcParams.update({'font.family': 'Times New Roman', 'font.size': 9, 'svg.fonttype': 'none'})
+    plt.rcParams.update({'font.family': 'Times New Roman', 'font.size': 9, 'svg.fonttype': 'none',
+                         'svg.hashsalt': 'ch06-esol'})
     fig, axes = plt.subplots(3, 2, figsize=(10, 10), sharex=True, sharey=True)
-    for row, model in enumerate(['training_mean', 'descriptors_ridge', 'morgan_5nn']):
+    for row, model in enumerate(MODELS):
         for col, method in enumerate(['random', 'scaffold']):
             data = [p for p in predictions if p['seed'] == 42 and p['split'] == method and p['model'] == model]
             ax = axes[row, col]
@@ -251,7 +274,10 @@ def make_plots(out, predictions, summary):
     fig.subplots_adjust(hspace=.35, wspace=.28, right=.82, top=.92)
     colorbar_axis = fig.add_axes([.90, .25, .018, .50])
     fig.colorbar(points, cax=colorbar_axis, label='Nearest training Tanimoto')
-    fig.savefig(out / 'prediction_diagnostics.svg', bbox_inches='tight')
+    svg = StringIO()
+    fig.savefig(svg, format='svg', bbox_inches='tight', metadata={'Date': None})
+    svg_text = '\n'.join(line.rstrip() for line in svg.getvalue().splitlines()) + '\n'
+    (out / 'prediction_diagnostics.svg').write_text(svg_text, encoding='utf-8', newline='\n')
     fig.savefig(out / 'prediction_diagnostics.png', dpi=150, bbox_inches='tight')
     plt.close(fig)
 

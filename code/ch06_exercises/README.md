@@ -9,20 +9,21 @@ python -m pip install -r code/ch06_exercises/requirements.txt
 python code/ch06_exercises/case_study.py --output resources/annual/2026-2027/results/ch06
 python code/ch06_exercises/esol_baseline.py --data data/ch06/delaney-processed.csv --output resources/annual/2026-2027/results/ch06/esol
 python code/ch06_exercises/verify_outputs.py
+python code/ch06_exercises/build_explorer_data.py --check
 node code/ch06_exercises/check_site.cjs
 ```
 
-后两个检查分别使用Python标准库和Node内置模块。要保留已提交输出，可将两项计算的输出目录改为同一个临时目录（ESOL在该目录的`esol/`子目录），再用`verify_outputs.py --results 临时目录`检查。计算脚本会写入所指定的输出目录。
+验证脚本和探查器数据生成脚本分别使用Python标准库或Node内置模块。要保留已提交输出，可将两项计算的输出目录改为同一个临时目录（ESOL在该目录的`esol/`子目录），再用`verify_outputs.py --results 临时目录`检查。计算脚本会写入所指定的输出目录。重新发布探查器数据时，去掉 `build_explorer_data.py` 的 `--check`，可用 `--results` 指定结果根目录，用 `--output` 指定JS文件。
 
 ## 应观察到什么
 
 - 六分子：乙醇/二甲醚质量相同但HBD为1/0；E/Z与乳酸镜像对在关闭立体选项时指纹相似度为1，启用后分别约0.4286和0.6923。六个样本只检验分辨能力，不用于声称结构外推性能。
 - ESOL：原表1128条，规范isomeric SMILES身份去重后1117条，11条重复单独保存，不擅自平均冲突标签。描述符重新计算，未使用表内ESOL预测列。
 - 固定参数：Ridge alpha=1；Morgan radius=2、2048位、includeChirality=True；Tanimoto kNN k=5；种子42/43/44。标准化只拟合训练集。所有无环分子同组，完整骨架分配可能使比例偏离80/20。
-- 当前记录的三种子平均MAE：Ridge随机/骨架约0.786/0.830；Morgan 5-NN约1.051/1.852，单位log10(mol/L)。同时读标准差、实际划分和失败样本，不把这些结果作普适排名或单样本置信区间。
+- 6组运行配置对应5个不同划分。骨架种子42与44的测试分子完全相同，均为316条无环分子。种子43测试224条有环分子。汇总按各类不同划分等权计算，Ridge随机与骨架平均MAE约为0.786与0.841，Morgan 5-NN约为1.018与1.721，单位log10(mol/L)。并列近邻按规范异构SMILES升序排列。
 - `rejected_records.csv`为空表示本快照没有解析或标签拒绝记录，不是数据文件丢失。
 
-`verify_outputs.py`检查原始快照SHA256、去重身份、六个实际划分、骨架隔离、Ridge训练内均值和尺度、保存预测与18组指标；`check_site.cjs`检查章节顺序、本地下载资源、原生脚本入口及浏览器汇总与保存指标一致。两者不替代其他同学的独立复现、浏览器无障碍检查或教师评审。
+`verify_outputs.py`检查原始快照SHA256、去重身份、六组运行配置及五个不同划分、骨架隔离、Ridge训练内均值和尺度、保存预测与18组指标、测试集构成、相同划分的5-NN预测、相似度边界及不同划分的等权汇总；`check_site.cjs`检查章节顺序、本地下载资源、原生脚本入口及浏览器汇总与保存指标一致。两者不替代其他同学的独立复现、浏览器无障碍检查或教师评审。
 
 ## 浏览器人工复核
 
