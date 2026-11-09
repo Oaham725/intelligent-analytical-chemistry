@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "browser_verified": [
+    "preset metrics",
+    "all accept",
+    "all reject NA",
+    "reset",
+    "score and scope switch",
+    "probability before/after"
+  ],
+  "offline_logic_verified": [
+    "CSV Blob construction",
+    "36-row known export",
+    "136-row mixed export",
+    "quoted CSV fields",
+    "boundary metrics"
+  ],
+  "limitation": "Browser download completion event timed out; downloaded file completion and narrow-screen layout were not independently verified.",
+  "external_page_requests": 0
+}

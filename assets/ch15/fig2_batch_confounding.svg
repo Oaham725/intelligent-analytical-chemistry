@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2520" height="760" viewBox="0 0 2520 760">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="45" y="280" width="330" height="160" rx="18" fill="#f4f4f4" stroke="#456579" stroke-width="3"/>
+<text x="210.0" y="360.0" text-anchor="middle" dominant-baseline="central" font-family="Microsoft YaHei, sans-serif" font-size="44" font-weight="700" fill="#172f42">采样安排 S</text>
+<rect x="610" y="65" width="380" height="160" rx="18" fill="#f2f6f9" stroke="#456579" stroke-width="3"/>
+<text x="800.0" y="145.0" text-anchor="middle" dominant-baseline="central" font-family="Microsoft YaHei, sans-serif" font-size="44" font-weight="700" fill="#172f42">样品类别 Y</text>
+<rect x="610" y="485" width="380" height="160" rx="18" fill="#f8f2ed" stroke="#926c50" stroke-width="3"/>
+<text x="800.0" y="565.0" text-anchor="middle" dominant-baseline="central" font-family="Microsoft YaHei, sans-serif" font-size="44" font-weight="700" fill="#172f42">批次条件 B</text>
+<rect x="1245" y="65" width="380" height="160" rx="18" fill="#f2f6f9" stroke="#456579" stroke-width="3"/>
+<text x="1435.0" y="145.0" text-anchor="middle" dominant-baseline="central" font-family="Microsoft YaHei, sans-serif" font-size="44" font-weight="700" fill="#172f42">化学状态 M</text>
+<rect x="1765" y="280" width="350" height="160" rx="18" fill="#f2f6f9" stroke="#456579" stroke-width="3"/>
+<text x="1940.0" y="360.0" text-anchor="middle" dominant-baseline="central" font-family="Microsoft YaHei, sans-serif" font-size="44" font-weight="700" fill="#172f42">测得光谱 X</text>
+<rect x="2210" y="280" width="280" height="160" rx="18" fill="#f2f6f9" stroke="#456579" stroke-width="3"/>
+<text x="2350.0" y="360.0" text-anchor="middle" dominant-baseline="central" font-family="Microsoft YaHei, sans-serif" font-size="44" font-weight="700" fill="#172f42">模型输出 Ŷ</text>
+<line x1="390" y1="330" x2="590" y2="170" stroke="#597384" stroke-width="5"/>
+<polygon points="590,170 581.0126824594889,187.86695618805908 570.5959974295863,174.84609990068074" fill="#597384"/>
+<line x1="390" y1="390" x2="590" y2="550" stroke="#926c50" stroke-width="5"/>
+<polygon points="590,550 570.5959974295863,545.1539000993192 581.0126824594889,532.133043811941" fill="#926c50"/>
+<line x1="1010" y1="145" x2="1225" y2="145" stroke="#597384" stroke-width="5"/>
+<polygon points="1225,145 1206.8206850065023,153.3374160485842 1206.8206850065023,136.6625839514158" fill="#597384"/>
+<line x1="1640" y1="150" x2="1750" y2="310" stroke="#597384" stroke-width="5"/>
+<polygon points="1750,310 1732.8305137123145,299.7428687920559 1746.5712744393666,290.2960957922076" fill="#597384"/>
+<line x1="1010" y1="560" x2="1745" y2="405" stroke="#926c50" stroke-width="5"/>
+<polygon points="1745,405 1728.9323120612469,416.90921510020064 1725.4915282683826,400.5932403404898" fill="#926c50"/>
+<line x1="2130" y1="360" x2="2195" y2="360" stroke="#597384" stroke-width="5"/>
+<polygon points="2195,360 2176.820685006502,368.3374160485842 2176.820685006502,351.6625839514158" fill="#597384"/>
+<text x="1260" y="713" text-anchor="middle" dominant-baseline="central" font-family="Microsoft YaHei, sans-serif" font-size="39" font-weight="400" fill="#172f42">教学假设示意 采样安排可使类别组成与批次相关 批次同时影响测量信号</text>
+</svg>

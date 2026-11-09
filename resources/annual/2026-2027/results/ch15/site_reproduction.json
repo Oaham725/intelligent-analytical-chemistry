@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "seeds": [
+    2026102901,
+    2026102902,
+    2026102903,
+    2026102904,
+    2026102905
+  ],
+  "metrics_exact_match": true,
+  "predictions_csv_byte_match": true,
+  "inner_cv_csv_byte_match": true,
+  "all_evaluation_arrays_equal": true,
+  "word_browser_download_sha256_match": true,
+  "word_pptx_zip_integrity": true,
+  "note": "本组重算，不是外组独立复现；PPTX浏览器下载回传超时，未记作通过。"
+}

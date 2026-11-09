@@ -1,0 +1,42 @@
+{
+  "source_doi": "10.5281/zenodo.15717961",
+  "source_sha256": "361888e8e8ea9355205b43d3440cdb066975bac0fdd53be19e47f87afc107c89",
+  "source_records": 6938,
+  "source_format": "data-only pickle dictionary despite .sqlite name",
+  "source_declared_license": "CC BY 4.0",
+  "label_definition": "deterministic unambiguous ideal-formula motif rules, not source catalog category",
+  "pilot_identifiers_excluded": 340,
+  "pilot_overlap": 0,
+  "filters": {
+    "not_unambiguous_formula_task": 1185,
+    "acquisition_or_processing_filter": 3396,
+    "not_rruff_identifiable": 321,
+    "pilot_identifier_excluded": 341,
+    "does_not_cover_window": 98,
+    "same_rruff_id": 1,
+    "class_conflicting_groups": 0
+  },
+  "available_unique_counts": {
+    "Si_O_without_target_anions": 1016,
+    "Sulphate": 164,
+    "Phosphate": 272,
+    "Carbonate": 144
+  },
+  "selected_counts": {
+    "Carbonate": 60,
+    "Sulphate": 60,
+    "Phosphate": 60,
+    "Si_O_without_target_anions": 100
+  },
+  "selected_samples": 280,
+  "spectral_points": 501,
+  "range_cm_1": [
+    200,
+    1200
+  ],
+  "laser_nm": 532,
+  "duplicate_group_count": 0,
+  "duplicate_signal_count": 0,
+  "seed": 2026102901,
+  "selection_used_model_performance": false
+}

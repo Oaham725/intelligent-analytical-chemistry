@@ -34,13 +34,20 @@
     </script>
     <script src="assets/js/interactive-chapters.js"></script>
     <script src="assets/js/ch02-section-labs.js"></script>
+    <script src="assets/js/ch15-section-labs.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+    <!-- The math plugin captures its own parser; search needs Docsify's table tokens. -->
+    <script>window.__docsifySearchParser = window.marked;</script>
     <script src="https://cdn.jsdelivr.net/npm/marked@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+    <script>
+      window.marked = window.__docsifySearchParser;
+      delete window.__docsifySearchParser;
+    </script>
   </body>
 </html>

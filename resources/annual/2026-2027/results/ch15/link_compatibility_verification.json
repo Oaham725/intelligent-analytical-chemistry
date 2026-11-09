@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-02",
+  "dual_context_links": 139,
+  "checked_local_targets": 290,
+  "static_checks": "Repository file fallbacks and Docsify targets exist; module, numerical and event checks passed",
+  "local_site_browser_checks": {
+    "chapter_links_restored": 98,
+    "unrestored_links": 0,
+    "section_modules": 8,
+    "katex_error_nodes": 0,
+    "code_readme_opened": true,
+    "citation_34_target_exists": true,
+    "paper_download_href": "./downloads/word/ch15-course-paper.docx"
+  },
+  "github_browser_evidence": "Post-push checks are recorded in PR #7 and the local screenshot",
+  "html_preview_limit": "GitHub displays HTML source; run the interaction on the course site or a local static server"
+}

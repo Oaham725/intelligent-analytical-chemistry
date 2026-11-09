@@ -93,10 +93,24 @@
 <a id="ch15"></a>
 ## 第15章 可信智能分析：不确定度、适用域与因果机制
 
+<a href="ch15.md" data-ch15-site-href="#/resources/annual/2026-2027/references/ch15">本组前沿更新卡、34项课程论文引用及版本说明</a>。本学年新增条目在下方直接展开；保留原有基准引文。
+
+
 1. Ovadia, Y. *et al.* [Can you trust your model’s uncertainty? Evaluating predictive uncertainty under dataset shift](https://proceedings.neurips.cc/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html). *Advances in Neural Information Processing Systems* **32** (2019).
    - 用途：讨论部署数据偏离训练分布时，不确定度为何会失效；可直接对应仪器漂移、批次变化与未知基质。
 2. Guo, C.; Pleiss, G.; Sun, Y.; Weinberger, K. Q. [On Calibration of Modern Neural Networks](https://proceedings.mlr.press/v70/guo17a.html). *Proceedings of the 34th International Conference on Machine Learning*, 1321–1330 (2017).
    - 用途：用于解释“置信度”与“正确率”不是一回事，并介绍温度缩放等置信度校准思想。
+
+### 2026–2027 学年新增研究
+
+以下为本届新增的3项原始研究，贡献任务为[Issue #6](https://github.com/Oaham725/intelligent-analytical-chemistry/issues/6)，更新PR为[#7](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/7)。论文结论与本组教学计算分别表述。
+
+3. Oliveira, R. I.; Orenstein, P.; Ramos, T.; et al. [Split Conformal Prediction and Non-Exchangeable Data](https://www.jmlr.org/papers/v25/23-1553.html). *Journal of Machine Learning Research* **25**(225), 1–38 (2024).
+   - 用途：补充15.2.5中非交换数据的共形覆盖条件，说明时间依赖需要额外假设及覆盖损失分析，不能据此保证任意仪器漂移下的精确覆盖。本组未实现该扩展；更新PR：[#7](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/7)。
+4. Hosni, Z.; Gillet, V. J.; Marchese Robinson, R. L. [Explicit Applicability Domain Calculations Can Help Determine When Uncertainty Estimates Are Less Reliable](https://doi.org/10.1021/acsomega.5c11875). *ACS Omega* **11**(3), 4722–4743 (2026).
+   - 用途：补充15.3.1中输入支持范围与预测及不确定度可靠性的关系，说明适用域与概率评价互补。证据来自文中QSAR任务，其距离阈值不能直接移植到拉曼谱；更新PR：[#7](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/7)。
+5. Cowger, W.; Karapetrova, A.; Lincoln, C.; et al. [Open Specy 1.0: Automated (Hyper)spectroscopy for Microplastics](https://doi.org/10.1021/acs.analchem.5c00962). *Analytical Chemistry* **97**(32), 17345–17356 (2025).
+   - 用途：补充综合案例中的真实分析化学工作流，连接谱图处理、谱库匹配、颗粒分析与报告；谱库匹配相关系数不能直接解释为本章的校准概率。该工作流的验证对象与单条参考拉曼谱分类不同；更新PR：[#7](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/7)。
 
 <a id="ch16"></a>
 ## 第16章 科学大模型与分析化学智能体

@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "rows": 280,
+  "known_final_test": 36,
+  "unknown_final_test": 100,
+  "pilot_overlap": 0,
+  "seed_verification": {
+    "mode": "full",
+    "recorded_seeds": [
+      2026102901,
+      2026102902,
+      2026102903,
+      2026102904,
+      2026102905
+    ],
+    "metrics_recomputed_seed": 2026102901
+  },
+  "checks": [
+    "primary CSV metrics independently recomputed",
+    "probabilities normalized",
+    "temperature relation and argmax",
+    "rejection counts and conditional error rate",
+    "pairwise AUROC",
+    "validation-only threshold quantiles",
+    "role counts and unique groups",
+    "per-ID NPZ, manifest and prediction labels",
+    "finite spectra, per-ID SHA-256 and exact duplicates",
+    "sensitivity seed records in the selected mode"
+  ]
+}

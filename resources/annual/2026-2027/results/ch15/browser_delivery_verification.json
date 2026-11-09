@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-30",
+  "csv": {
+    "browser_download": "verified",
+    "records": 136,
+    "comparison": "exact UTF-8 text match to repository page preset export",
+    "sha256": "2cce36d095bc5bf7ba258a7594a90332ca618a388ae6b00b1d9c0907d885769d"
+  },
+  "pptx": {
+    "http_status": 200,
+    "bytes": 87917,
+    "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "sha256": "0447a1d2290d67ef0ceedee6357fb19c3d801c4eae4bcb3b315853a75f763e67",
+    "http_response_matches_source": true,
+    "browser_saved_file": "not confirmed"
+  },
+  "navigation": {
+    "route": "ch15 -> ch14 -> ch15",
+    "module_counts": [
+      8,
+      0,
+      8
+    ],
+    "no_duplicate_modules": true
+  },
+  "search": {
+    "query": "温度缩放",
+    "results_include_table": true,
+    "original_unshift_error_absent": true
+  },
+  "formulas": {
+    "rendered": 13,
+    "error_nodes": 0
+  }
+}

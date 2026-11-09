@@ -1,0 +1,31 @@
+{
+  "source_md_sha256": "7085a11744c17b80445844ede22eb3521f0ee8976d9ba7db1e86c68feedf356c",
+  "reference_sha256": "8c1e701f92c9c845e542421e21c5ed31299e47bf8e36d5e15d76c3f304abdaa4",
+  "numbered_subsections": 38,
+  "figures": 6,
+  "tables": 7,
+  "references": 34,
+  "equation_objects": 13,
+  "page_geometry_emu": [
+    6659880,
+    9359900,
+    899795,
+    899795,
+    791845,
+    791845
+  ],
+  "preserved_parts": [
+    "word/footer1.xml",
+    "word/header1.xml",
+    "word/theme/theme1.xml",
+    "word/numbering.xml",
+    "word/fontTable.xml",
+    "word/footer2.xml",
+    "word/header2.xml"
+  ],
+  "status": "passed",
+  "pages": 31,
+  "render_engine": "Microsoft Word native PDF export; PyMuPDF rasterization",
+  "visual_qa": "31 pages inspected; final pages 1 and 26 rechecked; other page text unchanged",
+  "docx_sha256": "c4581cbf02518f9fe6c5cdaa79b87e65a62a776692e4f8f5493a371485b2a810"
+}

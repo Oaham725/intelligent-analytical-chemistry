@@ -1,0 +1,117 @@
+{
+  "created": "2025-06-23T03:10:09.627020+00:00",
+  "modified": "2025-07-18T12:56:06.325520+00:00",
+  "id": 15717961,
+  "conceptrecid": "15717960",
+  "doi": "10.5281/zenodo.15717961",
+  "conceptdoi": "10.5281/zenodo.15717960",
+  "doi_url": "https://doi.org/10.5281/zenodo.15717961",
+  "metadata": {
+    "title": "Raman Databases for RamanLab software",
+    "doi": "10.5281/zenodo.15717961",
+    "publication_date": "2025-06-23",
+    "description": "<p>Precompiled and ready to go databases from the RRUFF, SLOPP/E, and WURM public databases fro Raman spectra. &nbsp;These datasets are already formatted for the RamanLab software.<br><br>Download them, and put them in the top level of the RamanLab directory.</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Celestian, Aaron",
+        "affiliation": "Natural History Museum of Los Angeles County",
+        "orcid": "0000-0003-0775-6380"
+      }
+    ],
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "15717960"
+          }
+        }
+      ]
+    }
+  },
+  "title": "Raman Databases for RamanLab software",
+  "links": {
+    "self": "https://zenodo.org/api/records/15717961",
+    "self_html": "https://zenodo.org/records/15717961",
+    "preview_html": "https://zenodo.org/records/15717961?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.15717961",
+    "self_doi": "https://doi.org/10.5281/zenodo.15717961",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.15717961",
+    "reserve_doi": "https://zenodo.org/api/records/15717961/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/15717960",
+    "parent_html": "https://zenodo.org/records/15717960",
+    "parent_doi": "https://doi.org/10.5281/zenodo.15717960",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.15717960",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:15717961/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:15717961/sequence/default",
+    "files": "https://zenodo.org/api/records/15717961/files",
+    "media_files": "https://zenodo.org/api/records/15717961/media-files",
+    "latest": "https://zenodo.org/api/records/15717961/versions/latest",
+    "latest_html": "https://zenodo.org/records/15717961/latest",
+    "versions": "https://zenodo.org/api/records/15717961/versions",
+    "draft": "https://zenodo.org/api/records/15717961/draft",
+    "access_links": "https://zenodo.org/api/records/15717961/access/links",
+    "access_grants": "https://zenodo.org/api/records/15717961/access/grants",
+    "access_users": "https://zenodo.org/api/records/15717961/access/users",
+    "access_request": "https://zenodo.org/api/records/15717961/access/request",
+    "access": "https://zenodo.org/api/records/15717961/access",
+    "communities": "https://zenodo.org/api/records/15717961/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/15717961/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/15717961/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/15717961/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/15717961/quota-increase",
+    "requests": "https://zenodo.org/api/records/15717961/requests"
+  },
+  "updated": "2025-07-18T12:56:06.325520+00:00",
+  "recid": "15717961",
+  "revision": 9,
+  "files": [
+    {
+      "id": "e6c7fd44-4ac4-42e0-b022-1664e56320a3",
+      "key": "RamanLab_Database_20250602.sqlite",
+      "size": 284982181,
+      "checksum": "md5:021c1b11383f808fecf05d2e1b4b762c",
+      "links": {
+        "self": "https://zenodo.org/api/records/15717961/files/RamanLab_Database_20250602.sqlite/content"
+      }
+    },
+    {
+      "id": "63e7403b-aa2e-4bb7-9438-47a905692ace",
+      "key": "mineral_modes.pkl",
+      "size": 7491604,
+      "checksum": "md5:0431c974e964fdffe52a1b381da150ff",
+      "links": {
+        "self": "https://zenodo.org/api/records/15717961/files/mineral_modes.pkl/content"
+      }
+    }
+  ],
+  "swh": {},
+  "owners": [
+    {
+      "id": "1343871"
+    }
+  ],
+  "status": "published",
+  "stats": {
+    "downloads": 1061,
+    "unique_downloads": 850,
+    "views": 1177,
+    "unique_views": 1058,
+    "version_downloads": 91,
+    "version_unique_downloads": 83,
+    "version_unique_views": 136,
+    "version_views": 153
+  },
+  "state": "done",
+  "submitted": true
+}
