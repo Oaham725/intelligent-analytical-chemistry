@@ -1,0 +1,7 @@
+﻿name,input_SMILES,pair_type,canonical_isomeric_SMILES,canonical_no_stereo,MW_g_mol,HBD,HBA,TPSA_A2
+ethanol,CCO,connectivity,CCO,CCO,46.069,1,1,20.23
+dimethyl_ether,COC,connectivity,COC,COC,46.069,0,1,9.23
+E_2_butene,C/C=C/C,double_bond_stereo,C/C=C/C,CC=CC,56.108,0,0,0.0
+Z_2_butene,C/C=C\C,double_bond_stereo,C/C=C\C,CC=CC,56.108,0,0,0.0
+lactic_A,C[C@H](O)C(=O)O,enantiomer,C[C@H](O)C(=O)O,CC(O)C(=O)O,90.078,2,2,57.53
+lactic_B,C[C@@H](O)C(=O)O,enantiomer,C[C@@H](O)C(=O)O,CC(O)C(=O)O,90.078,2,2,57.53

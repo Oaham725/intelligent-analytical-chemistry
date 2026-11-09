@@ -1,0 +1,7 @@
+name,SMILES,pair_type,stereo_policy
+ethanol,CCO,connectivity,as_provided
+dimethyl_ether,COC,connectivity,as_provided
+E_2_butene,C/C=C/C,double_bond_stereo,specified
+Z_2_butene,C/C=C\C,double_bond_stereo,specified
+lactic_A,C[C@H](O)C(=O)O,enantiomer,specified
+lactic_B,C[C@@H](O)C(=O)O,enantiomer,specified

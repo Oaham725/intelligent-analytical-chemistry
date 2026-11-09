@@ -1,0 +1,18 @@
+{
+  "rdkit_version": "2026.09.1",
+  "radius": 2,
+  "fpSize": 2048,
+  "includeChirality": [
+    false,
+    true
+  ],
+  "fingerprint_type": "binary Morgan",
+  "structure_policy": "As provided; neutral examples; stereo retained; no salt stripping",
+  "molecules": 6,
+  "assertions": "passed",
+  "limitations": [
+    "Not a predictive model or benchmark.",
+    "Six selected molecules do not define a meaningful scaffold split.",
+    "Browser demo uses a separate toy WL/FNV algorithm."
+  ]
+}

@@ -3,6 +3,7 @@
 本页是 2026–2027 学年的课程资料入口。教师上传当年课件的 PDF；学生维护各章的传承题和更新引文。每项修改应通过 Pull Request 完成，使后续学生能够看到来源和演变过程。
 
 - [本学年课程 PPT（PDF）](#/resources/annual/2026-2027/ppt/README)
+- <a href="https://github.com/yoimiya-610/intelligent-analytical-chemistry/blob/ch06/information-preservation-issue-4/resources/annual/2026-2027/presentations/README.md" data-ch06-site-href="#/resources/annual/2026-2027/presentations/README">学生小组汇报材料</a>
 - [留给下一届的传承题](#/resources/annual/2026-2027/questions/README)
 - [本年度新增与修订引文](#/resources/annual/2026-2027/references/README)
 

@@ -1,0 +1,7 @@
+﻿split,seed,n_test,n_cyclic,n_acyclic,representative_seed
+random,42,224,172,52,42
+random,43,224,161,63,43
+random,44,224,167,57,44
+scaffold,42,316,0,316,42
+scaffold,43,224,224,0,43
+scaffold,44,316,0,316,42

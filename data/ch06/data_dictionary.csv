@@ -1,0 +1,13 @@
+field,type,unit,source,meaning,limitations
+input_SMILES,string,none,case_study.py fixed cases,原始结构表示,保留输入立体信息但不代表实验样品状态
+canonical_isomeric_SMILES,string,none,RDKit,工具规范化的结构身份,跨工具包规范化规则可能不同
+MW_g_mol,float,g/mol,RDKit MolWt,平均分子量,不是单同位素精确质量
+HBD,integer,count,RDKit NumHDonors,规则氢键供体数,不是实际氢键数
+HBA,integer,count,RDKit NumHAcceptors,规则氢键受体数,依赖质子化及规则定义
+TPSA_A2,float,angstrom^2,RDKit TPSA,拓扑极性表面积,不是构象溶剂可及面积
+Tanimoto_binary,float,dimensionless,RDKit Morgan,二值位向量交并比,依赖radius fpSize includeChirality
+measured_logS,float,log10(mol/L),DeepChem ESOL processed table,实验水溶解度标签,缺少每条温度pH晶型元数据
+predicted_logS,float,log10(mol/L),本作业固定基线,留出集预测,不是实验值或适用域保证
+scaffold,string,none,RDKit Murcko,不含手性Murcko骨架,无环分子统一ACYCLIC组
+nearest_train_tanimoto,float,dimensionless,训练集Morgan,测试样本最近训练邻居相似度,不是概率或误差置信度
+seed,integer,none,预先指定42/43/44,划分随机种子,不确定度仅为划分波动

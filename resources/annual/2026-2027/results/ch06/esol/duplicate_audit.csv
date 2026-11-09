@@ -1,0 +1,12 @@
+﻿line,canonical_smiles,first_id,kept_logS,excluded_logS,absolute_difference,policy
+278,OCC(O)C(O)C(O)C(O)CO,ESOL-0234,0.06,1.09,1.03,keep_first_no_averaging
+467,CCC1(c2ccccc2)C(=O)NC(=O)NC1=O,ESOL-0324,-2.322,-2.322,0.0,keep_first_no_averaging
+502,CCOP(=S)(OCC)SC(CCl)N1C(=O)c2ccccc2C1=O,ESOL-0261,-6.34,-6.34,0.0,keep_first_no_averaging
+556,Brc1ccc2ccccc2c1,ESOL-0223,-4.4,-4.4,0.0,keep_first_no_averaging
+657,CC12CCC3C(CCC4CC(O)CCC43C)C1CCC2=O,ESOL-0233,-4.16,-4.402,0.242,keep_first_no_averaging
+781,CCC1(CCC(C)C)C(=O)NC(=O)NC1=O,ESOL-0148,-2.468,-2.658,0.18999999999999995,keep_first_no_averaging
+824,Cc1ncc([N+](=O)[O-])n1CCO,ESOL-0704,-1.22,-1.26,0.040000000000000036,keep_first_no_averaging
+827,CCC1(C(C)C)C(=O)NC(=O)NC1=O,ESOL-0702,-2.21,-2.148,0.06199999999999983,keep_first_no_averaging
+978,CC12CCC(CC1)C(C)(C)O2,ESOL-0214,-1.64,-1.74,0.10000000000000009,keep_first_no_averaging
+1021,Clc1ccc(C(c2ccc(Cl)cc2)C(Cl)Cl)cc1,ESOL-0451,-7.2,-7.2,0.0,keep_first_no_averaging
+1071,COc1ccccc1O,ESOL-0681,-1.96,-1.96,0.0,keep_first_no_averaging

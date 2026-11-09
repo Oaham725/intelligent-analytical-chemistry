@@ -1,34 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
-<rect width="100%" height="100%" fill="#ffffff"/>
-<style>.edge{stroke:#89a7c5;stroke-width:4}.node{fill:#eef4fa;stroke:#345a8a;stroke-width:3}.core{fill:#345a8a}.t{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:#18324b;font-size:23px}.ct{font-family:"Noto Sans CJK SC","PingFang SC",sans-serif;text-anchor:middle;fill:white;font-weight:700;font-size:27px}</style>
-<line class="edge" x1="800" y1="520" x2="800.0" y2="170.0"/>
-<line class="edge" x1="800" y1="520" x2="1237.8" y2="301.8"/>
-<line class="edge" x1="800" y1="520" x2="1346.0" y2="597.9"/>
-<line class="edge" x1="800" y1="520" x2="1043.0" y2="835.3"/>
-<line class="edge" x1="800" y1="520" x2="557.0" y2="835.3"/>
-<line class="edge" x1="800" y1="520" x2="254.0" y2="597.9"/>
-<line class="edge" x1="800" y1="520" x2="362.2" y2="301.8"/>
-<rect class="core" x="520" y="425" width="560" height="190" rx="28"/>
-<text class="ct" x="800" y="520">分子表征与结构—性质关系</text>
-<rect class="node" x="595.0" y="102.0" width="410" height="136" rx="20"/>
-<text class="t" x="800.0" y="153.0">6.1 从QSAR/QSPR到分子</text>
-<text class="t" x="800.0" y="187.0">机器学习</text>
-<rect class="node" x="1032.8" y="233.8" width="410" height="136" rx="20"/>
-<text class="t" x="1237.8" y="284.8">6.2 Hammett、Taft、</text>
-<text class="t" x="1237.8" y="318.8">Sterimol与Hansch模型</text>
-<rect class="node" x="1141.0" y="529.9" width="410" height="136" rx="20"/>
-<text class="t" x="1346.0" y="580.9">6.3 全局、拓扑、电子与光谱描述</text>
-<text class="t" x="1346.0" y="614.9">符</text>
-<rect class="node" x="838.0" y="767.3" width="410" height="136" rx="20"/>
-<text class="t" x="1043.0" y="818.3">6.4 SMILES、分子指纹与T</text>
-<text class="t" x="1043.0" y="852.3">animoto相似性</text>
-<rect class="node" x="352.0" y="767.3" width="410" height="136" rx="20"/>
-<text class="t" x="557.0" y="818.3">6.5 二维分子图、消息传递与图级</text>
-<text class="t" x="557.0" y="852.3">预测</text>
-<rect class="node" x="49.0" y="529.9" width="410" height="136" rx="20"/>
-<text class="t" x="254.0" y="580.9">6.6 三维构象、对称性、不变性与</text>
-<text class="t" x="254.0" y="614.9">等变性</text>
-<rect class="node" x="157.2" y="233.8" width="410" height="136" rx="20"/>
-<text class="t" x="362.2" y="284.8">6.7 骨架划分、化学空间与表示适</text>
-<text class="t" x="362.2" y="318.8">用域</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="730" viewBox="0 0 1080 730" role="img" aria-labelledby="title desc">
+ <title id="title">第六章：结构表示如何保留任务相关化学信息</title>
+ <desc id="desc">先定义性质与条件，再选择结构编码；用乙醇与二甲醚的分子量碰撞说明信息丢失不可被回归器恢复，最后用独立划分和失败样本检验。全部文字、节点和箭头可编辑。</desc>
+ <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#537552"/></marker></defs>
+ <rect width="1080" height="730" rx="16" fill="#f7f8f0"/>
+ <g font-family="Times New Roman,Microsoft YaHei,sans-serif" fill="#254b3d">
+  <text x="45" y="50" font-size="24" font-weight="700">从性质终点出发，决定哪些差异必须保留</text>
+  <text x="45" y="79" font-size="13" fill="#71856b">S：结构　z：分子状态　c：测量条件　φ：编码　f：预测模型　y：明确的性质终点</text>
+  <rect x="40" y="109" width="1000" height="75" rx="8" fill="#e1ead3" stroke="#afc49a"/>
+  <text x="60" y="138" font-size="17" font-weight="600">问题卡：预测什么、在什么条件下、为谁使用？</text>
+  <text x="60" y="165" font-size="14">例如 logS = log₁₀(S / mol·L⁻¹)；必须记录 pH、温度、盐型、实验协议与未来使用边界。</text>
+  <g stroke="#b3c5a1" fill="#fffef7"><rect x="40" y="221" width="263" height="151" rx="7"/><rect x="405" y="221" width="268" height="151" rx="7"/><rect x="775" y="221" width="265" height="151" rx="7"/></g>
+  <g font-size="17" font-weight="600"><text x="60" y="251">结构＋状态＋条件</text><text x="426" y="251">表示 φ(S,z,c)</text><text x="797" y="251">模型 f → 预测 ŷ</text></g>
+  <g font-size="14"><text x="60" y="281">S：元素、连接、键级</text><text x="60" y="309">z：手性、质子化、构象</text><text x="60" y="337">c：pH、溶剂、温度</text><text x="426" y="281">描述符：物理化学先验</text><text x="426" y="309">分子图：节点＋边属性</text><text x="426" y="337">几何：距离、方向、状态集合</text><text x="797" y="281">输入相同 → 确定性输出相同</text><text x="797" y="309">输入没有记录的差异</text><text x="797" y="337">无法仅靠加深模型找回</text></g>
+  <g stroke="#537552" stroke-width="2" marker-end="url(#arrow)"><path d="M304 292H392"/><path d="M674 292H762"/><path d="M539 184V209"/></g>
+  <g font-size="12" fill="#7a8d71"><text x="330" y="276">编码</text><text x="700" y="276">学习</text></g>
+  <rect x="40" y="410" width="1000" height="132" rx="8" fill="#f6eadc" stroke="#d4b18d"/>
+  <text x="60" y="440" font-size="17" font-weight="600">可检查的碰撞：乙醇 C–C–O(H) 与二甲醚 C–O–C</text>
+  <text x="60" y="470" font-size="14">φ = 仅分子量：两者均为 46.07 g·mol⁻¹ → 无法区分；氢键供体数却分别为 1 与 0。</text>
+  <text x="60" y="498" font-size="14">φ = 带元素、氢数和连接的图：氧的邻接环境不同 → 可区分这对结构。</text>
+  <text x="60" y="525" font-size="12" fill="#956f4e">HBD 为结构规则计数；“能区分”不等于已能准确预测实验 logS，也不证明该表示对所有分子无损。</text>
+  <path d="M540 373V396" stroke="#537552" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="40" y="579" width="1000" height="105" rx="8" fill="#e5eddc" stroke="#b6c8a3"/>
+  <text x="60" y="609" font-size="17" font-weight="600">两条验证线：信息分辨能力 ＋ 未来场景中的预测能力</text>
+  <text x="60" y="638" font-size="14">对照与消融：关闭电荷 / 手性 / 几何，看哪些样本被合并；换任务后重新判断这些差异是否必要。</text>
+  <text x="60" y="665" font-size="14">独立验证：去重 → 训练内预处理 → 随机/骨架/时间划分 → 分层误差与失败样本 → 适用域判断。</text>
+  <path d="M540 543V566" stroke="#537552" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="45" y="713" font-size="11" fill="#7b8c71">边界：标量能量应对正旋转不变；力应等变。仅距离对镜像不敏感；手性任务须额外保留手性/环境信息。</text>
+ </g>
 </svg>

@@ -1,0 +1,4 @@
+# 本作业实际使用版本。从仓库根目录安装：python -m pip install -r code/ch06_exercises/requirements.txt
+rdkit==2026.9.1
+numpy==2.5.4
+matplotlib==3.11.2

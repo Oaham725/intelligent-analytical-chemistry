@@ -1,0 +1,7 @@
+﻿molecule_A,molecule_B,includeChirality,Tanimoto_binary
+ethanol,dimethyl_ether,False,0.1111111111111111
+E_2_butene,Z_2_butene,False,1.0
+lactic_A,lactic_B,False,1.0
+ethanol,dimethyl_ether,True,0.1111111111111111
+E_2_butene,Z_2_butene,True,0.42857142857142855
+lactic_A,lactic_B,True,0.6923076923076923

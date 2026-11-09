@@ -1,0 +1,3 @@
+# Preserve the published ESOL snapshot bytes, including its original whitespace,
+# so the recorded SHA256 is portable. Do not apply source-format cleanup here.
+/data/ch06/delaney-processed.csv -text -whitespace
