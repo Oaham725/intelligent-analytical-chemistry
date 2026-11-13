@@ -4,7 +4,7 @@
 
 **案例**　用物料衡算和 UV–Vis 测量驱动结晶紫褪色的自动加液实验。
 
-<a href="./assets/labs/g18/index.html" target="_blank" rel="noopener">运行离线实验</a> · <a href="#/code/ch18_uvvis/data/README">数据字典</a> · <a href="#/resources/annual/2026-2027/questions/README?id=ch18">G18 传承题</a>
+<a href="../assets/labs/g18/index.html" data-g18-site-href="./assets/labs/g18/index.html" target="_blank" rel="noopener">离线实验 HTML</a> · <a href="../code/ch18_uvvis/README.md" data-g18-site-href="#/code/ch18_uvvis/README">复现与验收</a> · <a href="../code/ch18_uvvis/data/README.md" data-g18-site-href="#/code/ch18_uvvis/data/README">数据字典</a> · <a href="../resources/annual/2026-2027/questions/README.md#ch18" data-g18-site-href="#/resources/annual/2026-2027/questions/README?id=ch18">G18 传承题</a>
 
 ## 1　90 s 时，泵应该加多少液？
 
@@ -107,6 +107,18 @@ $b_t$ 是两路共同基线，$\eta_t,\xi_t$ 表示噪声。$y_t-z_t$ 给出净�
 
 切换到净吸光度曲线，可以看到稀释贡献。切回剩余量曲线，可以看到加液时物质的量连续，之后反应更快。将剂量上限降到 0.20 mL，会得到“当前约束下无可行方案”。将故障改为决策时空白缺失，会暂停本次加液。将故障改为回执丢失，程序会停在体积待核对状态，不能用指令体积替代已确认输送体积。
 
+### 5.1　体积校正怎样改变终点判断
+
+取默认自动加液的同一组读数，每 5 s 采样，连续两次不高于 20% 才确认。先令 $r_A(t)=A_{\mathrm{net}}(t)/A_{\mathrm{net}}(0)$，再用泵回执校正体积，得到 $r_V(t)=r_A(t)V(t)/V(0)$。两种判据使用相同的加液轨迹和净吸光度，只有体积因子不同。
+
+| 终点判据 | 连续达标的两个采样时刻 / s | 确认时刻 / s |
+|---|---:|---:|
+| 仅用净吸光度比例 $r_A$ | 255、260 | 260 |
+| 用实际体积校正净吸光度比例 $r_V$ | 270、275 | 275 |
+| 程序的结晶紫剩余量估计 | 270、275 | 275 |
+
+这次仿真中，忽略体积校正会提前 **15 s** 确认。加液后 $V/V(0)=3.294/3.000$，净吸光度比例为 20% 时，对应的体积校正比例为 21.96%。校正比例在 260 s 单次低于阈值，265 s 又高于阈值，随后才连续两次达标。最后一行用于核对程序的实际确认时刻。终点对照可由 <a href="../code/ch18_uvvis/README.md" data-g18-site-href="#/code/ch18_uvvis/README">复现脚本</a> 生成。
+
 ## 6　怎样把原型接到真实自动化实验
 
 先用同一台仪器的稳定标准核查光学线性和同步空白，再在多个 OH⁻ 水平、多个独立批次中拟合与验证反应模型。每次加液需要独立计量，并记录混合所需时间。留出整条未参与校准的加液实验，从加液前的测量预测加液后的净吸光度和终点。可比较曲线 RMSE、终点时间误差、相同剂量的重复性以及泵回执与独立计量的一致性。
@@ -117,10 +129,10 @@ $b_t$ 是两路共同基线，$\eta_t,\xi_t$ 表示噪声。$y_t-z_t$ 给出净�
 
 ## 7　课堂演示与复现
 
-1. 打开 <a href="./assets/labs/g18/index.html" target="_blank" rel="noopener">运行离线实验</a>，以默认时限运行一次，查看候选剂量和泵回执。
+1. 在课程页打开 <a href="../assets/labs/g18/index.html" data-g18-site-href="./assets/labs/g18/index.html" target="_blank" rel="noopener">离线实验 HTML</a>。从 GitHub 查看时，下载 HTML 后用浏览器打开。以默认时限运行一次，查看候选剂量和泵回执。
 2. 先看剩余量，再切到净吸光度，解释加液前后的观测变化。
 3. 降低剂量上限或切换泵回执丢失，解释为什么流程进入监测或暂停状态。
-4. 在项目目录运行 \`node code/ch18_uvvis/reproduce.cjs\`，重建校准、决策、时序和事件 CSV。修改模型后运行 \`node code/ch18_uvvis/build-lab.cjs\` 重新嵌入 HTML。
+4. 在仓库根目录运行 `node code/ch18_uvvis/reproduce.cjs`，重建校准、决策、时序、终点对照和事件 CSV。修改模型后运行 `node code/ch18_uvvis/build-lab.cjs` 重新嵌入 HTML。
 
 ## 参考文献
 

@@ -81,7 +81,7 @@
 
 ### ch18
 
-<a href="#/docs/ch18-uvvis">结晶紫自动化 UV–Vis 实验</a> · <a href="./assets/labs/g18/index.html" target="_blank" rel="noopener">运行离线实验</a>
+<a href="../../../../docs/ch18-uvvis.md" data-g18-site-href="#/docs/ch18-uvvis">结晶紫自动化 UV–Vis 实验</a> · <a href="../../../../assets/labs/g18/index.html" data-g18-site-href="./assets/labs/g18/index.html" target="_blank" rel="noopener">离线实验 HTML</a>
 
 #### 题一　稀释、反应和仪器信号
 
@@ -105,4 +105,6 @@
 
 控制器已经下发加液命令，样品吸光度随后下降，但没有收到泵回执。如何处理体积、状态和下一个动作？
 
-**答案要点**　同一吸光度下降可由稀释、反应或基线引起。将加液后体积标为待核对，暂停控制和达标判断。依据命令编号核对泵日志或独立计量，确认实际执行量和时间，再重建投料账与状态。可用 <a href="./assets/labs/g18/index.html" target="_blank" rel="noopener">运行离线实验</a> 中的泵回执故障演示。
+**答案要点**　同一吸光度下降可由稀释、反应或基线引起。将加液后体积标为待核对，暂停控制和达标判断。依据命令编号核对泵日志或独立计量，确认实际执行量和时间，再重建投料账与状态。可用 <a href="../../../../assets/labs/g18/index.html" data-g18-site-href="./assets/labs/g18/index.html" target="_blank" rel="noopener">离线实验 HTML</a> 中的泵回执故障演示。
+
+贡献记录见 [PR #29](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/29)。

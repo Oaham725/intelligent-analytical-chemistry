@@ -25,8 +25,8 @@ assert.equal(auto.events.find(event => event.type === 'receipt').commandId,
   auto.events.find(event => event.type === 'command').commandId);
 assert.equal(auto.receipt.beforeCvNmoles, auto.receipt.afterCvNmoles);
 assert.ok(Math.abs(auto.receipt.afterA / auto.receipt.beforeA - 3 / 3.294) < 1e-12);
-assert.ok(auto.confirmationTime <= lab.defaults.deadline);
-assert.ok(reference.confirmationTime > lab.defaults.deadline);
+assert.equal(auto.confirmationTime, 275);
+assert.equal(reference.confirmationTime, 415);
 assert.equal(blankFault.auto.action, 'bad-reading');
 assert.ok(!blankFault.auto.events.some(event => event.type === 'command'));
 assert.equal(receiptFault.auto.action, 'receipt-lost');
@@ -38,6 +38,32 @@ const advanced = lab.advance(state, 90, fit.rate);
 assert.ok(Math.abs((state.oh - advanced.oh) - (state.cv - advanced.cv)) < 1e-17);
 const exact = lab.advance(advanced, lab.targetDelay(advanced, state.cv * 0.2, fit.rate), fit.rate);
 assert.ok(Math.abs(exact.cv - state.cv * 0.2) < 1e-17);
+
+function thresholdPair(samples, fractionAt) {
+  let consecutive = 0;
+  for (const [index, sample] of samples.entries()) {
+    const fraction = fractionAt(sample);
+    consecutive = Number.isFinite(fraction) && fraction <= lab.config.target ? consecutive + 1 : 0;
+    if (consecutive === lab.config.confirmSamples) {
+      return [samples[index - consecutive + 1].time, sample.time];
+    }
+  }
+  return [null, null];
+}
+
+// Compare the endpoint rules on the same default measurements and dose history.
+const [initialSample] = auto.samples;
+assert.ok(initialSample.net > 0 && initialSample.knownVolumeMl > 0);
+assert.ok(auto.samples.every(sample =>
+  Number.isFinite(sample.net) && Number.isFinite(sample.knownVolumeMl)));
+const absorbanceRatio = sample => sample.net / initialSample.net;
+const correctedRatio = sample => absorbanceRatio(sample) * sample.knownVolumeMl / initialSample.knownVolumeMl;
+const endpoints = [
+  ['net_absorbance_ratio', ...thresholdPair(auto.samples, absorbanceRatio)],
+  ['volume_corrected_absorbance_ratio', ...thresholdPair(auto.samples, correctedRatio)],
+  ['controller_cv_fraction', ...thresholdPair(auto.samples, sample => sample.estimatedFraction)]
+];
+assert.deepEqual(endpoints.map(row => row.slice(1)), [[255, 260], [270, 275], [270, auto.confirmationTime]]);
 
 function writeCSV(name, headers, rows) {
   const cells = rows.map(row => row.map(value => value ?? '').join(','));
@@ -59,6 +85,7 @@ writeCSV('default-timeseries.csv',
   auto.samples.map((row, index) => [row.time,fixed(row.raw),fixed(row.blank),fixed(row.net),fixed(reference.samples[index].net),
     fixed(row.estimatedFraction),fixed(reference.samples[index].estimatedFraction),fixed(row.actualFraction),
     fixed(reference.samples[index].actualFraction),fixed(row.knownVolumeMl),fixed(row.estimatedOhMm)]));
+writeCSV('endpoint-comparison.csv', ['method','first_sample_in_confirmed_pair_s','confirmation_s'], endpoints);
 writeCSV('events.csv', ['case','time_s','event','value','command_id'],
   [['default',auto],['blank_lost',blankFault.auto],['receipt_lost',receiptFault.auto],['small_budget',smallBudget.auto]]
     .flatMap(([label, run]) => run.events.map(event => [label,event.time,event.type,event.value,event.commandId])));

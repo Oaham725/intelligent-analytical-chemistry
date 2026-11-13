@@ -407,6 +407,9 @@
   }
 
   function mountLabs() {
+    document.querySelectorAll('a[data-g18-site-href]').forEach(function (link) {
+      link.setAttribute('href', link.getAttribute('data-g18-site-href'));
+    });
     var labs = document.querySelectorAll('.interactive-lab[data-lab]');
     labs.forEach(function (root) {
       if (root.getAttribute('data-mounted') === 'true') return;
