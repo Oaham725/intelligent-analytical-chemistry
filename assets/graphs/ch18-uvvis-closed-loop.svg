@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 392" role="img" aria-labelledby="title desc">
+<title id="title">自动化结晶紫实验的实体设备与数字端</title>
+<desc id="desc">加液泵向反应池加碱，UV–Vis 记录样品和空白，数字端更新状态、推演剂量并下发加液指令，再用泵回执和下一次测量更新状态。</desc>
+<defs>
+<marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" viewBox="0 0 8 8"><path d="M0 0L8 4L0 8z" fill="#5e5378"/></marker>
+<style>
+text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#29253c}
+.head{font-size:22px;font-weight:700}.sub{font-size:16px;fill:#4d566e}.section{font-size:19px;font-weight:700;fill:#5a3b92}
+.arr{stroke:#5e5378;stroke-width:2.5;fill:none;marker-end:url(#a)}
+</style>
+</defs>
+<rect width="1120" height="392" rx="18" fill="#f8f6fc"/>
+<text x="30" y="35" class="section">实体实验的设备设计</text>
+<rect x="30" y="61" width="262" height="77" rx="8" fill="#ece4f9"/>
+<rect x="424" y="61" width="262" height="77" rx="8" fill="#ece4f9"/>
+<rect x="818" y="61" width="272" height="77" rx="8" fill="#ece4f9"/>
+<text x="50" y="93" class="head">计量加液泵</text><text x="50" y="118" class="sub">输送碱液，记录实际体积</text>
+<text x="444" y="93" class="head">搅拌反应池</text><text x="444" y="118" class="sub">CV⁺、OH⁻、体积与温度</text>
+<text x="838" y="93" class="head">UV–Vis 测量</text><text x="838" y="118" class="sub">590 nm 样品与参比空白</text>
+<path class="arr" d="M293 100H416"/><text x="354" y="86" text-anchor="middle" class="sub">加液</text>
+<path class="arr" d="M687 100H810"/><text x="749" y="86" text-anchor="middle" class="sub">吸光度</text>
+<text x="30" y="204" class="section">数字端</text>
+<rect x="30" y="225" width="262" height="78" rx="8" fill="#e4f2ee"/>
+<rect x="424" y="225" width="262" height="78" rx="8" fill="#e4f2ee"/>
+<rect x="818" y="225" width="272" height="78" rx="8" fill="#e4f2ee"/>
+<text x="50" y="257" class="head">控制器</text><text x="50" y="283" class="sub">按时限和容积选择剂量</text>
+<text x="444" y="257" class="head">世界模型</text><text x="444" y="283" class="sub">用物理方程推演候选剂量</text>
+<text x="838" y="257" class="head">状态同步</text><text x="838" y="283" class="sub">融合仪器读数与泵回执</text>
+<path class="arr" d="M817 266H694"/><path class="arr" d="M423 266H300"/>
+<path class="arr" d="M950 139V217"/><text x="963" y="182" class="sub">测量数据</text>
+<path class="arr" d="M131 224V146"/><text x="143" y="182" class="sub">加液指令</text>
+<path class="arr" d="M31 113H16V350H952V311" stroke-dasharray="6 5"/>
+<text x="480" y="374" text-anchor="middle" class="sub">实际输送体积和时间随命令编号回写状态</text>
+</svg>

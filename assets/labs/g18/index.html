@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G18 自动化 UV–Vis 虚拟实验</title>
+<style>
+:root{font-family:Inter,system-ui,"Microsoft YaHei","Noto Sans CJK SC",sans-serif;color:#23243a;background:#f7f6fb;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;line-height:1.55}
+.wrap{width:min(1090px,100% - 36px);margin:auto}
+header{background:#231936;color:#fff;padding:28px 0;border-bottom:5px solid #9775d5}
+header small{color:#e1d0fa;font-weight:700}
+h1{margin:5px 0 8px;font-size:clamp(1.55rem,4.2vw,2.75rem);line-height:1.2}
+header p{max-width:780px;margin:0;color:#eee7f6}
+main{padding:19px 0 32px}
+h2{margin:0 0 8px;font-size:1.12rem}
+p{margin:6px 0}.note{font-size:.88rem;color:#515972}
+section{margin:0 0 13px;padding:15px 18px;border:1px solid #dedbe9;border-radius:12px;background:#fff}
+.controls,.outputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 20px}
+.field{display:grid;grid-template-columns:1fr auto;gap:5px 8px;align-items:center}
+.field label{font-size:.9rem}.field select{grid-column:1/-1;min-width:0}
+input[type=range]{width:100%;grid-column:1/-1;margin:0;accent-color:#6040a4}
+output,.number{font-variant-numeric:tabular-nums;font-weight:720;color:#5d3498}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.chart-controls{margin-top:0}
+#chartTime{margin-left:auto;font-variant-numeric:tabular-nums}
+button,select{font:inherit;padding:.34rem .6rem;border:1px solid #cfc6df;border-radius:6px;background:#fff;color:#25233b}
+button{cursor:pointer}button:hover{background:#f1eaf8}
+button.primary{background:#603ca7;color:#fff;border-color:#603ca7}
+button.primary:hover{background:#4d2f86}button:disabled{opacity:.55;cursor:default}
+:focus-visible{outline:3px solid #126a62;outline-offset:2px}
+.outputs{padding:9px 0 0}.outputs div{border-top:2px solid #bba8db;padding:6px 0}
+.outputs .number{font-size:1.45rem}
+.alert{background:#fff1dc;border-left:3px solid #aa661a;color:#673c11;padding:7px 10px}
+figure{margin:0}svg{display:block;width:100%;height:340px}
+.legend{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:7px;font-size:.78rem;color:#46516d}
+.legend span::before{content:"";display:inline-block;width:14px;vertical-align:middle;margin-right:5px;border-top:3px solid var(--ink)}
+.legend .dashed::before{border-top-style:dashed}
+table{width:100%;table-layout:fixed;border-collapse:collapse;text-align:left;margin:8px 0;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{padding:6px 8px;border-bottom:1px solid #e5e1ec}th{background:#ede8f6}
+tr.chosen{background:#eee7fa;color:#4e2a8a;font-weight:750}
+ol{padding-left:1.4rem;margin:7px 0}li{padding:2px 0}
+details{margin:14px 0}summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid #ddd8e9;padding:9px 0 17px;font-size:.81rem;color:#535971}
+@media(max-width:570px){.wrap{width:calc(100% - 24px)}section{padding:12px}.controls{grid-template-columns:1fr}.outputs{gap:8px}.outputs .number{font-size:1.08rem}th,td{padding:5px 3px;font-size:.8rem}svg{height:280px}}
+@media(max-width:620px){#chartTime{flex-basis:100%;margin-left:0}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<small>G18 世界模型与化学数字孪生</small>
+<h1>结晶紫自动化 UV–Vis 虚拟实验</h1>
+<p>在 90 s 读取样品和空白，预测不同加液体积的效果，再让模拟泵执行符合时限的最小剂量。传感器、泵及其回执均由仿真生成。</p>
+</div></header>
+<main class="wrap">
+<section>
+<h2>实验目标与约束</h2>
+<p class="note">在截止时刻前确认结晶紫剩余物质的量 ≤ 20%。每 5 s 读取一次，连续两次达标后确认。</p>
+<div class="controls">
+<div class="field"><label for="deadline">截止时刻</label><output for="deadline" id="deadlineText"></output><input id="deadline" type="range" min="180" max="440" step="5" value="290"></div>
+<div class="field"><label for="cap">允许的最大加液量</label><output for="cap" id="capText"></output><input id="cap" type="range" min="0" max="6" step="1" value="6"></div>
+<div class="field"><label for="fault">模拟设备状态</label><select id="fault"><option value="none">正常</option><option value="blank">决策时空白缺失</option><option value="receipt">加液后泵回执丢失</option></select></div>
+</div>
+<div class="actions">
+<button type="button" class="primary" id="run">运行自动实验</button>
+<button type="button" id="reset">重置</button>
+<button type="button" id="download">下载测量 CSV</button>
+<button type="button" id="downloadEvents">下载事件 CSV</button>
+</div>
+</section>
+<section id="trace">
+<div class="actions chart-controls">
+<label for="channel"><strong>查看轨迹</strong></label>
+<select id="channel"><option value="fraction">结晶紫剩余量</option><option value="net">空白扣除后的吸光度</option><option value="raw">样品与空白原始读数</option></select>
+<span class="note" id="chartTime"></span>
+</div>
+<div class="legend" id="legend"></div>
+<figure><svg id="chart" role="img" aria-label="自动实验与无加液参照轨迹"></svg></figure>
+<p class="note" id="chartNote"></p>
+</section>
+<section>
+<h2>运行结果</h2>
+<p class="note" id="status" aria-live="polite"></p>
+<div class="outputs">
+<div><span class="note">下发的加液量</span><div class="number" id="command">—</div></div>
+<div><span class="note">泵回执体积</span><div class="number" id="receipt">—</div></div>
+<div><span class="note">剩余量达标确认</span><div class="number" id="confirmed">—</div></div>
+</div>
+<p id="dilution" class="note" hidden></p>
+</section>
+<section>
+<h2>90 s 时的方案比较</h2>
+<p class="note">较慢预测按拟合速率的 94% 和指令体积的 98% 计算。再留 10 s 给终点确认。以满足约束的最小剂量为目标。</p>
+<p id="emptyPlans" class="note" hidden></p>
+<table aria-label="候选加液方案" id="planTable">
+<thead><tr><th>加液 / mL</th><th>混合后 OH⁻ / mM</th><th>名义到阈值 / s</th><th>较慢到阈值 / s</th><th>满足约束</th></tr></thead>
+<tbody id="plans"></tbody>
+</table>
+</section>
+<section>
+<h2>实验事件记录</h2>
+<ol id="events"></ol>
+</section>
+<details>
+<summary>物理模型与参数</summary>
+<p>反应前后按 CV⁺ 和 OH⁻ 等物质的量消耗进行衡算。加液瞬间 CV⁺ 物质的量连续，体积与 OH⁻ 的物质的量按回执更新。吸光度与 CV⁺ 浓度按 Beer–Lambert 定律关联。</p>
+<p>样品与空白用 590 nm 模拟读数。已知浓度的合成标准估计光学增益，5 条独立的合成动力学轨迹估计速率。温度固定、完全混合和两路共基线是本实验的模型假设。实物使用需另做校准与干预验证。</p>
+</details>
+<noscript><p>请启用 JavaScript 运行离线实验。</p></noscript>
+</main>
+<footer><div class="wrap">G18 教学仿真 · 590 nm · 0–480 s</div></footer>
+<script>
+// BEGIN SHARED G18 PHYSICAL MODEL
+'use strict';
+
+const config = Object.freeze({
+  dt: 5,
+  duration: 480,
+  decisionTime: 90,
+  initialVolume: 0.003,
+  volumeLimit: 0.0036,
+  initialCV: 10e-6,
+  initialOH: 0.010,
+  stockOH: 0.100,
+  target: 0.20,
+  deliverFraction: 0.98,
+  rateFraction: 0.94,
+  confirmSamples: 2
+});
+const doseChoices = Object.freeze([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]);
+const simulated = Object.freeze({ gain: 80000, rate: 0.4, wavelength: 590, temperature: 294 });
+const defaults = Object.freeze({ deadline: 290, maxDose: 0.6, fault: 'none' });
+
+function randomFor(seed) {
+  let value = seed >>> 0;
+  return () => {
+    value = (Math.imul(value, 1664525) + 1013904223) >>> 0;
+    return (value + 0.5) / 4294967296;
+  };
+}
+
+function normal(random) {
+  return Math.sqrt(-2 * Math.log(random())) * Math.cos(2 * Math.PI * random());
+}
+
+function makeState(oh = config.initialOH) {
+  return { volume: config.initialVolume, cv: config.initialCV * config.initialVolume,
+    oh: oh * config.initialVolume };
+}
+
+function addDose(state, doseMl) {
+  const dv = doseMl / 1000;
+  return { volume: state.volume + dv, cv: state.cv, oh: state.oh + config.stockOH * dv };
+}
+
+function advance(state, seconds, rate) {
+  const smaller = Math.min(state.cv, state.oh) / state.volume;
+  const larger = Math.max(state.cv, state.oh) / state.volume;
+  if (seconds <= 0 || smaller <= 0) return { ...state };
+  const difference = larger - smaller;
+  const ratio = (smaller / larger) * Math.exp(-rate * difference * seconds);
+  const remaining = difference < 1e-13
+    ? smaller / (1 + rate * smaller * seconds)
+    : difference * ratio / (1 - ratio);
+  const extent = Math.max(0, smaller - remaining) * state.volume;
+  return { volume: state.volume, cv: Math.max(0, state.cv - extent), oh: Math.max(0, state.oh - extent) };
+}
+
+function ideal(state, gain) {
+  return gain * state.cv / state.volume;
+}
+
+function targetDelay(state, targetMoles, rate) {
+  if (state.cv <= targetMoles) return 0;
+  const a = state.cv / state.volume;
+  const b = state.oh / state.volume;
+  const g = targetMoles / state.volume;
+  const d = b - a;
+  if (g + d <= 0) return Infinity;
+  return Math.abs(d) < 1e-13
+    ? (1/g - 1/a) / rate
+    : (Math.log(a/b) - Math.log(g/(g+d))) / (rate*d);
+}
+
+function measure(signal, time, random) {
+  const baseline = 0.018 + 0.000075 * time;
+  const raw = signal + baseline + 0.0026 * normal(random);
+  const blank = baseline + 0.0016 * normal(random);
+  return { raw, blank, net: raw - blank };
+}
+
+function calibrationData() {
+  const random = randomFor(180314);
+  const standards = [];
+  for (const c of [0, 2, 4, 6, 8, 10]) {
+    for (let repeat = 1; repeat <= 3; repeat++) {
+      standards.push({ cvMicromolar: c, repeat, ...measure(simulated.gain * c * 1e-6, 0, random) });
+    }
+  }
+  const kinetics = [];
+  for (const [i, oh] of [0.008, 0.012, 0.016, 0.020, 0.025].entries()) {
+    const initial = makeState(oh);
+    const rng = randomFor(180500 + i * 13);
+    for (let time = 0; time <= 240; time += 10) {
+      const state = advance(initial, time, simulated.rate);
+      kinetics.push({ batch: i + 1, ohMm: 1000 * oh, time, ...measure(ideal(state, simulated.gain), time, rng) });
+    }
+  }
+  return { standards, kinetics };
+}
+
+function calibrate(data = calibrationData()) {
+  let cc = 0, ca = 0;
+  for (const row of data.standards) {
+    const concentration = row.cvMicromolar * 1e-6;
+    cc += concentration * concentration;
+    ca += concentration * row.net;
+  }
+  const gain = ca / cc;
+  function error(rate) {
+    let sum = 0;
+    for (const row of data.kinetics) {
+      const initial = makeState(row.ohMm / 1000);
+      const predicted = ideal(advance(initial, row.time, rate), gain);
+      sum += (row.net - predicted) ** 2;
+    }
+    return sum;
+  }
+  let left = 0.15, right = 0.75;
+  for (let i = 0; i < 56; i++) {
+    const a = (2 * left + right) / 3;
+    const b = (left + 2 * right) / 3;
+    if (error(a) < error(b)) right = b;
+    else left = a;
+  }
+  const rate = (left + right) / 2;
+  return { gain, rate, rmse: Math.sqrt(error(rate) / data.kinetics.length) };
+}
+
+function hasReading(measurement) {
+  return Number.isFinite(measurement.blank) && measurement.raw >= 0 &&
+    measurement.raw <= 1.10 && measurement.net >= -0.012;
+}
+
+function assimilate(prediction, previousCv, initial, totalMl, reading, calibration) {
+  if (!hasReading(reading)) return prediction;
+  const observedMoles = reading.net * prediction.volume / calibration.gain;
+  const estimate = 0.35 * prediction.cv + 0.65 * observedMoles;
+  const cv = Math.min(previousCv, Math.max(0, estimate));
+  const dosedOh = config.stockOH * totalMl / 1000;
+  return { volume: prediction.volume, cv, oh: initial.oh + dosedOh - (initial.cv - cv) };
+}
+
+function plan(state, initialCv, calibration, settings) {
+  return doseChoices.filter(doseMl => doseMl <= settings.maxDose + 1e-12)
+    .map(doseMl => {
+      const nominalState = addDose(state, doseMl);
+      const lowerDeliveryState = addDose(state, doseMl * config.deliverFraction);
+      const goal = initialCv * config.target;
+      const nominalTime = config.decisionTime + targetDelay(nominalState, goal, calibration.rate);
+      const conservativeTime = config.decisionTime +
+        targetDelay(lowerDeliveryState, goal, config.rateFraction * calibration.rate);
+      const confirmationMargin = config.confirmSamples * config.dt;
+      return {
+        doseMl, volumeMl: nominalState.volume * 1000,
+        ohMm: 1000 * nominalState.oh / nominalState.volume,
+        nominalTime, conservativeTime,
+        allowed: nominalState.volume <= config.volumeLimit + 1e-12 &&
+          conservativeTime + confirmationMargin <= settings.deadline
+      };
+    });
+}
+
+function run(calibration, settings = defaults, execute = true) {
+  const initial = makeState();
+  const target = initial.cv * config.target;
+  const random = randomFor(180611);
+  const samples = [];
+  const events = [];
+  let plant = { ...initial }, estimate = { ...initial };
+  let twinValid = true;
+  let totalDelivered = 0;
+  let confirmationTime = null;
+  let confirmations = 0;
+  let action = 'monitor';
+  let candidates = [];
+  let selected = null;
+  let receipt = null;
+  const log = (time, type, value = null, commandId = null) => events.push({ time, type, value, commandId });
+
+  log(0, 'start');
+  for (let time = 0; time <= config.duration; time += config.dt) {
+    if (time > 0) {
+      plant = advance(plant, config.dt, simulated.rate);
+      const previousCv = estimate.cv;
+      estimate = advance(estimate, config.dt, calibration.rate);
+      const measurement = measure(ideal(plant, simulated.gain), time, random);
+      if (settings.fault === 'blank' && time === config.decisionTime) {
+        measurement.blank = null;
+        measurement.net = null;
+      }
+      if (twinValid) estimate = assimilate(estimate, previousCv, initial, totalDelivered, measurement, calibration);
+      addSample(time, measurement);
+      if (time === config.decisionTime && execute) handleDecision(time, measurement);
+    } else {
+      addSample(time, measure(ideal(plant, simulated.gain), time, random));
+    }
+  }
+
+  function addSample(time, measurement) {
+    const valid = twinValid && hasReading(measurement);
+    const fraction = twinValid ? estimate.cv / initial.cv : null;
+    if (valid && estimate.cv <= target) confirmations++;
+    else confirmations = 0;
+    if (confirmationTime === null && confirmations >= config.confirmSamples) {
+      confirmationTime = time;
+      log(time, 'confirmed');
+    }
+    samples.push({ time, ...measurement,
+      actualFraction: plant.cv / initial.cv,
+      estimatedFraction: fraction,
+      knownVolumeMl: twinValid ? 1000 * estimate.volume : null,
+      estimatedOhMm: twinValid ? 1000 * estimate.oh / estimate.volume : null
+    });
+  }
+
+  function handleDecision(time, measurement) {
+    log(time, 'read');
+    if (!hasReading(measurement)) {
+      action = 'bad-reading';
+      log(time, 'bad-reading');
+      return;
+    }
+    candidates = plan(estimate, initial.cv, calibration, settings);
+    log(time, 'plan');
+    selected = candidates.find(candidate => candidate.allowed) ?? null;
+    if (!selected) {
+      action = 'no-feasible';
+      log(time, 'no-feasible');
+      return;
+    }
+    if (selected.doseMl === 0) {
+      action = 'no-dose';
+      log(time, 'no-dose');
+      return;
+    }
+    const requestedMl = selected.doseMl;
+    const actualMl = requestedMl * config.deliverFraction;
+    const commandId = 'dose-090';
+    log(time, 'command', requestedMl, commandId);
+    plant = addDose(plant, actualMl);
+    if (settings.fault === 'receipt') {
+      twinValid = false;
+      action = 'receipt-lost';
+      log(time, 'receipt-lost', null, commandId);
+      return;
+    }
+    const before = estimate;
+    totalDelivered += actualMl;
+    estimate = addDose(estimate, actualMl);
+    receipt = { time, commandId, requestedMl, actualMl, volumeMl: estimate.volume * 1000,
+      beforeOhMm: before.oh / before.volume * 1000, afterOhMm: estimate.oh / estimate.volume * 1000,
+      beforeA: ideal(before, calibration.gain), afterA: ideal(estimate, calibration.gain),
+      beforeCvNmoles: before.cv * 1e9, afterCvNmoles: estimate.cv * 1e9 };
+    action = 'dosed';
+    log(time, 'receipt', actualMl, commandId);
+    log(time, 'sync', receipt.volumeMl, commandId);
+  }
+
+  return { candidates, selected, receipt, action, confirmationTime, events, samples };
+}
+
+function experiment(settings = defaults, calibration = calibrate()) {
+  const reference = run(calibration, { ...settings, fault: 'none' }, false);
+  return { settings, calibration, auto: run(calibration, settings), reference };
+}
+
+const lab = Object.freeze({ config, simulated, defaults, doseChoices, makeState, addDose,
+  advance, ideal, targetDelay, calibrationData, calibrate, plan, experiment });
+if (typeof module !== 'undefined' && module.exports) module.exports = lab;
+// END SHARED G18 PHYSICAL MODEL
+</script>
+<script>
+'use strict';
+const el = id => document.getElementById(id);
+const calibration = lab.calibrate();
+const playbackMs = 9600;
+let current = null;
+let visibleSamples = 0;
+let playbackFrame = null;
+const colors = { purple:'#6140a4', gray:'#516282', teal:'#0b766c', amber:'#a67334' };
+const n = (v, digits = 1) => v === null ? '—' : Number(v).toFixed(digits);
+
+function settings() {
+  return { deadline:+el('deadline').value, maxDose:+el('cap').value/10, fault:el('fault').value };
+}
+function labels() {
+  const cfg = settings();
+  el('deadlineText').value = cfg.deadline + ' s';
+  el('capText').value = cfg.maxDose.toFixed(2) + ' mL';
+  el('deadline').setAttribute('aria-valuetext',el('deadlineText').value);
+  el('cap').setAttribute('aria-valuetext',el('capText').value);
+}
+function stopPlayback() {
+  if (playbackFrame !== null) cancelAnimationFrame(playbackFrame);
+  playbackFrame = null;
+}
+function visibleTime() {
+  return current?.auto.samples[visibleSamples-1]?.time ?? 0;
+}
+function playbackFinished() {
+  return current !== null && visibleSamples === current.auto.samples.length;
+}
+function start() {
+  stopPlayback();
+  const startedAt = performance.now();
+  labels();
+  current = lab.experiment(settings(),calibration);
+  visibleSamples = 1;
+  render();
+  el('trace').scrollIntoView({block:'nearest',behavior:'instant'});
+
+  const samples = current.auto.samples;
+  function advancePlayback(now) {
+    const elapsed = Math.max(0,now-startedAt);
+    const count = Math.min(samples.length,1+Math.floor(elapsed*(samples.length-1)/playbackMs));
+    if (count > visibleSamples) {
+      const previous = visibleTime();
+      visibleSamples = count;
+      const through = visibleTime();
+      const hasNewEvent = current.auto.events.some(event=>event.time>previous && event.time<=through);
+      if (playbackFinished() || hasNewEvent) render();
+      else renderProgress();
+    }
+    playbackFrame = playbackFinished() ? null : requestAnimationFrame(advancePlayback);
+  }
+  playbackFrame = requestAnimationFrame(advancePlayback);
+}
+function invalidate() {
+  stopPlayback();
+  labels();
+  current = null;
+  visibleSamples = 0;
+  render();
+}
+function describe(event) {
+  const descriptions = {
+    start:'开始采集样品与空白。',
+    read:'读取决策时刻的仪器数据。',
+    plan:'用当前状态推演候选剂量。',
+    command:'模拟泵收到 '+n(event.value,2)+' mL 加液指令。',
+    receipt:'收到实际输送 '+n(event.value,3)+' mL 的模拟回执。',
+    sync:'按回执更新体积至 '+n(event.value,3)+' mL，继续估计浓度。',
+    confirmed:'连续两次满足剩余量阈值。',
+    'no-dose':'无加液已满足预测约束，持续监测。',
+    'no-feasible':'当前剂量上限内无可行方案，保持监测。',
+    'bad-reading':'决策时刻缺少有效样品/空白数据，暂停本次加液。',
+    'receipt-lost':'指令已下发，泵回执丢失。体积待核对，暂停控制和达标判断。'
+  };
+  return event.time+' s　'+descriptions[event.type];
+}
+function render() {
+  const run = current?.auto;
+  const through = visibleTime();
+  const decisionVisible = !!run && through >= lab.config.decisionTime;
+  const complete = playbackFinished();
+  const events = run?.events.filter(event=>event.time<=through) ?? [];
+  const command = events.find(event=>event.type==='command');
+  const receipt = events.some(event=>event.type==='receipt') ? run.receipt : null;
+  const confirmation = events.find(event=>event.type==='confirmed');
+  el('run').textContent = run ? '重新运行' : '运行自动实验';
+  el('download').disabled = !complete;
+  el('downloadEvents').disabled = !complete;
+  el('command').textContent = command ? n(command.value,2)+' mL' : '—';
+  el('receipt').textContent = receipt ? n(receipt.actualMl,3)+' mL' : '—';
+  el('confirmed').textContent = confirmation ? confirmation.time+' s' : '—';
+  el('dilution').hidden = !receipt;
+  let message = '点击运行自动实验，10 秒内画完测量轨迹。';
+  if (run && !decisionVisible) message = '正在采集样品和空白，等待 90 s 的加液决策。';
+  if (decisionVisible) {
+    message = {
+      dosed:'已收到泵回执，继续采样确认终点。',
+      'no-dose':'无加液方案满足预测约束，继续监测。',
+      'no-feasible':'当前剂量上限内无可行方案，本次保持监测。',
+      'bad-reading':'决策时刻空白缺失，未下发加液指令。',
+      'receipt-lost':'指令已下发。泵回执丢失，暂停控制与达标判断。'
+    }[run.action];
+    if (run.action === 'dosed' && confirmation) {
+      message = confirmation.time <= current.settings.deadline
+        ? '按最小可行剂量执行，已在截止前确认达标。'
+        : '已确认达标，晚于设定的截止时刻。';
+    } else if (run.action === 'dosed' && complete) {
+      message = '采集结束，已收到泵回执，终点仍需核验。';
+    }
+  }
+  el('status').textContent = message;
+  el('status').classList.toggle('alert',decisionVisible && ['bad-reading','no-feasible','receipt-lost'].includes(run.action));
+  if (receipt) {
+    const r = receipt;
+    el('dilution').textContent = '回执将体积更新为 '+n(r.volumeMl,3)+' mL。加液瞬间，CV⁺ 仍为 '+n(r.beforeCvNmoles,2)+
+      ' nmol，理想净吸光度因稀释从 '+n(r.beforeA,4)+' 降到 '+n(r.afterA,4)+'。';
+  }
+  const plans = decisionVisible ? run.candidates : [];
+  el('planTable').hidden = plans.length === 0;
+  el('emptyPlans').hidden = plans.length > 0;
+  el('emptyPlans').textContent = decisionVisible ? '缺少用于方案推演的有效读数。' : '在模拟时间 90 s 显示。';
+  el('plans').innerHTML = plans.map(candidate =>
+    '<tr class="'+(run.selected?.doseMl===candidate.doseMl?'chosen':'')+'"><td>'+n(candidate.doseMl,2)+
+    '</td><td>'+n(candidate.ohMm,2)+'</td><td>'+n(candidate.nominalTime)+'</td><td>'+n(candidate.conservativeTime)+
+    '</td><td>'+(candidate.allowed?(candidate.doseMl===run.selected?.doseMl?'选中':'满足'):'超出时限或容积')+'</td></tr>'
+  ).join('');
+  el('events').replaceChildren(...events.map(event=>{
+    const item = document.createElement('li');
+    item.textContent = describe(event);
+    return item;
+  }));
+  renderProgress();
+}
+
+function renderProgress() {
+  const total = lab.config.duration/lab.config.dt+1;
+  const timeLabel = current ? '模拟时间 '+visibleTime()+' / '+lab.config.duration+' s' : '等待采集';
+  el('chartTime').textContent = timeLabel+' · '+visibleSamples+' / '+total+' 点';
+  draw();
+}
+
+function draw() {
+  const channel = el('channel').value;
+  const svg = el('chart');
+  const width = svg.clientWidth || 760, height = svg.clientHeight || 340;
+  const margin = { left:51, right:21, top:35, bottom:43 };
+  const x = t => margin.left+(width-margin.left-margin.right)*t/lab.config.duration;
+  const y = v => height-margin.bottom-(height-margin.top-margin.bottom)*v;
+  const line = (x1,y1,x2,y2,color,dash='') => '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+
+    '" stroke="'+color+'" stroke-dasharray="'+dash+'"/>';
+  const label = (x,y,text,align='middle') => '<text x="'+x+'" y="'+y+'" text-anchor="'+align+'">'+text+'</text>';
+  const isPlaying = current !== null && !playbackFinished();
+  const curve = (rows,key,color,dash='') => {
+    let d = '', drawing = false;
+    for (const row of rows) {
+      const value = row[key];
+      if (value === null) { drawing = false; continue; }
+      d += (drawing?'L':'M')+x(row.time).toFixed(1)+' '+y(value).toFixed(1)+' ';
+      drawing = true;
+    }
+    const latest = rows.at(-1);
+    const marker = isPlaying && latest && latest[key] !== null
+      ? '<circle cx="'+x(latest.time)+'" cy="'+y(latest[key])+'" r="3.5" fill="'+color+'" stroke="#fff" stroke-width="1.3"/>' : '';
+    return '<path d="'+d+'" fill="none" stroke="'+color+'" stroke-width="2.5" stroke-dasharray="'+dash+'"/>'+marker;
+  };
+  const rows = current?.auto.samples.slice(0,visibleSamples) ?? [];
+  const reference = current?.reference.samples.slice(0,visibleSamples) ?? [];
+  const ticks = [0,.2,.4,.6,.8,1].map(v=>line(margin.left,y(v),width-margin.right,y(v),'#e4e1ed')+
+    label(margin.left-8,y(v)+4,channel==='fraction'?Math.round(100*v)+'%':v.toFixed(1),'end')).join('');
+  const times = [0,120,240,360,480].map(t=>label(x(t),height-margin.bottom+18,t)).join('');
+  const deadline = current?.settings.deadline ?? settings().deadline;
+  const events = line(x(90),margin.top,x(90),y(0),colors.amber,'3 4')+label(x(90),17,'决策')+
+    line(x(deadline),margin.top,x(deadline),y(0),'#766f89','3 4')+label(x(deadline),17,'截止');
+  const cursor = isPlaying ? line(x(visibleTime()),margin.top,x(visibleTime()),y(0),'#b49bd2','3 4') : '';
+  const opts = channel==='fraction'
+    ? [['自动实验估计',colors.purple,'',rows,'estimatedFraction'],['无加液参照估计',colors.gray,'7 5',reference,'estimatedFraction']]
+    : channel==='net'
+      ? [['自动实验净吸光度',colors.purple,'',rows,'net'],['无加液净吸光度',colors.gray,'7 5',reference,'net']]
+      : [['样品原始读数',colors.purple,'',rows,'raw'],['同刻空白',colors.teal,'7 5',rows,'blank']];
+  el('legend').innerHTML = opts.map(([name,color,dash])=>'<span class="'+(dash?'dashed':'')+'" style="--ink:'+color+'">'+name+'</span>').join('');
+  el('chartNote').textContent = channel==='fraction' ? '横向虚线为 20% 剩余量。泵回执缺失后暂停状态估计。'
+    : channel==='net' ? '吸光度随浓度而变。加液后的下降包含稀释和随后的反应消耗。'
+    : '用同一时刻的空白估计共同基线。缺失点保留为断点。';
+  svg.setAttribute('viewBox','0 0 '+width+' '+height);
+  svg.innerHTML = '<g fill="#4e5670" font-size="12">'+ticks+times+events+cursor+
+    label(6,17,channel==='fraction'?'CV⁺ 剩余量':'吸光度 / A','start')+
+    label(width/2,height-4,'时间 / s')+
+    (channel==='fraction'?line(margin.left,y(.2),width-margin.right,y(.2),colors.amber,'2 4'):'')+
+    opts.map(([,color,dash,series,key])=>curve(series,key,color,dash)).join('')+'</g>';
+}
+function downloadCSV(name, rows) {
+  const csv = rows.map(row=>row.map(value=>value??'').join(',')).join('\n')+'\n';
+  const url = URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = name;
+  link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+el('run').addEventListener('click',start);
+for (const id of ['deadline','cap']) el(id).addEventListener('input',invalidate);
+el('fault').addEventListener('change',invalidate);
+el('channel').addEventListener('change',draw);
+el('reset').addEventListener('click',()=>{
+  el('deadline').value=290; el('cap').value=6; el('fault').value='none'; el('channel').value='fraction';
+  invalidate();
+});
+el('download').addEventListener('click',()=>{
+  if (!playbackFinished()) return;
+  downloadCSV('G18-measurements.csv',[['time_s','a_raw','a_blank','a_net','cv_fraction_estimated','known_volume_mL','estimated_oh_mM'],
+    ...current.auto.samples.map(row=>[row.time,row.raw,row.blank,row.net,row.estimatedFraction,row.knownVolumeMl,row.estimatedOhMm])]);
+});
+el('downloadEvents').addEventListener('click',()=>{
+  if (!playbackFinished()) return;
+  downloadCSV('G18-events.csv',[['time_s','event','value','command_id'],...current.auto.events.map(e=>[e.time,e.type,e.value,e.commandId])]);
+});
+new ResizeObserver(()=>requestAnimationFrame(draw)).observe(el('chart'));
+invalidate();
+</script>
+</body>
+</html>

@@ -122,6 +122,17 @@
 2. Burger, B. *et al.* [A mobile robotic chemist](https://doi.org/10.1038/s41586-020-2442-2). *Nature* **583**, 237–241 (2020).
    - 用途：为从数字孪生走向可执行的机器科学家提供实验室实体系统的参照。
 
+3. Sola Larrañaga, C. et al. [Active Learning of Physical Chemistry Principles through the One-Molecule Approach](https://doi.org/10.1021/acs.jchemed.6c00184). *J. Chem. Educ.* **103**, 5076–5084 (2026).
+   - 用途　结晶紫碱性褪色、590 nm 监测和过量碱条件的实验依据。
+4. Zhao, T.; Zeng, Y. [Digital Twins for Self-Driving Chemistry Laboratories](https://doi.org/10.1038/s43588-025-00908-4). *Nat. Comput. Sci.* **6**, 15–16 (2026，2025 年在线，研究评述).
+   - 更新　讨论在虚拟环境中检验自动化实验流程。
+5. Darvish, K. et al. [MATTERIX: Toward a Digital Twin for Robotics-Assisted Chemistry Laboratory Automation](https://doi.org/10.1038/s43588-025-00924-4). *Nat. Comput. Sci.* **6**, 67–82 (2026).
+   - 更新　给出机器人、实验器具和自动操作的数字环境。
+6. Zhang, S.; Zhang, J.; Lapkin, A. A. [A Knowledge Graph Framework for Digital Twins of Chemical Processes](https://doi.org/10.1038/s44286-026-00392-1). *Nat. Chem. Eng.* **3**, 286–297 (2026).
+   - 更新　用知识图谱组织化工模型、数据与知识。
+7. Satwekar, A. et al. [Operationalizing Digital Twins in Biomanufacturing through Interoperable Process Analytical Technology](https://doi.org/10.1007/s00449-026-03369-9). *Bioprocess Biosyst. Eng.* **49** (2026).
+   - 更新　展示过程分析数据与模型预测控制的互操作案例。
+
 ---
 
 ## 新增引文的公开写法
