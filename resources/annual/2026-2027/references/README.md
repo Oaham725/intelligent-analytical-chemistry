@@ -127,7 +127,8 @@
 4. Zhao, T.; Zeng, Y. [Digital Twins for Self-Driving Chemistry Laboratories](https://doi.org/10.1038/s43588-025-00908-4). *Nat. Comput. Sci.* **6**, 15–16 (2026，2025 年在线，研究评述).
    - 更新　讨论在虚拟环境中检验自动化实验流程。
 5. Darvish, K. et al. [MATTERIX: Toward a Digital Twin for Robotics-Assisted Chemistry Laboratory Automation](https://doi.org/10.1038/s43588-025-00924-4). *Nat. Comput. Sci.* **6**, 67–82 (2026).
-   - 更新　给出机器人、实验器具和自动操作的数字环境。
+   - 前沿更新　将机械臂动作、液体处理、设备状态和近似动力学纳入同一仿真环境，适合检查多设备实验流程。论文验证了部分倒液和移液流程向实体装置的迁移。
+   - 适用范围与限制　反应动力学为近似描述。对具体体系做定量预测仍需实测校准和独立验证。[查看第 18 章前沿更新卡](#/docs/ch18?id=ch18-frontier-matterix) · [关联 PR #29](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/29)
 6. Zhang, S.; Zhang, J.; Lapkin, A. A. [A Knowledge Graph Framework for Digital Twins of Chemical Processes](https://doi.org/10.1038/s44286-026-00392-1). *Nat. Chem. Eng.* **3**, 286–297 (2026).
    - 更新　用知识图谱组织化工模型、数据与知识。
 7. Satwekar, A. et al. [Operationalizing Digital Twins in Biomanufacturing through Interoperable Process Analytical Technology](https://doi.org/10.1007/s00449-026-03369-9). *Bioprocess Biosyst. Eng.* **49** (2026).
