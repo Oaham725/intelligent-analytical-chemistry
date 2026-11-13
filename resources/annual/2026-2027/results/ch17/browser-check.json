@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-13",
+  "browser": "Microsoft Edge headless",
+  "full_docsify": true,
+  "module_check_status": "passed",
+  "checks": [
+    "seven interactive modules mounted",
+    "four-stage choices and feedback",
+    "six problem-type answers",
+    "state-designer empty-state feedback",
+    "reward slider changes persist",
+    "reward hard-constraint toggle",
+    "shield configured rules and feedback",
+    "unprotected bubble produces silent-error feedback",
+    "protected bubble recovers",
+    "unobservable reagent fault remains explicit",
+    "eight timescale assignments",
+    "keyboard Enter resets answers",
+    "keyboard Tab reaches controls",
+    "chapter navigation remounts exactly seven modules",
+    "375px page has no horizontal overflow"
+  ],
+  "viewport": {
+    "mobile": 375,
+    "document_scroll_width": 375
+  },
+  "known_shared_warnings": [
+    "Cannot read properties of undefined (reading 'unshift') |     at y (https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js:0:473)"
+  ],
+  "scope": "Automated local-page check by Codex; not a non-team review or full-site cross-browser acceptance."
+}

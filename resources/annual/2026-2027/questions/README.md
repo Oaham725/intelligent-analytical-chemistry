@@ -81,7 +81,7 @@
 
 - **题型**：计算 + 判断
 - **考查目标**：能写出 MDP 五元组；能做一步 Bellman 备份；理解奖励与折扣如何改变最优策略（第17章 17.2、17.3）。
-- **数据/代码**：[`code/ch17_exercises/01_colorimetric_mdp.py`](https://github.com/Oaham725/intelligent-analytical-chemistry/blob/main/code/ch17_exercises/01_colorimetric_mdp.py)（可用来核对数值）。
+- **数据/代码**：[`code/ch17_exercises/01_colorimetric_mdp.py`](https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/01_colorimetric_mdp.py)（可用来核对数值）。
 
 **题干**：铁(II)–邻二氮菲显色测定中，单个样品的状态记为 $s=(c,r,d,u)$：浓度等级 $c\in\{低,高\}$、已加显色剂份数 $r$、显色进度 $d\in\{0,1,2\}$、是否已稀释 $u$。高浓度样品需 2 份试剂且必须稀释后报告才正确。动作与即时奖励：加试剂 −0.4、等待 −0.6、稀释 −1.0；报告正确 +10、报告错误 −10；$\gamma=0.95$。试剂充足时，“等待”以概率 0.75 使显色推进一级，否则停留原状态。
 
@@ -99,13 +99,13 @@
 
 **常见误区**：把 $V^*(高,2,2,1)$ 当成 0（忘了报告的终止奖励）；第 2 问中直接用 $V$ 代替期望；第 3 问只答“γ 太小”，没有指出惩罚为 0 才是根本原因。
 
-**贡献 PR**：#编号（G17）
+**贡献 PR**：[#27](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27)（G17）
 
 #### 传承题 17-2　“连续运行 72 小时”能说明什么？
 
 - **题型**：评价 + 设计（开放题，有明确得分点）
 - **考查目标**：区分硬约束与科学目标；用故障注入暴露静默错误；给出完整的自主平台评价指标（第17章 17.4、17.5、17.7）。
-- **数据/代码**：[`code/ch17_exercises/03_fsm_fault_injection.py`](https://github.com/Oaham725/intelligent-analytical-chemistry/blob/main/code/ch17_exercises/03_fsm_fault_injection.py)。
+- **数据/代码**：[`code/ch17_exercises/03_fsm_fault_injection.py`](https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/03_fsm_fault_injection.py)。
 
 **题干**：某课题组报告其自主比色平台“连续运行 72 小时、完成 600 个样品、零停机”。平台的控制程序在分液命令超时后会自动重发；没有体积传感器；每 50 个样品人工校准一次光谱仪；强化学习策略的奖励为“每小时完成样品数”。
 
@@ -123,7 +123,7 @@
 
 **常见误区**：只回答“增加传感器”而不说明它检测哪种故障；把“读数 < 0.3 不得报告”这类科学判断写进屏蔽器；把吞吐当作可靠性的证据。
 
-**贡献 PR**：#编号（G17）
+**贡献 PR**：[#27](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27)（G17）
 
 ### ch18
 
