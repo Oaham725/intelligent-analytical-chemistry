@@ -113,6 +113,28 @@
    - 用途：用于区分“选择下一个最有价值实验”的贝叶斯优化与固定网格筛选，并为主动学习和强化学习的实验决策作铺垫。
 2. Burger, B. *et al.* [A mobile robotic chemist](https://doi.org/10.1038/s41586-020-2442-2). *Nature* **583**, 237–241 (2020).
    - 用途：说明移动机器人、表征设备与实验规划的实体耦合，是理解具身自主实验室的现实起点。
+3. Zhou, Z.; Li, X.; Zare, R. N. [Optimizing chemical reactions with deep reinforcement learning](https://doi.org/10.1021/acscentsci.7b00492). *ACS Central Science* **3**, 1337–1344 (2017).
+   - 用途：较早把深度强化学习用于化学反应条件优化的工作；用于 17.1 讨论“何时强化学习优于一次性优化，何时不必使用”。（2026–2027 新增）
+4. Volk, A. A. *et al.* [AlphaFlow: autonomous discovery and optimization of multi-step chemistry using a self-driven fluidic lab guided by reinforcement learning](https://doi.org/10.1038/s41467-023-37139-y). *Nature Communications* **14**, 1403 (2023).
+   - 用途：前沿更新卡一；多步、顺序可变的化学过程是“序贯控制”而非“序贯选点”的典型实例。（2026–2027 新增）
+5. Szymanski, N. J. *et al.* [An autonomous laboratory for the accelerated synthesis of inorganic materials](https://doi.org/10.1038/s41586-023-06734-w). *Nature* **624**, 86–91 (2023).
+   - 用途：前沿更新卡二；自主合成—表征闭环的代表性工作。（2026–2027 新增）
+6. Leeman, J. *et al.* [Challenges in high-throughput inorganic materials prediction and autonomous synthesis](https://doi.org/10.1103/PRXEnergy.3.011002). *PRX Energy* **3**, 011002 (2024).
+   - 用途：前沿更新卡二；对上一条的再分析，说明自主系统的“成功判定”步骤本身需要独立验证，对应 17.5.5 静默错误。（2026–2027 新增）
+7. Leong, S. X. *et al.* [Steering towards safe self-driving laboratories](https://doi.org/10.1038/s41570-025-00747-x). *Nature Reviews Chemistry* **9**, 707–722 (2025).
+   - 用途：前沿更新卡三；自主实验室安全的系统讨论，对应 17.4 屏蔽器与停止条件、17.6 人的职责。证据等级：观点/综述。（2026–2027 新增）
+8. Alshiekh, M. *et al.* [Safe reinforcement learning via shielding](https://doi.org/10.1609/aaai.v32i1.11797). *Proceedings of the AAAI Conference on Artificial Intelligence* **32** (2018).
+   - 用途：屏蔽器（shield）概念的原始文献，对应 17.4.2 与练习 2。（2026–2027 新增）
+9. Levine, S.; Kumar, A.; Tucker, G.; Fu, J. [Offline reinforcement learning: tutorial, review, and perspectives on open problems](https://arxiv.org/abs/2005.01643). arXiv:2005.01643 (2020).
+   - 用途：离线强化学习与分布偏移，对应 17.4.3。证据等级：预印本教程/综述。（2026–2027 新增）
+10. Tom, G. *et al.* [Self-driving laboratories for chemistry and materials science](https://doi.org/10.1021/acs.chemrev.4c00055). *Chemical Reviews* **124**, 9633–9732 (2024).
+    - 用途：自主实验室的系统综述，含自主化层级、硬件与软件架构，对应 17.1.3 与 17.5。（2026–2027 新增）
+11. Baird, S. G.; Sparks, T. D. [What is a minimal working example for a self-driving laboratory?](https://doi.org/10.1016/j.matt.2022.11.007) *Matter* **5**, 4170–4178 (2022).
+    - 用途：低成本、教学用的最小自主实验平台思路，对应 17.7 综合案例。（2026–2027 新增）
+12. Dai, T. *et al.* [Autonomous mobile robots for exploratory synthetic chemistry](https://doi.org/10.1038/s41586-024-08173-7). *Nature* **635**, 890–897 (2024).
+    - 用途：以 LC–MS 与台式 NMR 正交表征驱动的启发式决策器，用于对照讨论“何时不需要强化学习”。（2026–2027 新增）
+13. Sutton, R. S.; Barto, A. G. [Reinforcement Learning: An Introduction (2nd ed.)](http://incompleteideas.net/book/the-book-2nd.html). MIT Press (2018).
+    - 用途：MDP、Bellman 方程、值迭代与 Q-learning 的标准教材，对应 17.2 与练习 1、2。（2026–2027 新增）
 
 <a id="ch18"></a>
 ## 第18章 世界模型、化学数字孪生与机器科学家

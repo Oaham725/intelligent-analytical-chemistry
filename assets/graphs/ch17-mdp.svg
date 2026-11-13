@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="tm dm">
+<title id="tm">高浓度显色样品的 MDP 状态转移示意</title>
+<desc id="dm">状态 s=(c,r,d,u)。从未加试剂开始，加两份试剂，等待两次完成显色，稀释后报告得到正确结果；未稀释即报告进入错误报告吸收态。图下方给出关键状态的 Q 值计算。</desc>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#345a8a"/></marker>
+  <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c0392b"/></marker>
+</defs>
+<style>
+  .f{font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif}
+  .s{fill:#eef4fa;stroke:#345a8a;stroke-width:3}
+  .st{font-size:23px;font-weight:700;fill:#18324b;text-anchor:middle}
+  .ss{font-size:18px;fill:#34536d;text-anchor:middle}
+  .e{stroke:#345a8a;stroke-width:3.2;fill:none}
+  .eR{stroke:#c0392b;stroke-width:3;fill:none;stroke-dasharray:9 6}
+  .l{font-size:19px;fill:#345a8a}
+  .lR{font-size:19px;fill:#c0392b}
+</style>
+<rect width="1600" height="720" fill="#ffffff"/>
+<text class="f" x="60" y="48" font-size="27" font-weight="700" fill="#18324b">高浓度样品的一条最优路径：s = (c, r, d, u) ＝（浓度等级, 试剂份数, 显色进度, 是否稀释）</text>
+
+<rect class="s" x="60" y="110" width="300" height="110" rx="16"/>
+<text class="f st" x="210" y="156">(高, 0, 0, 0)</text><text class="f ss" x="210" y="190">初始：未加试剂</text>
+<rect class="s" x="440" y="110" width="300" height="110" rx="16"/>
+<text class="f st" x="590" y="156">(高, 1, 0, 0)</text><text class="f ss" x="590" y="190">试剂不足（需 2 份）</text>
+<rect class="s" x="820" y="110" width="300" height="110" rx="16"/>
+<text class="f st" x="970" y="156">(高, 2, 0, 0)</text><text class="f ss" x="970" y="190">试剂充足、未显色</text>
+<rect class="s" x="1200" y="110" width="300" height="110" rx="16"/>
+<text class="f st" x="1350" y="156">(高, 2, 1, 0)</text><text class="f ss" x="1350" y="190">部分显色</text>
+
+<path class="e" d="M360 165H432" marker-end="url(#a)"/><text class="f l" x="400" y="250" text-anchor="middle">加试剂 −0.4</text>
+<path class="e" d="M740 165H812" marker-end="url(#a)"/><text class="f l" x="780" y="250" text-anchor="middle">加试剂 −0.4</text>
+<path class="e" d="M1120 165H1192" marker-end="url(#a)"/><text class="f l" x="1160" y="250" text-anchor="middle">等待 −0.6（p=0.75）</text>
+<path class="e" d="M930 110C930 70 1010 70 1010 102" marker-end="url(#a)"/><text class="f l" x="1030" y="74">p=0.25 原地</text>
+<path class="e" d="M1310 110C1310 70 1390 70 1390 102" marker-end="url(#a)"/><text class="f l" x="1410" y="74">p=0.25</text>
+
+<rect class="s" x="1200" y="320" width="300" height="110" rx="16" style="stroke-width:4"/>
+<text class="f st" x="1350" y="366">(高, 2, 2, 0)</text><text class="f ss" x="1350" y="400">显色完全，但 A &gt; 1（非线性区）</text>
+<path class="e" d="M1350 220V312" marker-end="url(#a)"/><text class="f l" x="1365" y="270">等待 −0.6（p=0.75）</text>
+
+<rect class="s" x="820" y="320" width="300" height="110" rx="16"/>
+<text class="f st" x="970" y="366">(高, 2, 2, 1)</text><text class="f ss" x="970" y="400">已稀释，A 回到线性区</text>
+<path class="e" d="M1200 375H1128" marker-end="url(#a)"/><text class="f l" x="1160" y="460" text-anchor="middle">稀释 −1.0</text>
+
+<rect x="440" y="320" width="300" height="110" rx="16" fill="#effaf4" stroke="#1e7a52" stroke-width="3"/>
+<text class="f st" x="590" y="366" fill="#145d41">正确报告（终止）</text><text class="f ss" x="590" y="400">吸收态</text>
+<path class="e" d="M820 375H748" marker-end="url(#a)"/><text class="f l" x="780" y="460" text-anchor="middle">报告 +10</text>
+
+<rect x="1200" y="560" width="300" height="100" rx="16" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+<text class="f st" x="1350" y="604" fill="#7b241c">错误报告（终止）</text><text class="f ss" x="1350" y="636">吸收态</text>
+<path class="eR" d="M1350 430V552" marker-end="url(#r)"/><text class="f lR" x="1365" y="500">报告 −10</text>
+<text class="f lR" x="1350" y="692" font-size="17" text-anchor="middle">（任一未满足条件的状态均可如此）</text>
+
+<rect x="60" y="500" width="1080" height="200" rx="16" fill="#fafbfc" stroke="#9db7d3" stroke-width="2"/>
+<text class="f" x="90" y="540" font-size="22" font-weight="700" fill="#18324b">在 s = (高, 2, 2, 0) 做一步 Bellman 备份（γ = 0.95，已知 V*(高,2,2,1) = 10）</text>
+<text class="f" x="90" y="580" font-size="20" fill="#18324b">Q*(s, 稀释) = −1.0 + 0.95 × 10 = 8.50</text>
+<text class="f" x="90" y="614" font-size="20" fill="#18324b">Q*(s, 加试剂) = −0.4 + 0.95 × V*(高,3,2,0) = −0.4 + 0.95 × 8.50 = 7.68</text>
+<text class="f" x="90" y="648" font-size="20" fill="#18324b">Q*(s, 报告) = −10　　⇒　π*(s) = 稀释</text>
+<text class="f" x="90" y="684" font-size="18" fill="#34536d">价值属于“状态—动作对”：同一个“报告”，在 (高,2,2,1) 值 +10，在 (高,2,2,0) 值 −10。</text>
+</svg>
