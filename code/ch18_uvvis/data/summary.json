@@ -1,0 +1,42 @@
+{
+  "simulatedOnly": true,
+  "settings": {
+    "deadline": 290,
+    "maxDose": 0.6,
+    "fault": "none"
+  },
+  "calibration": {
+    "gain": 79828.8186550297,
+    "rate": 0.39785307130289727,
+    "rmse": 0.003240098555049343
+  },
+  "candidateCount": 7,
+  "selected": {
+    "doseMl": 0.3,
+    "volumeMl": 3.3,
+    "ohMm": 18.179089496952844,
+    "nominalTime": 263.20580811653326,
+    "conservativeTime": 275.78488434471456,
+    "allowed": true
+  },
+  "receipt": {
+    "time": 90,
+    "commandId": "dose-090",
+    "requestedMl": 0.3,
+    "actualMl": 0.294,
+    "volumeMl": 3.294,
+    "beforeOhMm": 9.996998446648128,
+    "afterOhMm": 18.030053230098478,
+    "beforeA": 0.5586777283403459,
+    "afterA": 0.5088139602371092,
+    "beforeCvNmoles": 20.99533994438533,
+    "afterCvNmoles": 20.99533994438533
+  },
+  "confirmationTime": 275,
+  "referenceTime": 415,
+  "faultOutcomes": {
+    "blank": "bad-reading",
+    "receipt": "receipt-lost",
+    "smallBudget": "no-feasible"
+  }
+}

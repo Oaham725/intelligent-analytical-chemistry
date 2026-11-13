@@ -378,13 +378,45 @@
     draw();
   }
 
+  function renderChapterEighteen(root) {
+    var frame = document.createElement('iframe');
+    frame.title = 'G18 结晶紫自动化 UV–Vis 虚拟实验';
+    frame.src = new URL('assets/labs/g18/index.html', document.baseURI).href;
+    frame.loading = 'lazy';
+    frame.style.cssText = 'display:block;width:100%;height:900px;border:0;border-radius:12px';
+
+    var observer;
+    frame.addEventListener('load', function () {
+      if (observer) observer.disconnect();
+      var body = frame.contentDocument && frame.contentDocument.body;
+      if (!body) return;
+      function fitHeight() {
+        if (!frame.isConnected) {
+          if (observer) observer.disconnect();
+          return;
+        }
+        frame.style.height = Math.ceil(body.getBoundingClientRect().height + 2) + 'px';
+      }
+      fitHeight();
+      if (window.ResizeObserver) {
+        observer = new ResizeObserver(fitHeight);
+        observer.observe(body);
+      }
+    });
+    root.appendChild(frame);
+  }
+
   function mountLabs() {
+    document.querySelectorAll('a[data-g18-site-href]').forEach(function (link) {
+      link.setAttribute('href', link.getAttribute('data-g18-site-href'));
+    });
     var labs = document.querySelectorAll('.interactive-lab[data-lab]');
     labs.forEach(function (root) {
       if (root.getAttribute('data-mounted') === 'true') return;
       root.setAttribute('data-mounted', 'true');
       if (root.getAttribute('data-lab') === 'ch01-measurement-loop') renderChapterOne(root);
       if (root.getAttribute('data-lab') === 'ch02-data-clinic') renderChapterTwo(root);
+      if (root.getAttribute('data-lab') === 'ch18-uvvis-world-model') renderChapterEighteen(root);
     });
   }
 

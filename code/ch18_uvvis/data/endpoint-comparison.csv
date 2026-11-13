@@ -1,0 +1,4 @@
+method,first_sample_in_confirmed_pair_s,confirmation_s
+net_absorbance_ratio,255,260
+volume_corrected_absorbance_ratio,270,275
+controller_cv_fraction,270,275
