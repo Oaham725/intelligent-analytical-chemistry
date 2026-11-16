@@ -1,0 +1,4 @@
+batch,anchor_id,observed_rt_min,reference_rt_min
+B,C8,6.20,6.00
+B,C9,8.20,8.00
+B,C10,10.20,10.00

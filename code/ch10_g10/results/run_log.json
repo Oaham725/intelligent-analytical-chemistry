@@ -1,0 +1,22 @@
+{
+  "time_utc": "2026-11-14T10:27:45.012529+00:00",
+  "python": "3.12.2",
+  "parameters": {
+    "spectral_weight": 0.7,
+    "ri_weight": 0.3,
+    "sigma": 15,
+    "min_rs": 1,
+    "min_score": 0.8,
+    "min_gap": 0.05,
+    "shift": {
+      "B": 0.1999999999999993
+    }
+  },
+  "data_identity": "synthetic teaching data, not measured spectra",
+  "input_sha256": {
+    "anchors.csv": "5fd7155b78f23f5f41a673d965bceb8549270b4fd452b206a70a0955a204b95d",
+    "candidates.csv": "730263ff98e3cc59087b5f2c15e0bd3d13ea374befea923fa2182c310e763ecf",
+    "peaks.csv": "9fa81cda1fc671704f5b7e26843b953fdfa6753d18dfd3623686998210993f0b",
+    "spectra.csv": "6e33adc88c7f28c3ea22bd6c09952280cf89b98ddee3c3a145e24639f5398593"
+  }
+}

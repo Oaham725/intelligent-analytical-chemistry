@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1130" viewBox="0 0 1500 1130" role="img" aria-labelledby="title desc">
+<title id="title">从分离到结构：三类证据怎样互补</title><desc id="desc">同一模拟算例计算色谱分辨率、谱图余弦与线性保留指数；谱库第一B因保留冲突被A取代，但仍须标准品或NMR验证。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#60778c" stroke-width="1.5"/></marker></defs>
+<rect width="1500" height="1130" fill="#f2f6fb"/>
+<g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" fill="#182c43">
+<text x="55" y="66.0" font-size="36" fill="#182c43" font-weight="700">谱库第一名，为什么还不能写成“结构已确证”？</text>
+<text x="55" y="108.0" font-size="21" fill="#526b80" font-weight="400">G10 · 第10章基础知识图　｜　同一教学模拟算例，连起分离、碎片与保留证据</text>
+<rect x="50" y="150" width="420" height="510" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="74" y="195.0" font-size="26" fill="#182c43" font-weight="700">01 先分离</text>
+<text x="74" y="232.0" font-size="18" fill="#526b80" font-weight="400">同一个峰，是否可能混有多个组分？</text>
+<rect x="540" y="150" width="420" height="510" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="564" y="195.0" font-size="26" fill="#182c43" font-weight="700">02 再比谱</text>
+<text x="564" y="232.0" font-size="18" fill="#526b80" font-weight="400">碎片相似，是否只有一个候选？</text>
+<rect x="1030" y="150" width="420" height="510" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="1054" y="195.0" font-size="26" fill="#182c43" font-weight="700">03 查保留</text>
+<text x="1054" y="232.0" font-size="18" fill="#526b80" font-weight="400">在可比方法下，候选是否合理？</text>
+<path d="M82 382 L110 382 C144 382 144 281 165 281 C186 281 186 382 211 382 C241 382 241 300 262 300 C283 300 283 382 315 382 L426 382" fill="none" stroke="#527dcc" stroke-width="3"/>
+<text x="84" y="416.0" font-size="17" fill="#182c43" font-weight="400">峰1：7.60 min　峰2：7.90 min</text>
+<text x="84" y="442.0" font-size="15" fill="#526b80" font-weight="400">色谱峰形示意</text>
+<text x="74" y="474" font-size="21" fill="#182c43" font-weight="400">Rs = 2(tR₂ − tR₁) / (w₁ + w₂)</text>
+<text x="74" y="512" font-size="21" fill="#182c43" font-weight="400">w₁ = w₂ = 0.20 min（基线峰宽）</text>
+<text x="74" y="550" font-size="21" fill="#182c43" font-weight="400">Rs = 1.50</text>
+<text x="74" y="602.0" font-size="17" fill="#a2631a" font-weight="400">峰形近似高斯时的经验参考；</text>
+<text x="74" y="629.2" font-size="17" fill="#a2631a" font-weight="400">Rs不能单独证明样品绝对纯净。</text>
+<path d="M572 382 L942 382" stroke="#9aacbe"/>
+<path d="M600 382 v-25" stroke="#527dcc" stroke-width="5"/>
+<path d="M655 382 v-38" stroke="#527dcc" stroke-width="5"/>
+<path d="M710 382 v-50" stroke="#527dcc" stroke-width="5"/>
+<path d="M802 382 v-115" stroke="#527dcc" stroke-width="5"/>
+<path d="M906 382 v-70" stroke="#527dcc" stroke-width="5"/>
+<text x="590" y="415.0" font-size="15" fill="#182c43" font-weight="400">51</text>
+<text x="645" y="415.0" font-size="15" fill="#182c43" font-weight="400">65</text>
+<text x="700" y="415.0" font-size="15" fill="#182c43" font-weight="400">77</text>
+<text x="792" y="415.0" font-size="15" fill="#182c43" font-weight="400">91</text>
+<text x="890" y="415.0" font-size="15" fill="#182c43" font-weight="400">106</text>
+<text x="918" y="440.0" font-size="15" fill="#526b80" font-weight="400">m/z</text>
+<text x="564" y="474" font-size="21" fill="#182c43" font-weight="400">cos(x,y) = Σxᵢyᵢ / (‖x‖ ‖y‖)</text>
+<text x="564" y="512" font-size="21" fill="#182c43" font-weight="400">B：1.0000　A：0.9992</text>
+<text x="564" y="550" font-size="21" fill="#182c43" font-weight="400">谱图基线：B ＞ A</text>
+<text x="564" y="602.0" font-size="17" fill="#a2631a" font-weight="400">比较前须统一质量轴与离子条件；</text>
+<text x="564" y="629.2" font-size="17" fill="#a2631a" font-weight="400">相似度高，不等于身份概率高。</text>
+<path d="M1060 344 L1415 344" stroke="#9aacbe" stroke-width="2"/>
+<path d="M1070 332 v24" stroke="#16877e" stroke-width="3"/>
+<text x="1060" y="310.0" font-size="18" fill="#182c43" font-weight="400">C8</text>
+<path d="M1330 332 v24" stroke="#16877e" stroke-width="3"/>
+<text x="1320" y="310.0" font-size="18" fill="#182c43" font-weight="400">C9</text>
+<circle cx="1278" cy="344" r="7" fill="#ce8b32"/>
+<text x="1230" y="385.0" font-size="17" fill="#182c43" font-weight="400">未知 7.60 min</text>
+<text x="1054" y="428.0" font-size="18" fill="#182c43" font-weight="400">C8：6.00 min　C9：8.00 min</text>
+<text x="1054" y="474" font-size="20" fill="#182c43" font-weight="400">LRI = 100[n + (tₓ−tₙ)/(tₙ₊₁−tₙ)]</text>
+<text x="1054" y="512" font-size="20" fill="#182c43" font-weight="400">n = 8 → LRI = 880</text>
+<text x="1054" y="550" font-size="20" fill="#182c43" font-weight="400">|ΔRI|：A = 0　B = 30</text>
+<text x="1054" y="602.0" font-size="17" fill="#a2631a" font-weight="400">程序升温线性式；须相邻烷烃夹持。</text>
+<text x="1054" y="629.2" font-size="17" fill="#a2631a" font-weight="400">固定相、温度程序不同不可硬套。</text>
+<path d="M470,402 L527,402" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M960,402 L1017,402" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M260,665 L260,710" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M750,665 L750,710" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1240,665 L1240,710" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="720" width="1400" height="178" rx="16" fill="#e4f2ef" stroke="#9bc8bc"/>
+<text x="78" y="761.0" font-size="26" fill="#126d64" font-weight="700">证据融合：B的谱图最像，但A的保留信息更一致</text>
+<text x="78" y="804.0" font-size="23" fill="#182c43" font-weight="400">S = 0.7 cos + 0.3 exp[−0.5(ΔRI/15)²]　→　A：0.9994　B：0.7406　→　A优先验证</text>
+<text x="78" y="853.0" font-size="21" fill="#182c43" font-weight="400">权重与容差为教学设定，S不是后验概率；若共洗脱、方法不可比或候选接近，应拒绝唯一输出。</text>
+<path d="M750,901 L750,936" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="7 5"/>
+<rect x="50" y="948" width="1400" height="112" rx="16" fill="#fff4e3" stroke="#e9c38b"/>
+<text x="78" y="990.0" font-size="25" fill="#995f16" font-weight="700">确证还缺什么？</text>
+<text x="305" y="989.0" font-size="21" fill="#182c43" font-weight="400">同条件标准品的保留与谱图比较；需要时分离馏分，采集1D/2D NMR连接证据。</text>
+<text x="78" y="1030.0" font-size="18" fill="#765c38" font-weight="400">数据身份：全部为人为构造的教学模拟值。实线＝信息传递；虚线＝尚需外部验证。</text>
+<text x="55" y="1100.0" font-size="17" fill="#526b80" font-weight="400">依据：课程第10章；NIST SRD 1A（来源链接与变量边界详见配套正文）｜原生SVG：文字、图形、箭头均可编辑</text>
+</g></svg>

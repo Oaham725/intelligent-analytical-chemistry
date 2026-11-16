@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="522" viewBox="0 0 1160 522" role="img" aria-labelledby="title desc">
+  <title id="title">三类仪器证据及其结构解释</title>
+  <desc id="desc">色谱提供分离与保留证据。质谱提供组成和碎片证据。核磁提供局部环境与连接证据。三类证据交叉检验候选结构。</desc>
+  <defs>
+    <marker id="tip" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#55717a"/></marker>
+  </defs>
+  <rect width="1160" height="522" rx="16" fill="#f3f7fa"/>
+  <g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" fill="#19344a">
+    <text x="35" y="56" font-size="32" font-weight="700">色谱、质谱和核磁分别回答什么问题？</text>
+    <g font-size="19">
+      <rect x="35" y="90" width="345" height="286" rx="14" fill="#fff" stroke="#cad9e4"/>
+      <text x="58" y="128" font-size="25" font-weight="700">色谱 · 分离与保留</text>
+      <text x="58" y="164">峰内是否可能有多个组分？</text>
+      <path d="M65 263H348 M65 263V186" fill="none" stroke="#9aadb8"/>
+      <path d="M65 262H106C132 262 133 197 153 197S174 262 194 262H211C229 262 237 210 254 210S280 262 301 262H348" fill="none" stroke="#1f7880" stroke-width="3"/>
+      <text x="245" y="287" font-size="16">保留时间</text>
+      <text x="58" y="320">峰间距与峰宽 → 分辨率</text>
+      <text x="58" y="349">同方法的保留行为 → 候选约束</text>
+      <rect x="408" y="90" width="345" height="286" rx="14" fill="#fff" stroke="#cad9e4"/>
+      <text x="431" y="128" font-size="25" font-weight="700">质谱 · 组成与碎片</text>
+      <text x="431" y="164">哪些组成和片段能解释信号？</text>
+      <path d="M437 263H722 M437 263V186" fill="none" stroke="#9aadb8"/>
+      <path d="M471 262V239 M506 262V224 M540 262V244 M575 262V190 M634 262V210 M656 262V240" stroke="#3d6fb0" stroke-width="4"/>
+      <text x="685" y="287" font-size="16">m/z</text>
+      <text x="431" y="320">精确质量与同位素 → 分子式</text>
+      <text x="431" y="349">诊断碎片 → 亚结构和候选</text>
+      <rect x="781" y="90" width="344" height="286" rx="14" fill="#fff" stroke="#cad9e4"/>
+      <text x="804" y="128" font-size="25" font-weight="700">核磁 · 环境与连接</text>
+      <text x="804" y="164">原子环境与连接关系相符吗？</text>
+      <path d="M812 263H1096 M812 263V186" fill="none" stroke="#9aadb8"/>
+      <path d="M815 262h38l8-30 8 30h6l7-44 7 44h6l7-30 7 30h52l7-25 7 25h5l7-62 7 62h5l7-25 7 25h70" fill="none" stroke="#a65a2c" stroke-width="2.6"/>
+      <text x="967" y="287" font-size="16">化学位移 δ</text>
+      <text x="804" y="320">位移、积分与耦合 → 局部环境</text>
+      <text x="804" y="349">二维相关 → 检验连接关系</text>
+    </g>
+    <path d="M207 377V401 M580 377V401 M953 377V401" stroke="#55717a" stroke-width="2" marker-end="url(#tip)"/>
+    <rect x="35" y="409" width="1090" height="66" rx="12" fill="#dbece8"/>
+    <text x="58" y="449" font-size="22" font-weight="700">核对同一组分 → 记录支持与冲突 → 补充区分性证据 → 按证据强度报告</text>
+    <text x="36" y="503" font-size="16" fill="#496373">曲线和谱线均为示意。坐标类型用于解释测量对象。</text>
+  </g>
+</svg>

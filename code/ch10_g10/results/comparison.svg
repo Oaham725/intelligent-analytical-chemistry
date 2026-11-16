@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640">
+<rect width="1100" height="640" fill="#f5f8fc"/>
+<g font-family="Microsoft YaHei, sans-serif" fill="#182a41">
+<text x="40" y="45" font-size="26" font-weight="700">候选排序与失败样本｜教学模拟</text>
+<text x="40" y="80" font-size="16">蓝：普通余弦　青：加入RI　橙色提示：质量关卡或歧义拒判；分数不是概率</text>
+<text x="40" y="130" fill="#182a41" font-size="17" font-weight="700">U01：RI支持A，谱图首选B</text>
+<text x="40" y="190" font-size="18">候选A</text>
+<rect x="40" y="200" width="229.82" height="18" fill="#527dcc"/>
+<text x="280" y="215" font-size="15">0.9992</text>
+<rect x="40" y="227" width="229.87" height="18" fill="#16877e"/>
+<text x="280" y="242" font-size="15">0.9994</text>
+<text x="40" y="315" font-size="18">候选B</text>
+<rect x="40" y="325" width="230.00" height="18" fill="#527dcc"/>
+<text x="280" y="340" font-size="15">1.0000</text>
+<rect x="40" y="352" width="170.34" height="18" fill="#16877e"/>
+<text x="280" y="367" font-size="15">0.7406</text>
+<text x="40" y="440" font-size="18">候选C</text>
+<rect x="40" y="450" width="218.75" height="18" fill="#527dcc"/>
+<text x="280" y="465" font-size="15">0.9511</text>
+<rect x="40" y="477" width="153.21" height="18" fill="#16877e"/>
+<text x="280" y="492" font-size="15">0.6661</text>
+<text x="395" y="130" fill="#9c5210" font-size="17" font-weight="700">U02：共洗脱，暂停鉴定</text>
+<text x="395" y="190" font-size="18">候选A</text>
+<rect x="395" y="200" width="213.72" height="18" fill="#527dcc"/>
+<text x="635" y="215" font-size="15">0.9292</text>
+<rect x="395" y="227" width="158.94" height="18" fill="#16877e"/>
+<text x="635" y="242" font-size="15">0.6910</text>
+<text x="395" y="315" font-size="18">候选B</text>
+<rect x="395" y="325" width="214.18" height="18" fill="#527dcc"/>
+<text x="635" y="340" font-size="15">0.9312</text>
+<rect x="395" y="352" width="218.93" height="18" fill="#16877e"/>
+<text x="635" y="367" font-size="15">0.9519</text>
+<text x="395" y="440" font-size="18">候选C</text>
+<rect x="395" y="450" width="223.33" height="18" fill="#527dcc"/>
+<text x="635" y="465" font-size="15">0.9710</text>
+<rect x="395" y="477" width="173.54" height="18" fill="#16877e"/>
+<text x="635" y="492" font-size="15">0.7545</text>
+<text x="750" y="130" fill="#9c5210" font-size="17" font-weight="700">U03：前两名接近，补测</text>
+<text x="750" y="190" font-size="18">候选A</text>
+<rect x="750" y="200" width="229.82" height="18" fill="#527dcc"/>
+<text x="990" y="215" font-size="15">0.9992</text>
+<rect x="750" y="227" width="202.72" height="18" fill="#16877e"/>
+<text x="990" y="242" font-size="15">0.8814</text>
+<text x="750" y="315" font-size="18">候选B</text>
+<rect x="750" y="325" width="230.00" height="18" fill="#527dcc"/>
+<text x="990" y="340" font-size="15">1.0000</text>
+<rect x="750" y="352" width="202.85" height="18" fill="#16877e"/>
+<text x="990" y="367" font-size="15">0.8820</text>
+<text x="750" y="440" font-size="18">候选C</text>
+<rect x="750" y="450" width="218.75" height="18" fill="#527dcc"/>
+<text x="990" y="465" font-size="15">0.9511</text>
+<rect x="750" y="477" width="155.09" height="18" fill="#16877e"/>
+<text x="990" y="492" font-size="15">0.6743</text>
+<text x="40" y="600" font-size="16">限制：三例由人工设计，仅验证计算与拒判流程；不代表真实样品鉴定性能。</text></g></svg>

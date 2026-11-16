@@ -65,6 +65,14 @@
 
 1. Wei, J. N.; Duvenaud, D.; Aspuru-Guzik, A. [Rapid Prediction of Electron–Ionization Mass Spectrometry Using Neural Networks](https://doi.org/10.1021/acscentsci.9b00085). *ACS Central Science* **5**, 700–708 (2019).
    - 用途：说明基于分子结构快速预测 EI 质谱的思路，并引出碎片化规律、谱库检索与结构约束的关系。
+2. Nowatzky, Y.; Russo, F. F.; Lisec, J.; et al. [FIORA: Local neighborhood-based prediction of compound mass spectra from single fragmentation events](https://doi.org/10.1038/s41467-025-57422-4). *Nature Communications* **16**, 2298 (2025).
+   - 用途：说明怎样从候选结构预测串联参考谱来扩充谱库覆盖。
+3. Bushuiev, R.; Bushuiev, A.; Samusevich, R.; et al. [Self-supervised learning of molecular representations from millions of tandem mass spectra using DreaMS](https://doi.org/10.1038/s41587-025-02663-3). *Nature Biotechnology* **44**, 630–640 (2026，2025 年在线发表).
+   - 用途：说明自监督谱图表征在近邻检索中的作用。
+4. Wang, H.; Zhang, H.; Zhu, Z.-J. [Structure-informed deep generation enables de novo metabolite annotation in untargeted metabolomics](https://doi.org/10.1038/s41467-026-72149-6). *Nature Communications* **17**, 5426 (2026).
+   - 用途：说明相似结构模板如何引导结构候选生成。
+
+- [FIORA 前沿更新卡](#/resources/annual/2026-2027/references/G10-frontier) · [G10 参考文献与阅读索引](#/resources/annual/2026-2027/references/G10-bibliography)
 
 <a id="ch11"></a>
 ## 第11章 化学成像、空间分辨率与多维数据
