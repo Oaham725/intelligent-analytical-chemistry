@@ -61,8 +61,8 @@ python -m http.server 8000
 
 ## 交付和评审边界
 
-- PR：[第17章 #27](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27)，关联Issue #26，已收到G07外组评审，修订待推送及复核，教师/助教验收待完成。
-- G17对G07的实质性交叉评审：[已提交记录](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/15#pullrequestreview-5888302365)。本组已收到[G07评审](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27#issuecomment-6888572322)，相应修订待推送复核。
+- PR：[第17章 #27](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27)，关联Issue #26，已收到G07外组评审，修订已推送，待外组复核，教师/助教验收待完成。
+- G17对G07的实质性交叉评审：[已提交记录](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/15#pullrequestreview-5888302365)。本组已收到[G07评审](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27#issuecomment-6888572322)，相应修订已推送，待复核。
 - 基础图、三张前沿卡、两道传承题和引文入口见[第17章](../../docs/ch17.md)。Word版同步修正四处表述并保留原有版式。
 - Pt/C研究方向汇报与本章仿真实验分别归档，见[学生汇报材料](../../resources/annual/2026-2027/student-reports/ch17-ptc/README.md)；没有放进教师正式课件目录。
 

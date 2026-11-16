@@ -53,3 +53,7 @@ python code/ch17_exercises/verify_archive.py --archive runs/ch17-local-check
 - [G07评审逐项回应](review-response.md)
 - [回归测试输出](regression-tests.txt)
 - [评审修订校验记录](review-checks.json)
+
+## 2026年11月17日实际提交
+
+通过GitHub官方CLI完成账号登录后，代码、Word及独立Pt/C的PPT/PDF已推送至PR #27分支，核心修订提交为`e31214a8faf11bfd87e26ddacb1492971f36a4ba`；22个文件的远端Git对象与本地一致。GitHub正文预览和本地Docsify的三个练习入口分别点击通过，共6项，显示修订源码。此前“待推送”记录为11月16日历史状态；当前待G07复核及教师/助教验收合并。
