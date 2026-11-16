@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GC–MS 未知峰判读 · G10</title>
+  <link rel="stylesheet" href="lab.css">
+  <script src="data.js" defer></script>
+  <script src="lab.js" defer></script>
+</head>
+<body>
+  <header><div class="wrap">
+    <p class="eyebrow">智能分析化学 · 第10章</p>
+    <h1>GC–MS 未知峰判读</h1>
+    <p>你收到三个待复核的未知峰。请比较谱库排序，检查分离质量，并决定优先验证哪一个候选。</p>
+  </div></header>
+  <main class="wrap">
+    <div class="grid">
+      <section class="card" aria-labelledby="controls-heading">
+        <h2 id="controls-heading">选择证据与条件</h2>
+        <p>峰表、候选 A/B/C 和分辨率均为教学模拟。</p>
+        <form id="settings">
+          <label for="sample">未知峰</label>
+          <select id="sample" name="sample">
+            <option value="U01">U01 · 谱图与保留冲突</option>
+            <option value="U02">U02 · 疑似共洗脱</option>
+            <option value="U03">U03 · 候选分差小</option>
+          </select>
+          <label class="check"><input id="use-ri" type="checkbox" checked> 加入可比的线性保留指数（LRI）</label>
+          <label for="sigma">RI 容差 σ <output for="sigma" id="sigma-value">15</output></label>
+          <input id="sigma" type="range" min="5" max="60" step="1" value="15">
+          <div class="endpoints"><span>5 · 严格</span><span>60 · 宽松</span></div>
+          <button type="reset">重置练习</button>
+        </form>
+        <p class="hint">先用 U01 比较两种排序，再将 σ 从 15 调至 60。随后用 U02 和 U03 分辨两种拒判原因。</p>
+      </section>
+      <section class="card" aria-labelledby="results-heading">
+        <h2 id="results-heading">候选排序与鉴定建议</h2>
+        <div class="metrics" id="metrics"></div>
+        <p class="legend"><span class="dot spectral"></span> 谱图余弦 <span class="dot fused"></span> 融合得分</p>
+        <div id="bars" role="img" aria-label="候选分数条形图"></div>
+        <table>
+          <caption>按所选证据排序</caption>
+          <thead><tr><th scope="col">候选</th><th scope="col">余弦</th><th scope="col">|ΔRI|</th><th scope="col">当前得分</th></tr></thead>
+          <tbody id="scores"></tbody>
+        </table>
+        <div id="decision" class="decision" role="status"></div>
+      </section>
+    </div>
+    <section class="card transfer" aria-labelledby="transfer-heading">
+      <h2 id="transfer-heading">迁移判断</h2>
+      <p>如果未知物与谱库参考采用不同固定相，现有 RI 差还能怎样使用？</p>
+      <label class="sr-only" for="transfer-choice">选择处理方式</label>
+      <select id="transfer-choice">
+        <option value="">选择处理方式</option>
+        <option value="apply">沿用当前 RI 差和融合分数</option>
+        <option value="check">暂停 RI 融合，寻找同方法参照或重测</option>
+        <option value="confirm">用质谱第一名直接确证</option>
+      </select>
+      <p id="transfer-feedback" role="status">选择后查看原因。</p>
+    </section>
+    <details class="card formula">
+      <summary>查看公式、阈值和来源</summary>
+      <p>融合得分 S = 0.7 × 余弦相似度 + 0.3 × exp[−0.5 × (ΔRI/σ)²]。分数用于候选排序，数值不作概率解释。</p>
+      <p>教学决策依次检查 Rs ≥ 1.0、融合最高分 ≥ 0.80、前两名分差 ≥ 0.05。取消 RI 时保留谱图候选并提示补充证据。这里的阈值与权重是教学设定。</p>
+      <p>本练习读取由随包 CSV 和 Python 计算生成的本地数据文件。线性保留指数定义见 NIST。[<a href="https://webbook.nist.gov/chemistry/gc-ri/">NIST 保留数据说明</a>]</p>
+    </details>
+    <noscript><p class="card">请启用 JavaScript 以运行计算和查看即时反馈。</p></noscript>
+  </main>
+</body>
+</html>

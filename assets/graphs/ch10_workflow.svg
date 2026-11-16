@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1330" viewBox="0 0 1320 1330" role="img" aria-labelledby="title desc">
+<title id="title">结构判断流程：允许停止，保留证据缺口</title><desc id="desc">分离质量不合格先回查；谱图与保留约束冲突则补测；有独立确认后才报告结构。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#60778c" stroke-width="1.5"/></marker></defs>
+<rect width="1320" height="1330" fill="#f2f6fb"/>
+<g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" fill="#182c43">
+<text x="50" y="65.0" font-size="34" fill="#182c43" font-weight="700">结构判断流程｜让证据决定下一步</text>
+<text x="50" y="104.0" font-size="20" fill="#526b80" font-weight="400">G10 · 第10章　｜　教学门槛仅作演示，真实阈值须经方法验证</text>
+<rect x="50" y="155" width="860" height="115" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="75" y="195.0" font-size="25" fill="#182c43" font-weight="700">1 记录样品与测量条件</text>
+<text x="75" y="237.0" font-size="18" fill="#182c43" font-weight="400">样品/空白/QC、原始文件、GC方法、EI条件、质量轴和时间单位</text>
+<rect x="50" y="330" width="860" height="115" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="75" y="370.0" font-size="25" fill="#182c43" font-weight="700">2 分离质量与数据关联是否可接受？</text>
+<text x="75" y="412.0" font-size="18" fill="#182c43" font-weight="400">检查共洗脱、空白污染、反卷积及目标峰与谱图的时间对应</text>
+<rect x="50" y="535" width="860" height="115" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="75" y="575.0" font-size="25" fill="#182c43" font-weight="700">3 生成候选，不直接给身份</text>
+<text x="75" y="617.0" font-size="18" fill="#182c43" font-weight="400">峰表对齐 → 余弦检索；记录Top-k、库版本及缺峰情况</text>
+<rect x="50" y="710" width="860" height="115" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="75" y="750.0" font-size="25" fill="#182c43" font-weight="700">4 加入可比的保留与结构约束</text>
+<text x="75" y="792.0" font-size="18" fill="#182c43" font-weight="400">同方法RI；必要时NMR局部环境/连接；记录每项支持、冲突与缺失</text>
+<rect x="50" y="910" width="860" height="115" rx="16" fill="#fff" stroke="#d4dfe9"/>
+<text x="75" y="950.0" font-size="25" fill="#182c43" font-weight="700">5 能否给出明确的优先验证候选？</text>
+<text x="75" y="992.0" font-size="18" fill="#182c43" font-weight="400">本例：分离门槛通过、S≥0.80、前两名差≥0.05，才给出候选优先级</text>
+<rect x="50" y="1110" width="860" height="115" rx="16" fill="#e4f2ef" stroke="#d4dfe9"/>
+<text x="75" y="1150.0" font-size="25" fill="#182c43" font-weight="700">6 独立验证，按证据强度报告</text>
+<text x="75" y="1192.0" font-size="18" fill="#182c43" font-weight="400">同条件标准品或独立结构证据支持 → 报告结构；证据不足 → 维持未决</text>
+<path d="M480,273 L480,318" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M480,448 L480,523" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M480,653 L480,698" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M480,828 L480,898" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M480,1028 L480,1098" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="500" y="490.0" font-size="18" fill="#16877e" font-weight="400">是</text>
+<rect x="960" y="318" width="310" height="155" rx="16" fill="#fff4e3" stroke="#d4dfe9"/>
+<text x="980" y="355" font-size="19" fill="#182c43" font-weight="400">否 → 暂停身份判断</text>
+<text x="980" y="389" font-size="19" fill="#182c43" font-weight="400">回查空白、提取离子流；</text>
+<text x="980" y="423" font-size="19" fill="#182c43" font-weight="400">反卷积或改善分离后重测。</text>
+<path d="M910,387 L947,387" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="960" y="700" width="310" height="155" rx="16" fill="#fff4e3" stroke="#d4dfe9"/>
+<text x="980" y="737" font-size="19" fill="#182c43" font-weight="400">条件不匹配 / 证据冲突</text>
+<text x="980" y="771" font-size="19" fill="#182c43" font-weight="400">核对固定相与温度程序；</text>
+<text x="980" y="805" font-size="19" fill="#182c43" font-weight="400">补充可比参照，不强行融合。</text>
+<path d="M910,767 L947,767" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="960" y="900" width="310" height="155" rx="16" fill="#fff4e3" stroke="#d4dfe9"/>
+<text x="980" y="937" font-size="19" fill="#182c43" font-weight="400">否 → 报告未决候选</text>
+<text x="980" y="971" font-size="19" fill="#182c43" font-weight="400">扩大候选库、补测标准品；</text>
+<text x="980" y="1005" font-size="19" fill="#182c43" font-weight="400">必要时纯化并测1D/2D NMR。</text>
+<path d="M910,968 L947,968" fill="none" stroke="#60778c" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="500" y="1071.0" font-size="18" fill="#16877e" font-weight="400">是 → 仍需独立验证</text>
+<text x="50" y="1285.0" font-size="18" fill="#526b80" font-weight="400">本包案例：U01 → A优先验证；U02 → 分离质量拒判；U03 → 歧义拒判。没有模拟“已经确证”的实验结果。</text>
+</g></svg>

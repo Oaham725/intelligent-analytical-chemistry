@@ -1,0 +1,4 @@
+sample_id,batch,raw_rt_min,rs,alkane_n,alkane_low_ref_min,alkane_high_ref_min
+U01,B,7.80,1.50,8,6.00,8.00
+U02,B,8.40,0.70,9,8.00,10.00
+U03,B,8.10,1.50,8,6.00,8.00
