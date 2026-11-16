@@ -4,7 +4,7 @@
  * 一个章首综合案例 + 六个分节模块，每个模块操纵本节的一个核心对象：
  *   ch17-autonomy-shift   章首：夜间值班（状态、奖励、故障三项决定 + 迁移题）
  *   ch17-problem-sorter   17.1 判断批量设计 / 序贯选点 / 序贯控制
- *   ch17-state-designer   17.2 为显色孔设计满足马尔可夫性的状态
+ *   ch17-state-designer   17.2 为显色孔检查候选状态变量
  *   ch17-reward-tuner     17.3 调节奖励权重，观察被选中的策略与奖励投机
  *   ch17-shield-lab       17.4 为策略配置屏蔽规则：漏拦与误拦
  *   ch17-fault-injection  17.5 选择控制器能力并注入故障，观察静默错误
@@ -70,7 +70,7 @@
         context: '策略只能依据状态做决定。夜间没有人看着，状态缺了什么，策略就看不到什么。',
         options: [
           { id: 'a', text: '只记录当前吸光度 A', ok: false, why: '同样 A = 0.35 的两个孔，一个刚加完试剂、一个已显色 20 分钟，后续变化完全不同。缺少“自加试剂以来的时间”，过程不是马尔可夫的，策略会在两者之间摇摆。' },
-          { id: 'b', text: 'A 的最近两次读数 + 自加试剂以来时间 + 已加试剂量 + 稀释倍数 + 孔内体积', ok: true, why: '这是对未来决策有影响的最小充分集合：时间与读数趋势判断显色是否完成，试剂量判断络合是否充足，稀释倍数用于换算浓度，孔内体积供屏蔽器检查溢出。' },
+          { id: 'b', text: 'A 的最近两次读数 + 自加试剂以来时间 + 已加试剂量 + 稀释倍数 + 孔内体积', ok: true, why: '这是本例简化假设下较完整的候选状态变量集合，尚不能证明最小充分或马尔可夫性：时间与读数趋势判断显色是否完成，试剂量判断络合是否充足，稀释倍数用于换算浓度，孔内体积供屏蔽器检查溢出。是否近似满足马尔可夫性，仍需在模型中检查或用轨迹数据验证。' },
           { id: 'c', text: '把仪器的全部原始日志（每秒一条）都作为状态', ok: false, why: '信息没有丢，但状态维度巨大，学习所需数据成倍增加，且大部分变量（如风扇转速）与决策无关。状态应当是“最小充分”的，而不是“越全越好”。' }
         ]
       },
@@ -232,15 +232,15 @@
         var noise = picked.filter(function (v) { return v.role === 'noise'; });
         var bonus = picked.filter(function (v) { return v.role === 'bonus'; });
         if (fails.length) {
-          fb = feedback('warning', '双轨迹检验未通过（' + fails.length + ' 项）', fails.map(function (f) { return '· ' + f.fail; }).join('<br>'));
+          fb = feedback('warning', '变量完整性检查未通过（' + fails.length + ' 项）', fails.map(function (f) { return '· ' + f.fail; }).join('<br>'));
         } else {
           var extra = noise.length ? '<br>但你加入了与决策无关的变量（' + noise.map(function (v) { return v.label; }).join('、') + '）：它们不破坏马尔可夫性，却让状态空间成倍增大，表格方法需要的数据随之增加。' : '';
           var plus = bonus.length ? '<br>加入' + bonus.map(function (v) { return v.label; }).join('、') + '是合理的：温度影响显色速率，质控偏差提示读数是否可信——在仿真到真实迁移时尤其重要。' : '';
-          fb = feedback(noise.length ? 'warning' : 'success', '双轨迹检验通过', '任意两条状态相同的历史，在你的状态定义下后续统计一致。' + extra + plus);
+          fb = feedback(noise.length ? 'warning' : 'success', '通过本例变量完整性检查', '这些是简化假设下的候选状态变量，是否近似满足马尔可夫性仍需在模型中检查或用轨迹数据验证；本互动未生成轨迹或检验转移分布。' + extra + plus);
         }
       }
-      var body = '<p class="section-lab-lead">勾选要写入状态 s 的变量，再用“双轨迹检验”检查：两条历史不同、状态相同的轨迹，未来是否会不同？</p><div class="ch17-chips ch17-chips--wrap">' + chips + '</div><p class="section-lab-caption">当前状态维度：' + dims + '。若每个变量离散为 5 档，表格方法需要估计的状态数约为 5<sup>' + dims + '</sup> = ' + Math.pow(5, dims).toLocaleString('zh-CN') + '。</p>' + actions('check', '运行双轨迹检验', 'reset') + fb;
-      root.innerHTML = shell('17.2 状态设计', '为显色孔设计“最小充分”的状态', '目标：理解马尔可夫性是对状态定义的要求，以及状态维度的代价。', body);
+      var body = '<p class="section-lab-lead">勾选要写入状态 s 的候选变量，检查是否遗漏本例预设的必要信息。这里仅核对变量清单，不运行双轨迹统计检验，也不证明马尔可夫性。</p><div class="ch17-chips ch17-chips--wrap">' + chips + '</div><p class="section-lab-caption">当前状态维度：' + dims + '。若每个变量离散为 5 档，表格方法需要估计的状态数约为 5<sup>' + dims + '</sup> = ' + Math.pow(5, dims).toLocaleString('zh-CN') + '。</p>' + actions('check', '检查变量完整性', 'reset') + fb;
+      root.innerHTML = shell('17.2 状态设计', '为显色孔设计候选状态', '目标：理解马尔可夫性是对状态定义的要求，以及状态维度的代价。', body);
     }
 
     bind(root, function (action, target) {

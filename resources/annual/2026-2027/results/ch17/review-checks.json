@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-16",
+  "tests": 8,
+  "status": "passed",
+  "original_commit": "68956ad0da6b565ebc8de6cc97bc143e6c89a655",
+  "original_directed_checks": "failed as expected; timeout guarded at 12 reference calls",
+  "regression_output_sha256": "6cc1d7a11f7a8e3241a3ee2e0689b83082ac750b571c2bf66c2f887da4718245",
+  "source_hash_normalization": "CRLF normalized to LF",
+  "sources": {
+    "code/ch17_exercises/test_review_regressions.py": "71bada29b56aba074d25773839a2dbbdcee5d2d99fb15e96046d5ee545cc7522",
+    "code/ch17_exercises/02_reward_and_shield.py": "22cbcbda29388e2cde4d6ac43109380c42e040ee064aa56f4246b4b0426c01fa",
+    "code/ch17_exercises/03_fsm_fault_injection.py": "39e0da507630d860f543f7dada7c094a9622245354a9edf2289a1b9a714715cc",
+    "assets/js/ch17-labs.js": "6a802a349f84ae42bae2459bd4608809de94e185b496aed59b45117a154d82bb",
+    "docs/ch17.md": "130c7ac2769aeed8daa2b290e981476b87f4ff17103d78b7e2c3de200ea1e5b4"
+  },
+  "scope": "Teaching simulation only; no real instrument validation."
+}

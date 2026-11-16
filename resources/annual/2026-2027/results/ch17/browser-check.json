@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-13",
+  "date": "2026-11-16",
   "browser": "Microsoft Edge headless",
   "full_docsify": true,
   "module_check_status": "passed",
@@ -8,6 +8,14 @@
     "four-stage choices and feedback",
     "six problem-type answers",
     "state-designer empty-state feedback",
+    "complete candidate variables do not claim a Markov proof",
+    "missing volume still gives required-variable feedback",
+    "Docsify file link is external: 01_colorimetric_mdp.py",
+    "click displays Python source instead of Docsify route: 01_colorimetric_mdp.py",
+    "Docsify file link is external: 02_reward_and_shield.py",
+    "click displays Python source instead of Docsify route: 02_reward_and_shield.py",
+    "Docsify file link is external: 03_fsm_fault_injection.py",
+    "click displays Python source instead of Docsify route: 03_fsm_fault_injection.py",
     "reward slider changes persist",
     "reward hard-constraint toggle",
     "shield configured rules and feedback",
@@ -20,12 +28,26 @@
     "chapter navigation remounts exactly seven modules",
     "375px page has no horizontal overflow"
   ],
-  "viewport": {
-    "mobile": 375,
-    "document_scroll_width": 375
-  },
-  "known_shared_warnings": [
-    "Cannot read properties of undefined (reading 'unshift') |     at y (https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js:0:473)"
+  "code_links": [
+    {
+      "file": "01_colorimetric_mdp.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/01_colorimetric_mdp.py",
+      "scope": "existing remote source; local fixes remain unpushed until GitHub content permission is restored"
+    },
+    {
+      "file": "02_reward_and_shield.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/02_reward_and_shield.py",
+      "scope": "existing remote source; local fixes remain unpushed until GitHub content permission is restored"
+    },
+    {
+      "file": "03_fsm_fault_injection.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/03_fsm_fault_injection.py",
+      "scope": "existing remote source; local fixes remain unpushed until GitHub content permission is restored"
+    }
   ],
-  "scope": "Automated local-page check by Codex; not a non-team review or full-site cross-browser acceptance."
+  "existing_shared_page_errors": [
+    "Cannot read properties of undefined (reading 'unshift')"
+  ],
+  "mobile_document_width": 375,
+  "scope": "Local revised Docsify page; clicked remote links show existing original source. Actual pushed revision and GitHub Markdown preview acceptance are pending repository write permission."
 }

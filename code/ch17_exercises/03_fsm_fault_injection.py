@@ -80,6 +80,7 @@ def run(controller, n_samples=1000, seed=17):
         if not robust and k % 50 == 0:
             hw.recalibrate()                          # naive 只做固定周期校准（每 50 个样品）
         state, volume, retries, cmd = "取枪头", 0.0, 0, 0
+        ref_retries, recalibrations = 0, 0  # 参比通信与质控重校准分别计数
         result, corrupted = None, False
         while state not in ("完成", "安全态"):
             stats["minutes"] += 0.5
@@ -136,16 +137,28 @@ def run(controller, n_samples=1000, seed=17):
                         log.append((k, "光谱仪连续超时"))
                     continue
                 result = reading * (target / volume if robust else 1.0)
+                retries = 0  # 本次样品测量已成功；不占用参比或重校准预算
                 state = "质控" if robust else "完成"
             elif state == "质控":
                 ref = hw.measure(0.500)               # 参比标准溶液
                 if ref is None:
+                    stats["minutes"] += 1  # 本次参比超时的等待/重连代价
+                    if ref_retries < MAX_RETRY:
+                        ref_retries += 1
+                    else:
+                        state = "安全态"
+                        log.append((k, "参比通信连续超时：进入安全态并等待人工接管"))
                     continue
+                ref_retries = 0  # 通信恢复；不清空独立的重校准计数
                 if abs(ref - 0.5) / 0.5 > TOL_REF:
-                    hw.recalibrate()                  # 空白 + 标准重新校准后重测样品
-                    stats["minutes"] += 3
-                    retries += 1
-                    state = "测量" if retries <= MAX_RETRY else "安全态"
+                    if recalibrations < MAX_RETRY:
+                        recalibrations += 1
+                        hw.recalibrate()              # 空白 + 标准重新校准后重测样品
+                        stats["minutes"] += 3
+                        state = "测量"
+                    else:
+                        state = "安全态"
+                        log.append((k, "参比质控持续不合格：重校准达上限，等待人工接管"))
                 else:
                     state = "完成"
 

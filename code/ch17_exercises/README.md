@@ -17,7 +17,7 @@ py -3.12 -m venv .venv
 | 入口 | 做什么 | 核对现象 |
 |---|---|---|
 | `01_colorimetric_mdp.py` | 显色MDP与值迭代 | 高浓度、试剂足、显色完全但未稀释时，稀释Q值8.50，直接报告−10 |
-| `02_reward_and_shield.py` | 三种奖励/屏蔽设置 | 固定默认种子下，A/B/C的中位相对误差约30.0%/2.3%/2.6%；训练期溢出1258/6326/0 |
+| `02_reward_and_shield.py` | 三种奖励/屏蔽设置 | 固定默认种子下，A/B/C的中位相对误差约30.0%/2.3%/2.5%；训练期溢出1258/6326/0 |
 | `03_fsm_fault_injection.py` | 七类故障注入 | 固定默认种子下，naive/robust静默错误336/10；总样品各1000 |
 
 这些数值来自本次默认运行，其他种子、仿真参数和环境需重新检验。信号奖励、误差奖励和屏蔽规则的差异在正文解释；安全屏蔽不消除所有不可观测故障。
@@ -61,7 +61,15 @@ python -m http.server 8000
 
 ## 交付和评审边界
 
-- PR：[第17章 #27](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27)，关联Issue #26，等待外组评审与教师/助教验收。
-- G17对G07的实质性交叉评审：[已提交记录](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/15#pullrequestreview-5888302365)。这不等于本组已经收到外组评审。
-- 基础图、三张前沿卡、两道传承题和引文入口见[第17章](../../docs/ch17.md)。Word版保留原有正文与版式。
+- PR：[第17章 #27](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27)，关联Issue #26，已收到G07外组评审，修订待推送及复核，教师/助教验收待完成。
+- G17对G07的实质性交叉评审：[已提交记录](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/15#pullrequestreview-5888302365)。本组已收到[G07评审](https://github.com/Oaham725/intelligent-analytical-chemistry/pull/27#issuecomment-6888572322)，相应修订待推送复核。
+- 基础图、三张前沿卡、两道传承题和引文入口见[第17章](../../docs/ch17.md)。Word版同步修正四处表述并保留原有版式。
 - Pt/C研究方向汇报与本章仿真实验分别归档，见[学生汇报材料](../../resources/annual/2026-2027/student-reports/ch17-ptc/README.md)；没有放进教师正式课件目录。
+
+## G07评审的定向回归检查
+
+```powershell
+python -X utf8 code/ch17_exercises/test_review_regressions.py
+```
+
+8项检查覆盖参比持续超时有限退出、短暂超时恢复、通信与重校准预算独立、质控持续失败、样品超时、屏蔽后继价值备份、终止目标和B/C相同容量上限。测试均为模拟硬件。修订说明与完整验收边界见[逐项回应](../../resources/annual/2026-2027/results/ch17/review-response.md)。

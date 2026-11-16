@@ -1,0 +1,13 @@
+test_b_and_c_have_same_environment_capacity (__main__.ReviewRegressionTests.test_b_and_c_have_same_environment_capacity) ... ok
+test_backup_ignores_high_illegal_action_value (__main__.ReviewRegressionTests.test_backup_ignores_high_illegal_action_value) ... ok
+test_persistent_qc_failure_has_separate_finite_limit (__main__.ReviewRegressionTests.test_persistent_qc_failure_has_separate_finite_limit) ... ok
+test_persistent_reference_timeout_stops_and_requests_human (__main__.ReviewRegressionTests.test_persistent_reference_timeout_stops_and_requests_human) ... ok
+test_reference_communication_can_recover (__main__.ReviewRegressionTests.test_reference_communication_can_recover) ... ok
+test_reference_communication_does_not_spend_recalibration_budget (__main__.ReviewRegressionTests.test_reference_communication_does_not_spend_recalibration_budget) ... ok
+test_sample_timeout_still_stops (__main__.ReviewRegressionTests.test_sample_timeout_still_stops) ... ok
+test_terminal_backup_never_bootstraps (__main__.ReviewRegressionTests.test_terminal_backup_never_bootstraps) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.024s
+
+OK

@@ -109,6 +109,14 @@ def shield(env, a):
     return not (a in ("加试剂", "稀释") and env.volume_after(a) > V_MAX)
 
 
+def backup_target(env, next_values, reward, done, use_shield):
+    """在 step 后的环境上做备份；终止时不自举，屏蔽时只考虑合法后继动作。"""
+    if done:
+        return reward
+    allowed = [i for i, a in enumerate(ACTIONS) if not use_shield or shield(env, a)]
+    return reward + 0.98 * max(next_values[i] for i in allowed)
+
+
 def run(kind, use_shield, episodes=60000, seed=1):
     rng = np.random.default_rng(seed)
     env = ColorimetricWell(rng)
@@ -127,7 +135,7 @@ def run(kind, use_shield, episodes=60000, seed=1):
             overflow_train += info.get("overflow", False)
             if info.get("report"):
                 r += task_reward(env, kind)
-            target = r if done else r + 0.98 * np.max(Q[s2])
+            target = backup_target(env, Q[s2] if not done else None, r, done, use_shield)
             Q[s][ai] += 0.1 * (target - Q[s][ai])
             s = s2
     return Q, overflow_train
@@ -189,6 +197,7 @@ if __name__ == "__main__":
   · B 的奖励直接写成浓度相对误差，策略学会加足试剂、等到读数稳定、过高时稀释。
     但它是靠“试错”学会溢出不好的——训练期溢出次数就是探索的物理代价。
   · C 在执行层用屏蔽器拦截会溢出的动作：训练期溢出降为 0，最终精度接近 B。
-    屏蔽器缩小了动作集合，也可能挡住少数高收益路径（例如加满 3 份试剂再连续稀释），
-    所以 C 对最高浓度样品的误差略大。这是“安全约束有代价”的真实体现，而不是屏蔽器失败。
+    本例直接显示预先筛选可避免训练期溢出；B 与 C 都有相同的 400 µL 容量上限。
+    固定种子有限训练中的精度差异，尚未分离探索分布、收敛与评估抽样等原因，
+    不能据此断言容量约束降低最优精度；量化容量代价需要其他条件相同的容量对照和多种子分析。
   · 误差奖励依赖仿真中的真值；真实实验室只能用标准物质/参比方法近似它（见17.3、17.4）。""")
