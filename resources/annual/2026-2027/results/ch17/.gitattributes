@@ -1,0 +1,2 @@
+stdout.txt -text whitespace=-blank-at-eol
+*.json text eol=lf

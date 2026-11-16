@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-17",
+  "status": "passed",
+  "checks": [
+    {
+      "environment": "Docsify",
+      "file": "01_colorimetric_mdp.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/01_colorimetric_mdp.py",
+      "revision_marker": "import numpy as np",
+      "status": "passed"
+    },
+    {
+      "environment": "Docsify",
+      "file": "02_reward_and_shield.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/02_reward_and_shield.py",
+      "revision_marker": "def backup_target",
+      "status": "passed"
+    },
+    {
+      "environment": "Docsify",
+      "file": "03_fsm_fault_injection.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/03_fsm_fault_injection.py",
+      "revision_marker": "ref_retries",
+      "status": "passed"
+    },
+    {
+      "environment": "GitHub Markdown preview",
+      "file": "01_colorimetric_mdp.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/01_colorimetric_mdp.py",
+      "revision_marker": "import numpy as np",
+      "status": "passed"
+    },
+    {
+      "environment": "GitHub Markdown preview",
+      "file": "02_reward_and_shield.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/02_reward_and_shield.py",
+      "revision_marker": "def backup_target",
+      "status": "passed"
+    },
+    {
+      "environment": "GitHub Markdown preview",
+      "file": "03_fsm_fault_injection.py",
+      "url": "https://github.com/jeremiahxb/intelligent-analytical-chemistry/blob/ch17/rl-autonomous-lab-rebuild/code/ch17_exercises/03_fsm_fault_injection.py",
+      "revision_marker": "ref_retries",
+      "status": "passed"
+    }
+  ]
+}

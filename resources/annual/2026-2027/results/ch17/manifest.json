@@ -1,0 +1,21 @@
+{
+  "schema": "ch17-run-archive-v1",
+  "data_type": "teaching_simulation",
+  "python": "3.12.14",
+  "numpy": "2.5.4",
+  "platform": "Windows",
+  "exit_code": 0,
+  "elapsed_seconds": 12.8,
+  "command": "python -X utf8 code/ch17.py",
+  "source_hash_normalization": "CRLF normalized to LF",
+  "sources": {
+    "code/ch17.py": "415532b89dc75a4b636fc4bc72b5c1a2e53c242923f9ac05635ea2e9566a3a20",
+    "code/ch17_exercises/01_colorimetric_mdp.py": "ae043d45282d10de3d7ce0602063027ea42e1c3e8a9c6543843c79dd8c65c750",
+    "code/ch17_exercises/02_reward_and_shield.py": "22cbcbda29388e2cde4d6ac43109380c42e040ee064aa56f4246b4b0426c01fa",
+    "code/ch17_exercises/03_fsm_fault_injection.py": "39e0da507630d860f543f7dada7c094a9622245354a9edf2289a1b9a714715cc"
+  },
+  "artifacts": {
+    "stdout.txt": "c2cc8ded7df41628b9d45cc1f543ee78d3873f9b16c8cf8495d4761b923e0b04"
+  },
+  "scope": "Default fixed-seed simulations only; not real laboratory validation or an independent external review."
+}

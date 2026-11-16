@@ -619,3 +619,46 @@ body {
   .markdown-section p.python-workbook-caption { padding-left: 1rem; padding-right: 1rem; }
   .markdown-section .python-workbook-frame { min-height: 580px; }
 }
+
+/* 第 17 章互动模块：在 .section-lab 基础上补充的少量样式（前缀 .ch17-）。 */
+.ch17-progress { margin: -.3rem 0 .8rem; color: #39758f; font-size: .84rem; font-weight: 700; }
+.ch17-stage { margin: 0 0 .95rem; padding: .8rem .85rem .2rem; border: 1px solid #d7e7ee; border-radius: 10px; background: #fff; }
+.ch17-stage legend { padding: 0 .35rem; color: #163b57; font-weight: 750; line-height: 1.4; }
+.ch17-stage legend span { display: block; color: #39758f; font-size: .72rem; letter-spacing: .06em; }
+.ch17-stage .section-lab-caption { margin: 0 0 .55rem !important; }
+.ch17-row { padding: .62rem 0; border-bottom: 1px dashed #d3e4ec; }
+.ch17-row > p { display: flex; gap: .55rem; align-items: flex-start; margin: 0 0 .45rem !important; }
+.ch17-row--select { display: grid; grid-template-columns: minmax(0, 1fr) 13.5rem; gap: .35rem .8rem; align-items: center; }
+.ch17-row--select label { font-size: .92rem; }
+.ch17-row--select select { padding: .42rem .5rem; border: 1px solid #b9d4e1; border-radius: 7px; background: #fff; color: #163b57; font: inherit; font-size: .86rem; }
+.ch17-row--select .ch17-note { grid-column: 1 / -1; }
+.ch17-chips { display: flex; flex-wrap: wrap; gap: .42rem; }
+.ch17-chips--wrap { margin: .2rem 0 .4rem; }
+.ch17-note { margin: .4rem 0 0 !important; padding: .42rem .6rem; border-radius: 6px; font-size: .84rem; line-height: 1.5; }
+.ch17-note.is-ok { background: #effaf4; color: #145d41; }
+.ch17-note.is-bad { background: #fff8ec; color: #875014; }
+.ch17-h5 { margin: .85rem 0 .4rem; color: #205d78; font-size: .9rem; }
+.ch17-split { display: grid; grid-template-columns: minmax(13rem, .8fr) minmax(0, 1.4fr); gap: 1rem; align-items: start; }
+.ch17-table-wrap { overflow-x: auto; }
+.markdown-section table.ch17-table { display: table; width: 100%; margin: 0; font-size: .82rem; }
+.ch17-table th small { display: block; color: #607b8b; font-weight: 400; }
+.ch17-table tr.is-best { background: #eaf7fc; outline: 2px solid #117eb1; }
+.ch17-table tr.is-off { opacity: .5; }
+.ch17-log { margin: .7rem 0 0; padding: 0; list-style: none; }
+.ch17-log li { margin: 0 0 .42rem; padding: .5rem .65rem; border-left: 4px solid #9ed7bc; border-radius: 0 7px 7px 0; background: #f6fbf8; font-size: .86rem; }
+.ch17-log li.is-bad { border-left-color: #d9534f; background: #fdf1ef; }
+.ch17-log li.is-warn { border-left-color: #e0a040; background: #fff8ec; }
+.ch17-log li strong { margin-right: .5rem; }
+.ch17-log li small { display: block; margin-top: .15rem; color: #5b7484; line-height: 1.45; }
+.ch17-tally { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+.ch17-pill { padding: .22rem .55rem; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+.ch17-pill--ok, .ch17-pill--flag, .ch17-pill--safe { background: #e3f5ec; color: #145d41; }
+.ch17-pill--silent, .ch17-pill--danger, .ch17-pill--hang { background: #fde7e4; color: #8e2a1e; }
+.ch17-fault { border-color: #e7b98a; }
+
+@media (max-width: 768px) {
+  .ch17-split, .ch17-row--select { grid-template-columns: 1fr; }
+}
+.ch17-slider > span { display: block; }
+.ch17-slider output { display: inline; padding: 0; border: 0; background: none; font-size: inherit; }
+.ch17-table { min-width: 34rem; }
